@@ -1,167 +1,258 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral text-neutral-content pt-12 pb-6 px-4 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+    <footer className="bg-neutral text-neutral-content pt-16 pb-8 px-6 lg:px-10">
+      <div className="max-w-8xl mx-auto">
 
-        {/* Top row */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 ">
+        {/* Top grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
 
           {/* Brand */}
-          <div
-            className="md:col-span-1 flex flex-col gap-4"
-            data-aos="fade-up"
-            data-aos-duration="600"
-            data-aos-once="true"
-          >
+          <div className="md:col-span-2 flex flex-col gap-5">
             <img
               src="/images/logos_darkmode/Hedgium stacked darkmode.png"
               alt="Hedgium"
-              className="w-20 h-auto"
+              className="w-24"
             />
-            <p className="text-sm text-neutral-content/70 leading-relaxed">
-              Quant-driven research house focused on generating market-neutral alpha using the Twin Engine Investing framework.
+
+            <p className="text-sm text-neutral-content/70 leading-relaxed max-w-md">
+              Quant-driven research house focused on generating market-neutral
+              alpha using the Twin Engine Investing framework.
             </p>
+
+            <div className="text-xs text-neutral-content/60 space-y-1">
+              <p>Registered Entity Name: Hedgium Services LLP</p>
+              <p>LLP Identification Number: ACQ-3740 </p>
+            </div>
           </div>
 
           {/* Navigate */}
-          <div
-            className="flex flex-col gap-2"
-            data-aos="fade-up"
-            data-aos-duration="600"
-            data-aos-delay="60"
-            data-aos-once="true"
-          >
-            <span className="text-xs font-bold uppercase tracking-widest text-neutral-content/50 mb-1">Navigate</span>
+          {/* <div className="flex flex-col gap-3">
+            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-content/50">
+              Navigate
+            </span>
+
             {[
-              { label: 'What We Do', href: '/#what-we-do' },
-              { label: 'Unlock Potential', href: '/#unlock-potential' },
-              { label: 'Why Hedgium', href: '/#why-hedgium' },
-              { label: 'Fees', href: '/#pricing' },
+              { label: "What We Do", href: "/#what-we-do" },
+              { label: "Unlock Potential", href: "/#unlock-potential" },
+              { label: "Why Hedgium", href: "/#why-hedgium" },
+              { label: "Fees", href: "/#pricing" },
             ].map(({ label, href }) => (
-              <Link key={label} href={href} className="text-sm text-neutral-content/70 hover:text-neutral-content transition-colors">
+              <Link
+                key={label}
+                href={href}
+                className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+              >
                 {label}
               </Link>
             ))}
-          </div>
+          </div> */}
 
           {/* Legal */}
-          <div
-            className="flex flex-col gap-2"
-            data-aos="fade-up"
-            data-aos-duration="600"
-            data-aos-delay="100"
-            data-aos-once="true"
-          >
-            <span className="text-xs font-bold uppercase tracking-widest text-neutral-content/50 mb-1">Legal</span>
-            <Link href="/terms-of-use" className="text-sm text-neutral-content/70 hover:text-neutral-content transition-colors">Terms of Use</Link>
-            <Link href="/privacy-policy" className="text-sm text-neutral-content/70 hover:text-neutral-content transition-colors">Privacy Policy</Link>
-            <Link href="#" className="text-sm text-neutral-content/70 hover:text-neutral-content transition-colors">Disclaimer</Link>
+          <div className="flex flex-col gap-3">
+            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-content/50">
+              Legal
+            </span>
+
+            <Link
+              href="/terms-of-use"
+              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+            >
+              Terms of Use
+            </Link>
+
+            <Link
+              href="/privacy-policy"
+              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+            >
+              Privacy Policy
+            </Link>
+
+            <Link
+              href="/complaint-status"
+              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+            >
+              Complaint Status
+            </Link>
+
+            <Link
+              href="/grievance-redressal"
+              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+            >
+              Grievance Redressal
+            </Link>
+
+            <Link
+              href="/refund-policy"
+              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+            >
+              Refund Policy
+            </Link>
+
+            <Link
+              href="/mitc-ra"
+              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+            >
+              MITC-RA
+            </Link>
+
           </div>
 
           {/* Contact */}
-          <div
-            className="flex flex-col gap-2"
-            data-aos="fade-up"
-            data-aos-duration="600"
-            data-aos-delay="140"
-            data-aos-once="true"
-          >
-            <span className="text-xs font-bold uppercase tracking-widest text-neutral-content/50 mb-1">Contact</span>
-            <a href="mailto:contact@hedgium.in" className="text-sm text-neutral-content/70 hover:text-neutral-content transition-colors">
-              contact@hedgium.in
+          <div className="flex flex-col gap-3">
+            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-content/50">
+              Contact
+            </span>
+
+            <a
+              href="mailto:clients@hedgium.ai"
+              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+            >
+              clients@hedgium.ai
             </a>
-            <a href="https://www.hedgium.ai" className="text-sm text-neutral-content/70 hover:text-neutral-content transition-colors">
-              www.hedgium.ai
-            </a>
-            <a href={`tel:+91${process.env.NEXT_PUBLIC_PHONE_NUMBER}`} className="text-sm text-neutral-content/70 hover:text-neutral-content transition-colors">
+
+            <a
+              href={`tel:+91${process.env.NEXT_PUBLIC_PHONE_NUMBER}`}
+              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+            >
               +91 {process.env.NEXT_PUBLIC_PHONE_NUMBER}
             </a>
-          </div>
 
+            <a
+              href="https://www.hedgium.ai"
+              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+            >
+              www.hedgium.ai
+            </a>
+          </div>
         </div>
 
-  
 
-        {/* SEBI / RA / IA registration and disclaimers */}
-        <div className="pt-10 mt-10 border-t border-neutral-content/20 text-xs text-neutral-content/60 space-y-8">
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Divider */}
+        <div className="border-t border-neutral-content/20 my-12"></div>
+
+
+        {/* RA Info */}
+        <div className="grid md:grid-cols-2 gap-10 text-sm text-neutral-content/70">
 
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-neutral-content/90">Research Analyst (RA)</h3>
-            <ul className="space-y-1">
-              <li>SEBI Registration No.: INH000009825</li>
-              <li>BSE Enlistment No.: 5586</li>
-              <li>Type of Registration: Non-Individual</li>
-              <li>Validity: June 13, 2022 - Perpetual</li>
-            </ul>
-            <div className="space-y-1 pt-2">
-              <p><strong className="text-neutral-content/80">Principal Officer:</strong> Mr. Rahul Kumar Ghose</p>
-              <p>Email: contactus@octanom.com | Contact: +91 7669668668</p>
+            <h3 className="font-semibold text-neutral-content">
+              Research Analyst (RA)
+            </h3>
+
+            <p>SEBI Registration No: INH000025258</p>
+
+            <div>
+              <p className="font-medium text-neutral-content/90">
+                Principal Officer
+              </p>
+              <p>Kamlesh Ramchandani</p>
+              <p>
+                <a
+                  href="mailto:kamlesh.ramchandani@hedgium.in"
+                  className="underline hover:text-neutral-content"
+                >
+                  kamlesh.ramchandani@hedgium.in
+                </a>
+              </p>
+              <p>8454838304</p>
             </div>
-            <div className="space-y-1">
-              <p><strong className="text-neutral-content/80">Compliance Officer:</strong> Mr. Pratik Rathod</p>
-              <p>Email: compliance@octanom.com | Contact: +91 9076160917</p>
+
+            <div>
+              <p className="font-medium text-neutral-content/90">
+                Compliance Officer
+              </p>
+              <p>Aerik Wadhwani</p>
+              <p>
+                <a
+                  href="mailto:compliance@hedgium.in"
+                  className="underline hover:text-neutral-content"
+                >
+                  compliance@hedgium.in
+                </a>
+              </p>
             </div>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-neutral-content/90">Investment Advisor (IA)</h3>
-            <ul className="space-y-1">
-              <li>SEBI Registration No.: INA000021207</li>
-              <li>BSE Enlistment No.: 2368</li>
-              <li>Type of Registration: Non-Individual</li>
-              <li>Validity: October 30, 2025 - Perpetual</li>
-            </ul>
-            <div className="space-y-1 pt-2">
-              <p><strong className="text-neutral-content/80">Principal Officer:</strong> Mr. Archit Mahajan</p>
-              <p>Email: archit@octanom.com | Contact: +91 9930180035</p>
-            </div>
-            <div className="space-y-1">
-              <p><strong className="text-neutral-content/80">Compliance Officer:</strong> Mr. Pratik Rathod</p>
-              <p>Email: compliance@octanom.com | Contact: +91 9076160917</p>
-            </div>
-          </div>
 
-          <div className="space-y-2">
-            <h3 className="text-sm font-semibold text-neutral-content/90">SEBI Correspondence Office Details</h3>
-            <p>Securities and Exchange Board of India, SEBI Bhavan II, Plot No: C7, &quot;G&quot; Block, Bandra Kurla Complex, Bandra (East), Mumbai-400051</p>
+          <div className="space-y-4">
+            <h3 className="font-semibold text-neutral-content">
+              SEBI Correspondence Office
+            </h3>
+
             <p>
-              <a href="https://scores.sebi.gov.in/scores-home" target="_blank" rel="noopener noreferrer" className="text-neutral-content/70 hover:text-neutral-content underline">SEBI SCORES</a>
-              {' · '}
-              <a href="https://smartodr.in/login" target="_blank" rel="noopener noreferrer" className="text-neutral-content/70 hover:text-neutral-content underline">SMARTODR</a>
+              Securities and Exchange Board of India  
+              SEBI Bhavan II, Plot No: C7, “G” Block,  
+              Bandra Kurla Complex, Bandra (East),  
+              Mumbai – 400051
             </p>
+
+            <div className="flex gap-4">
+              <a
+                href="https://scores.sebi.gov.in/scores-home"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-neutral-content"
+              >
+                SEBI SCORES
+              </a>
+
+              <a
+                href="https://smartodr.in/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-neutral-content"
+              >
+                SMARTODR
+              </a>
+            </div>
           </div>
 
-
-
-            
-          </div>
-
-
-  
-
-   
-          <div className="space-y-2">
-            <h3 className="text-sm font-semibold text-neutral-content/90">Disclaimers</h3>
-            <ul className="space-y-2 list-disc list-inside text-neutral-content/70">
-              <li>Registration granted by SEBI, enlistment as Research Analyst and Investment Adviser with Exchange, and certification from NISM in no way guarantee the performance of the intermediary or provide any assurance of returns to investors.</li>
-              <li>The company does not guarantee or provide any assurance of return, fixed returns, or risk-free return. Investments in the securities are subject to market risks. Read all the related documents carefully before investing.</li>
-              <li>Past performance may or may not be sustained in the future, and there is no guarantee of future results.</li>
-              <li>All fees and payments must be made solely to the Company&apos;s designated bank account. The Company shall not be liable for any payments made to any specific individuals.</li>
-            </ul>
-          </div>
         </div>
 
 
-              {/* Bottom row */}
-        <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-neutral-content/40">
+        {/* Disclaimers */}
+        <div className="mt-10 text-xs text-neutral-content/60 space-y-3">
+          <h3 className="font-semibold text-neutral-content/80">
+            Disclaimers
+          </h3>
+
+          <ul className="space-y-2 list-disc list-inside">
+            <li>
+              Registration granted by SEBI and certification from NISM does not
+              guarantee performance or assure returns.
+            </li>
+
+            <li>
+              Investments in securities markets are subject to market risks.
+              Read all related documents carefully before investing.
+            </li>
+
+            <li>
+              Past performance may or may not be sustained in the future.
+            </li>
+
+            <li>
+              All payments must be made only to the Company’s designated bank
+              account. The Company is not responsible for payments made to
+              individuals.
+            </li>
+          </ul>
+        </div>
+
+
+        {/* Bottom */}
+        <div className="border-t border-neutral-content/20 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-content/40">
+
           <p>© {new Date().getFullYear()} Hedgium. All rights reserved.</p>
-          <p>In a market dominated by directional risk, we focus on systematic probability-driven alpha.</p>
-        </div>
 
+          <p className="text-center md:text-right max-w-md">
+            In a market dominated by directional risk, we focus on systematic
+            probability-driven alpha.
+          </p>
+
+        </div>
       </div>
     </footer>
   );
