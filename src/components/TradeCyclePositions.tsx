@@ -21,12 +21,16 @@ interface TradeCycle {
   created_at: string;
 }
 
+type FetchFn = (path: string) => Promise<Response>;
+
 interface Props {
   tradeCycle: TradeCycle;
+  fetchFn?: FetchFn;
 }
 
-const TradeCycleWithPositionsCard: React.FC<Props> = ({ tradeCycle }) => {
+const TradeCycleWithPositionsCard: React.FC<Props> = ({ tradeCycle, fetchFn }) => {
   const alert = useAlert();
+  const doFetch = fetchFn ?? authFetch;
   const [positions, setPositions] = useState<Position[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
@@ -36,11 +40,9 @@ const TradeCycleWithPositionsCard: React.FC<Props> = ({ tradeCycle }) => {
   const [hasMoreOrders, setHasMoreOrders] = useState(false);
   const [allLoaded, setAllLoaded] = useState(false);
   const [totals, setTotals] = useState<{
-    total_pnl: number;
+    pnl_total: number;
     realised_total: number;
-    realised_today: number;
     unrealised_total: number;
-    unrealised_today: number;
     total_buy_qty: number;
     total_sell_qty: number;
   } | null>(null);
@@ -56,7 +58,7 @@ const TradeCycleWithPositionsCard: React.FC<Props> = ({ tradeCycle }) => {
       const url = loadAll 
         ? `trade-cycles/${tradeCycle.id}/details?load_all=true`
         : `trade-cycles/${tradeCycle.id}/details`;
-      const res = await authFetch(url);
+      const res = await doFetch(url);
       const data = await res.json();
       setUnmappedOrders(data.unmapped_orders)
       setPositions(data.positions);
@@ -94,21 +96,27 @@ const TradeCycleWithPositionsCard: React.FC<Props> = ({ tradeCycle }) => {
   }
 
   return (
-     <div id={tradeCycle.id} className="card bg-base-100 border border-base-300 rounded-xl w-full hover:shadow-sm transition-shadow">
-      <div className="card-body p-4 flex flex-col flex-1">
-        {/* Header */}
-        <div className="flex justify-between items-start mb-3 pb-3 border-b border-base-300">
-          <div className="flex items-center gap-2">
-            <h3 className="card-title text-lg font-bold m-0">{tradeCycle.name}</h3>
-            <span className="badge gap-1 badge-sm badge-outline">
+    <div
+      id={tradeCycle.id}
+      className="group relative w-full overflow-hidden rounded-2xl border border-base-300/70 bg-base-100/70 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/20"
+    >
+      {/* <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+        aria-hidden
+      /> */}
+      <div className="card-body flex flex-1 flex-col p-4 md:p-6">
+        <div className="mb-4 flex flex-col gap-3 border-b border-base-300/60 pb-4 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0 space-y-2">
+            <h3 className="text-lg font-semibold leading-snug tracking-tight text-base-content md:text-xl">
+              {tradeCycle.name}
+            </h3>
+            <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-base-300/70 bg-base-200/50 px-2.5 py-0.5 text-xs font-medium text-base-content/85">
               {statusMap[tradeCycle.state]} {tradeCycle.state}
             </span>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="text-xs text-gray-500 flex flex-col items-end">
-              <span>ID: {tradeCycle.id}</span>
-              <span>Created: {new Date(tradeCycle.created_at).toLocaleDateString()}</span>
-            </div>
+          <div className="shrink-0 text-right text-[11px] tabular-nums text-base-content/45">
+            <div>#{tradeCycle.id}</div>
+            <div className="mt-0.5">{new Date(tradeCycle.created_at).toLocaleDateString()}</div>
           </div>
         </div>
 
@@ -119,14 +127,15 @@ const TradeCycleWithPositionsCard: React.FC<Props> = ({ tradeCycle }) => {
         <PositionsTable positions={positions} />
         {hasMorePositions && !allLoaded && (
           <button
-            className="btn btn-ghost btn-sm mt-2 self-start"
+            type="button"
+            className="btn btn-ghost btn-sm mt-3 self-start rounded-full font-medium normal-case text-base-content/80 hover:bg-base-200/80"
             onClick={loadAllPositions}
             disabled={loadingMore}
           >
             {loadingMore ? (
-              <>Loading...</>
+              <>Loading…</>
             ) : (
-              <>Load More Positions</>
+              <>Load more positions</>
             )}
           </button>
         )}
@@ -139,14 +148,6 @@ const TradeCycleWithPositionsCard: React.FC<Props> = ({ tradeCycle }) => {
           onLoadMore={loadAllPositions}
           loadingMore={loadingMore}
         />
-
-        {/* Footer */}
-        {/* <div className="flex items-center justify-between mt-3 pt-3 border-base-300">
-          <div className="flex-1"></div>
-          {tradeCycle.state === "PENDING" && (
-            <button className="btn btn-error btn-sm">Close Cycle</button>
-          )}
-        </div> */}
       </div>
     </div>
 

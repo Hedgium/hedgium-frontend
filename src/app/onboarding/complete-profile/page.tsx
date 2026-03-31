@@ -6,6 +6,8 @@ import { authFetch } from "@/utils/api";
 import { useAuthStore } from "@/store/authStore";
 import useAlert from "@/hooks/useAlert";
 import SignUpStepper from "@/components/SignUpStepper";
+import OnboardingNav from "@/components/OnboardingNav";
+import AuthFlowBrand from "@/components/AuthFlowBrand";
 import { Loader2 } from "lucide-react";
 
 const CompleteProfile: React.FC = () => {
@@ -22,6 +24,16 @@ const CompleteProfile: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const panClean = panNumber.replace(/\s/g, "").toUpperCase();
+    const aadharClean = aadharNumber.replace(/\D/g, "");
+    if (panClean.length !== 10 || !/^[A-Z0-9]{10}$/.test(panClean)) {
+      alert.error("PAN must be exactly 10 alphanumeric characters", { duration: 3000 });
+      return;
+    }
+    if (aadharClean.length !== 12 || !/^\d{12}$/.test(aadharClean)) {
+      alert.error("Aadhaar must be exactly 12 digits", { duration: 3000 });
+      return;
+    }
     await saveProfile({ skip: false });
   };
 
@@ -33,7 +45,11 @@ const CompleteProfile: React.FC = () => {
     try {
       setSubmitting(true);
       const userDetails = !skip
-        ? { pan_number: panNumber, aadhar_number: aadharNumber, signup_step: "documents_uploaded" }
+        ? {
+            pan_number: panNumber.replace(/\s/g, "").toUpperCase(),
+            aadhar_number: aadharNumber.replace(/\D/g, ""),
+            signup_step: "documents_uploaded",
+          }
         : { kyc_skipped: true };
       updateUser({ kyc_skipped: skip });
 
@@ -79,42 +95,57 @@ const CompleteProfile: React.FC = () => {
     return digits.replace(/(\d{4})(?=\d)/g, "$1 ").trim();
   };
 
+  const handlePanChange = (value: string) => {
+    const clean = value.replace(/[^A-Za-z0-9]/g, "").toUpperCase().slice(0, 10);
+    setPanNumber(clean);
+  };
+
+  const handleAadharChange = (value: string) => {
+    setAadharNumber(value.replace(/\D/g, "").slice(0, 12));
+  };
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-base-200 px-4 py-8">
-      <div className="w-full max-w-2xl mb-4">
+    <div className="flex w-full flex-col items-center">
+      <div className="w-full max-w-2xl space-y-4">
+        <div className="flex justify-center">
+          <AuthFlowBrand className="mb-0" />
+        </div>
         <SignUpStepper currentStepId="initiated" />
       </div>
 
-      <div className="w-full max-w-[400px]">
-        <div className="text-center mb-6">
-          <h1 className="text-xl font-semibold text-base-content tracking-tight">
+      <div className="mt-6 w-full max-w-[400px]">
+        <div className="mb-6 text-center">
+          <h1 className="text-xl font-semibold tracking-tight text-base-content">
             Complete profile
           </h1>
-          <p className="text-sm text-base-content/60 mt-1">
+          <p className="mt-1 text-sm text-base-content/60">
             Add your details to continue
           </p>
         </div>
 
-        <div className="bg-base-100 rounded-xl border border-base-300 shadow-sm p-6">
+        <div className="rounded-xl border border-base-300 bg-base-100 p-6">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-xs font-medium text-base-content/80 mb-1.5">PAN number</label>
               <input
                 type="text"
-                className="input input-bordered input-sm w-full h-9 text-sm bg-base-100"
+                className="input input-bordered input-sm w-full h-9 text-sm bg-base-100 uppercase"
                 value={panNumber}
-                onChange={(e) => setPanNumber(e.target.value)}
-                placeholder="PAN number"
+                onChange={(e) => handlePanChange(e.target.value)}
+                placeholder="10 characters (e.g. ABCDE1234F)"
+                maxLength={10}
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-base-content/80 mb-1.5">Aadhaar number</label>
               <input
                 type="text"
+                inputMode="numeric"
                 className="input input-bordered input-sm w-full h-9 text-sm bg-base-100"
                 value={formatAadharNumber(aadharNumber)}
-                onChange={(e) => setAadharNumber(e.target.value)}
-                placeholder="Aadhaar number"
+                onChange={(e) => handleAadharChange(e.target.value)}
+                placeholder="12 digits"
+                maxLength={14}
               />
             </div>
             <div>

@@ -6,4 +6,13 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 
-module.exports = withBundleAnalyzer({});
+module.exports = withBundleAnalyzer({
+  async redirects() {
+    return [
+      { source: "/hedgium/dashboard", destination: "/hedgium/home", permanent: true },
+      { source: "/hedgium/dashboard/", destination: "/hedgium/home", permanent: true },
+      { source: "/sandbox/dashboard", destination: "/sandbox/home", permanent: true },
+      { source: "/sandbox/dashboard/", destination: "/sandbox/home", permanent: true },
+    ];
+  },
+});

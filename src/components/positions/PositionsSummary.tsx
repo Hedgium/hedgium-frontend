@@ -8,11 +8,9 @@ import { formatMoneyIN } from "@/utils/formatNumber";
 interface PositionsSummaryProps {
   positions: Position[];
   totals?: {
-    total_pnl?: number;
+    pnl_total?: number;
     realised_total?: number;
-    realised_today?: number;
     unrealised_total?: number;
-    unrealised_today?: number;
     total_buy_qty?: number;
     total_sell_qty?: number;
   } | null;
@@ -26,11 +24,9 @@ export default function PositionsSummary({
 }: PositionsSummaryProps) {
   // Use backend totals if available, otherwise calculate from displayed positions (fallback)
   const totalPnl =
-    totals?.total_pnl ?? positions.reduce((acc, pos) => acc + pos.pnl, 0);
+    totals?.pnl_total ?? positions.reduce((acc, pos) => acc + pos.pnl, 0);
   const realisedPnl =
     totals?.realised_total ?? positions.reduce((acc, pos) => acc + pos.realised_total, 0);
-  const realisedToday =
-    totals?.realised_today ?? positions.reduce((acc, pos) => acc + (pos.realised_today ?? 0), 0);
   const unrealisedPnl =
     totals?.unrealised_total ?? positions.reduce((acc, pos) => acc + (pos.unrealised_total ?? 0), 0);
   const totalBuyQty =

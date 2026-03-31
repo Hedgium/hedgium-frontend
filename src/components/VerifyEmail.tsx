@@ -9,7 +9,7 @@ import useAlert from "@/hooks/useAlert";
 
 const RESEND_COOLDOWN = 60;
 const OTP_LENGTH = 6;
-const OTP_AUTOSEND_THROTTLE_MS = 60_000; // Don't auto-send again within 60s (avoids 429 from remounts)
+// Don't auto-send again after first time in this session (reload/return = user must click)
 const OTP_AUTOSEND_STORAGE_KEY = "hedgium_otp_autosend";
 
 export interface VerifyEmailProps {
@@ -57,6 +57,7 @@ export default function VerifyEmail({
   const [sending, setSending] = useState(false);
   const [cooldown, setCooldown] = useState(0);
   const [error, setError] = useState("");
+  const [hasSent, setHasSent] = useState(false);
 
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const cooldownTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -86,6 +87,7 @@ export default function VerifyEmail({
         body: JSON.stringify({ email }),
       });
       if (res.ok) {
+        setHasSent(true);
         try {
           sessionStorage.setItem(
             `${OTP_AUTOSEND_STORAGE_KEY}:${email}`,
@@ -124,13 +126,8 @@ export default function VerifyEmail({
 
   useEffect(() => {
     if (!autoSendOnMount || !email) return;
-    // Throttle: don't auto-send if we already sent to this email in the last 60s (avoids 429 from remounts/Strict Mode)
     try {
-      const raw = sessionStorage.getItem(`${OTP_AUTOSEND_STORAGE_KEY}:${email}`);
-      if (raw) {
-        const sentAt = parseInt(raw, 10);
-        if (Number.isFinite(sentAt) && Date.now() - sentAt < OTP_AUTOSEND_THROTTLE_MS) return;
-      }
+      if (sessionStorage.getItem(`${OTP_AUTOSEND_STORAGE_KEY}:${email}`)) return;
     } catch {
       // ignore
     }
@@ -229,7 +226,9 @@ export default function VerifyEmail({
         Verify your email
       </h2>
       <p className="text-sm text-base-content/60 text-center mt-1">
-        We sent a 6-digit code to <span className="font-medium text-base-content">{email}</span>
+        {hasSent
+          ? <>We sent a 6-digit code to <span className="font-medium text-base-content">{email}</span></>
+          : <>We&apos;ll send a 6-digit code to <span className="font-medium text-base-content">{email}</span></>}
       </p>
 
       <div className="flex gap-2 justify-center mt-4" onPaste={handlePaste}>
@@ -254,7 +253,7 @@ export default function VerifyEmail({
 
       <button
         type="button"
-        className="btn btn-primary btn-sm w-full h-9 text-sm font-medium normal-case mt-4"
+        className="btn btn-primary pointer-cursor btn-sm w-full h-9 text-sm font-medium normal-case mt-4"
         onClick={handleVerify}
         disabled={verifying || redirecting || otp.join("").length < OTP_LENGTH}
       >
@@ -262,18 +261,32 @@ export default function VerifyEmail({
       </button>
 
       <div className="text-xs text-base-content/60 text-center mt-4">
-        Didn&apos;t get the code?{" "}
-        {cooldown > 0 ? (
-          <span className="text-base-content/40">Resend in {cooldown}s</span>
+        {hasSent ? (
+          <>
+            Didn&apos;t get the code?{" "}
+            {cooldown > 0 ? (
+              <span className="text-base-content/40">Resend in {cooldown}s</span>
+            ) : (
+              <button
+                type="button"
+                className="text-primary pointer-cursor font-medium hover:underline inline-flex items-center gap-1 disabled:opacity-40"
+                onClick={sendOtp}
+                disabled={sending}
+              >
+                <RefreshCw className={`w-3 h-3 ${sending ? "animate-spin" : ""}`} />
+                {sending ? "Sending…" : "Resend code"}
+              </button>
+            )}
+          </>
         ) : (
           <button
             type="button"
-            className="text-primary font-medium hover:underline inline-flex items-center gap-1 disabled:opacity-40"
+            className="text-primary pointer-cursor font-medium hover:underline inline-flex items-center gap-1 disabled:opacity-40"
             onClick={sendOtp}
             disabled={sending}
           >
             <RefreshCw className={`w-3 h-3 ${sending ? "animate-spin" : ""}`} />
-            {sending ? "Sending…" : "Resend code"}
+            {sending ? "Sending…" : "Send code"}
           </button>
         )}
       </div>
@@ -281,7 +294,7 @@ export default function VerifyEmail({
       {showSkip && (
         <button
           type="button"
-          className="btn btn-ghost btn-sm w-full text-base-content/50 hover:text-base-content/70 text-xs mt-2"
+          className="btn btn-ghost pointer-cursor btn-sm w-full text-base-content/50 hover:text-base-content/70 text-xs mt-2"
           onClick={handleSkip}
         >
           Skip for now

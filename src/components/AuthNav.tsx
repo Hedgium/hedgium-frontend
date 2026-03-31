@@ -4,14 +4,20 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { LineChart, Settings, Moon, Sun, LogOut } from "lucide-react";
+import { LineChart, Settings, Moon, Sun, LogOut, FlaskConical } from "lucide-react";
 import { useAuthStore } from "@/store/authStore";
+import { useSandboxStore } from "@/store/sandboxStore";
 import KycStatusIndicator from "@/components/KycStatusIndicator";
 
 export default function AuthNav() {
+  const pathname = usePathname();
+  const router = useRouter();
   const { theme, setTheme } = useTheme();
   const { logout, user } = useAuthStore();
+  const { clearSandboxPlan } = useSandboxStore();
+  const isSandbox = pathname?.startsWith("/sandbox");
   const [menuOpen, setMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -45,7 +51,7 @@ export default function AuthNav() {
     <div className="navbar md:hidden sticky top-0 z-50 min-h-[3.25rem] border-b border-base-300/80 bg-base-100/95 px-3 shadow-sm backdrop-blur-sm supports-[backdrop-filter]:bg-base-100/80">
       <div className="flex-1 min-w-0">
         <Link
-          href="/hedgium/dashboard"
+          href="/hedgium/home"
           className="btn btn-ghost btn-sm normal-case h-auto min-h-0 py-2 px-2 text-lg font-bold text-primary gap-1.5"
         >
           <LineChart className="shrink-0" width={22} height={22} />
@@ -94,9 +100,27 @@ export default function AuthNav() {
               </div>
             </li>
             <li>
-              <Link href="/dashboard/settings" onClick={() => setMenuOpen(false)}>
+              <Link href="/hedgium/settings" onClick={() => setMenuOpen(false)}>
                 <Settings className="w-4 h-4" /> Settings
               </Link>
+            </li>
+            <li>
+              {isSandbox ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    clearSandboxPlan();
+                    setMenuOpen(false);
+                    router.push("/sandbox");
+                  }}
+                >
+                  <FlaskConical className="w-4 h-4" /> Change plan
+                </button>
+              ) : (
+                <Link href="/sandbox" onClick={() => setMenuOpen(false)}>
+                  <FlaskConical className="w-4 h-4" /> Switch to Sandbox
+                </Link>
+              )}
             </li>
             <li>
               <button

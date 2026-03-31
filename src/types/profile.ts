@@ -6,6 +6,7 @@ export interface User {
     mobile?: string | null;
     signup_step?: string | null;
     verified?: boolean | null;
+    last_login?: string | null;
     aadhar_number?: string | null;
     pan_number?: string | null;
     pan_document_url?: string | null;
@@ -46,6 +47,10 @@ export interface Profile {
     user: User;
     broker_logged_in: boolean;
     subscription?: UserSubscription | null;
+    /** Static-IP proxy for order create/modify/cancel (admin). Empty host = off. */
+    proxy_host?: string | null;
+    proxy_port?: number | null;
+    proxy_username?: string | null;
 }
 
 export interface ProfileResponse {

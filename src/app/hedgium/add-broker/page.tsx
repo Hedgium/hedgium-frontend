@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
+import { useSearchParams } from "next/navigation";
 import { authFetch } from "@/utils/api";
 import { useAuthStore } from "@/store/authStore";
 import useAlert from "@/hooks/useAlert";
@@ -212,14 +213,14 @@ export default function AddBrokerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-base-200 flex flex-col items-center justify-center px-4 py-8">
+    <div className="bg-base-200 flex flex-col items-center justify-center px-4 py-8 lg:py-12">
       <div className="w-full max-w-md">
 
         {/* Back button */}
         {step !== "result" && (
           <button
             onClick={() => router.back()}
-            className="flex items-center gap-1.5 text-sm text-base-content/60 hover:text-base-content mb-6 transition-colors"
+            className="flex items-center cursor-pointer gap-1.5 text-sm text-base-content/60 hover:text-base-content mb-6 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             Back
@@ -287,9 +288,9 @@ export default function AddBrokerPage() {
                     className="select select-bordered select-sm w-full h-9 text-sm bg-base-100"
                   >
                     <option value="">Select broker</option>
+                    <option value="KOTAKNEO">Kotak Neo</option>
                     {/* <option value="ZERODHA">Zerodha</option> */}
                     <option value="SHOONYA">Shoonya</option>
-                    <option value="KOTAKNEO">Kotak Neo</option>
                   </select>
                 </div>
 
@@ -298,7 +299,7 @@ export default function AddBrokerPage() {
                     <label className="text-xs font-medium text-base-content/80">Broker User ID</label>
                     {brokerName && (
                       <button type="button" onClick={() => { setHelpField("broker_user_id"); setHelpOpen(true); }} className="text-primary hover:opacity-80 p-0.5">
-                        <HelpCircle className="h-3.5 w-3.5" />
+                        <HelpCircle className="h-3.5 w-3.5 cursor-pointer" />
                       </button>
                     )}
                   </div>
@@ -316,7 +317,7 @@ export default function AddBrokerPage() {
                     <label className="text-xs font-medium text-base-content/80">API Key</label>
                     {brokerName && (
                       <button type="button" onClick={() => { setHelpField("api_key"); setHelpOpen(true); }} className="text-primary hover:opacity-80 p-0.5">
-                        <HelpCircle className="h-3.5 w-3.5" />
+                        <HelpCircle className="h-3.5 w-3.5 cursor-pointer" />
                       </button>
                     )}
                   </div>
@@ -334,7 +335,7 @@ export default function AddBrokerPage() {
                     <div className="flex items-center justify-between gap-2 mb-1.5">
                       <label className="text-xs font-medium text-base-content/80">Secret Key</label>
                       <button type="button" onClick={() => { setHelpField("secret_key"); setHelpOpen(true); }} className="text-primary hover:opacity-80 p-0.5">
-                        <HelpCircle className="h-3.5 w-3.5" />
+                        <HelpCircle className="h-3.5 w-3.5 cursor-pointer" />
                       </button>
                     </div>
                     <input
@@ -352,7 +353,7 @@ export default function AddBrokerPage() {
                     <div className="flex items-center justify-between gap-2 mb-1.5">
                       <label className="text-xs font-medium text-base-content/80">TOTP Secret</label>
                       <button type="button" onClick={() => { setHelpField("broker_twofa"); setHelpOpen(true); }} className="text-primary hover:opacity-80 p-0.5">
-                        <HelpCircle className="h-3.5 w-3.5" />
+                        <HelpCircle className="h-3.5 w-3.5 cursor-pointer" />
                       </button>
                     </div>
                     <input
@@ -462,10 +463,11 @@ export default function AddBrokerPage() {
                     </p>
                   </div>
                   <button
-                    onClick={() => router.push("/hedgium/dashboard")}
+                    type="button"
+                    onClick={() => router.push("/hedgium/home")}
                     className="btn btn-primary btn-sm normal-case w-full"
                   >
-                    Go to Dashboard
+                    Go to Home
                   </button>
                 </>
               ) : (

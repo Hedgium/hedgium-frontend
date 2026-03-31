@@ -4,7 +4,7 @@
 
 import { usePathname } from "next/navigation";
 import { useRouter } from "nextjs-toploader/app";
-import { Home, Briefcase, Bell, Settings, LineChart, Sun, Moon, LogOut, FileText } from "lucide-react";
+import { Home, Briefcase, Bell, Settings, LineChart, Sun, Moon, LogOut, FileText, FlaskConical } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useAuthStore } from "@/store/authStore";
 import Link from "next/link";
@@ -12,7 +12,7 @@ import { useNotificationStore } from "@/store/notificationStore";
 import KycStatusIndicator from "@/components/KycStatusIndicator";
 
 const tabs = [
-  { name: "Dashboard", href: "/hedgium/dashboard", icon: <Home className="h-5 w-5" /> },
+  { name: "Home", href: "/hedgium/home", icon: <Home className="h-5 w-5" /> },
   { name: "Positions", href: "/hedgium/positions", icon: <Briefcase className="h-5 w-5" /> },
   { name: "Reports", href: "/hedgium/reports", icon: <FileText className="h-5 w-5" /> },
   { name: "Alerts", href: "/hedgium/alerts", icon: <Bell className="h-5 w-5" /> },
@@ -64,11 +64,11 @@ export default function AuthNavigation({ sidebar = false }: { sidebar?: boolean 
                 <span className={`text-xs font-medium ${isLegends ? "text-warning" : "text-primary"} truncate`}>
                   Plan: {planName}
                 </span>
-                {!isLegends && user?.active_subscription?.plan?.name ? (
+                {/* {!isLegends && user?.active_subscription?.plan?.name ? (
                   <Link href="/hedgium/upgrade" className="text-[11px] text-primary hover:underline">
                     Upgrade
                   </Link>
-                ) : null}
+                ) : null} */}
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ export default function AuthNavigation({ sidebar = false }: { sidebar?: boolean 
 
 
         {/* <div className="p-4 border-b border-base-300">
-          <Link href="/hedgium/dashboard" className="flex items-center gap-2 text-xl font-bold text-primary">
+          <Link href="/hedgium/home" className="flex items-center gap-2 text-xl font-bold text-primary">
             <LineChart width="26" height="26" className="text-primary" />
             <span>Hedgium</span>
           </Link>
@@ -85,6 +85,15 @@ export default function AuthNavigation({ sidebar = false }: { sidebar?: boolean 
         {/* Navigation items */}
         <nav className="flex-1 overflow-y-auto px-4 mt-4">
           <ul className="gap-2 space-y-1">
+            {/* <li>
+              <Link
+                href="/sandbox"
+                className="flex items-center gap-3 w-full text-left px-4 py-2 rounded-lg transition-all hover:bg-base-300/70 text-warning"
+              >
+                <FlaskConical className="h-5 w-5" />
+                <span className="font-medium">Sandbox</span>
+              </Link>
+            </li> */}
             {tabs.map((tab, idx) => {
               const active = pathname === tab.href;
               return (
