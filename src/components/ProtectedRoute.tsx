@@ -22,6 +22,10 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
   const kycRoute = () => {
     switch (user?.signup_step) {
       case "initiated":
+        return "/onboarding/verify-email";
+      case "email_verified":
+        return "/onboarding/terms";
+      case "terms_accepted":
         return "/onboarding/complete-profile";
       case "documents_uploaded":
       case "broker_profile_added":

@@ -40,7 +40,15 @@ export default function RootLayoutClient({
       if (user?.signup_step === 'initiated') {
         router.push('/onboarding/verify-email');
       } else if (user?.signup_step === 'email_verified') {
-        router.push('/onboarding/complete-profile');
+        const onTermsFlow =
+          pathname === '/onboarding/terms' || pathname === '/onboarding/verify-email';
+        if (!onTermsFlow) {
+          router.push('/onboarding/terms');
+        }
+      } else if (user?.signup_step === 'terms_accepted') {
+        if (pathname !== '/onboarding/complete-profile') {
+          router.push('/onboarding/complete-profile');
+        }
       } else if (
         user?.signup_step === 'documents_uploaded' ||
         user?.signup_step === 'broker_profile_added'

@@ -36,6 +36,8 @@ export interface User {
   email_verified?: boolean;
   verified: boolean;
   signup_step: string;
+  terms_accepted_at?: string | null;
+  terms_version?: string | null;
   created_at: string; // ISO date string
   updated_at: string; // ISO date string
   kyc_skipped: boolean;

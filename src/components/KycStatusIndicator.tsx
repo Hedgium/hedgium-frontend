@@ -40,6 +40,12 @@ export default function KycStatusIndicator({ className = "", variant = "default"
     }
     switch (user.signup_step) {
       case "initiated":
+        router.push("/onboarding/verify-email");
+        break;
+      case "email_verified":
+        router.push("/onboarding/terms");
+        break;
+      case "terms_accepted":
         router.push("/onboarding/complete-profile");
         break;
       case "documents_uploaded":

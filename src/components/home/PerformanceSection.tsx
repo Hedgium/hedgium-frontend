@@ -47,18 +47,18 @@ export default function PerformanceSection() {
                   <td className="text-primary-content/80 min-w-[220px] lg:min-w-[280px] xl:min-w-[300px]">
                     Portfolio Layer (Engine 1):-
                   </td>
-                  <td className="text-center border-l-2 border-dashed">-2.8%</td>
-                  <td className="font-medium text-center border-r-2 border-dashed">+6.0% / +2.4%</td>
-                  <td className="text-center text-primary-content/70">-8.8%</td>
-                  <td className="text-center text-primary-content/70">-5.2%</td>
+                  <td className="text-center border-l-2 border-dashed">-3.9%</td>
+                  <td className="font-medium text-center border-r-2 border-dashed">+7.8% / +5.3%</td>
+                  <td className="text-center text-primary-content/70">-11.7%</td>
+                  <td className="text-center text-primary-content/70">-9.2%</td>
                 </tr>
 
                 <tr>
                   <td className="text-primary-content/80 min-w-[200px] lg:min-w-[260px] xl:min-w-[280px]">
                     Trading Layer (Engine 2):-
                   </td>
-                  <td className="text-center border-l-2 border-dashed">+3.3%</td>
-                  <td className="font-medium text-center border-r-2 border-dashed">+3.3%</td>
+                  <td className="text-center border-l-2 border-dashed">+4.5%</td>
+                  <td className="font-medium text-center border-r-2 border-dashed">+4.5% / +4.5%</td>
                   <td className="text-center text-error">NA</td>
                   <td className="text-center text-error">NA</td>
                 </tr>
@@ -72,10 +72,10 @@ export default function PerformanceSection() {
 
                 <tr className="font-semibold">
                   <td className="text-primary-content/80 min-w-[200px] lg:min-w-[260px] xl:min-w-[280px]">TOTAL Return (1+2):-</td>
-                  <td className="text-center border-l-2 border-b-2 border-dashed rounded-bl-xl">+0.5%</td>
-                  <td className="font-medium text-center border-r-2 border-b-2 border-dashed rounded-br-xl">+9.3% / +5.7%</td>
-                  <td className="text-center text-primary-content/70">-8.8%</td>
-                  <td className="text-center text-primary-content/70">-5.2%</td>
+                  <td className="text-center border-l-2 border-b-2 border-dashed rounded-bl-xl">+0.6%</td>
+                  <td className="font-medium text-center border-r-2 border-b-2 border-dashed rounded-br-xl">+12.3% / +9.8%</td>
+                  <td className="text-center text-primary-content/70">-11.7%</td>
+                  <td className="text-center text-primary-content/70">-9.2%</td>
                 </tr>
               </tbody>
             </table>
