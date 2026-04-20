@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { Play, Pause, PauseIcon } from 'lucide-react';
+import { Play, Pause } from 'lucide-react';
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);

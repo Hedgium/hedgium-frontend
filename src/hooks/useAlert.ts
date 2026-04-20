@@ -1,7 +1,7 @@
 // File: hooks/useAlert.ts
 "use client"
 
-import useAlertStore, {AlertType} from "@/store/alertStore";
+import useAlertStore from "@/store/alertStore";
 
 
 export interface AlertOptions {

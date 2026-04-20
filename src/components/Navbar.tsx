@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { X, Menu, LogIn } from "lucide-react";
+import { X, Menu } from "lucide-react";
 import Link from "next/link";
 
 const NAV_LINKS = [
@@ -66,15 +66,6 @@ export default function Navbar() {
           Get Started
         </Link>
 
-        <Link
-          href="/login"
-          className="hidden lg:flex items-center gap-1.5 text-base-content hover:text-primary text-sm font-medium uppercase tracking-wide shrink-0"
-        >
-          <LogIn className="h-5 w-5 shrink-0" aria-hidden />
-          <span>LOGIN</span>
-        </Link>
-
-
 
         <div
           ref={menuRef}
@@ -104,18 +95,6 @@ export default function Navbar() {
                 >
                   Get Started
                 </Link>
-              </li>
-
-              <li>
-                
-              <Link
-              href="/login"
-              className="items-center gap-1.5 text-base-content hover:text-primary text-sm font-medium tracking-wide shrink-0"
-            >
-              {/* <LogIn className="h-5 w-5 shrink-0" aria-hidden /> */}
-              <span>Login</span>
-            </Link>
-
               </li>
 
               {NAV_LINKS.map(({ label, href }) => (

@@ -32,22 +32,6 @@ const WhyHedgiumSection = dynamic(
   { ssr: false, loading: () => <LazyPlaceholder h={500} /> }
 );
 
-const SandboxSection = dynamic(
-  () =>
-    import('@/components/home/SandboxSection').then((mod) => {
-      const C = mod.default;
-      return {
-        default: function WithAOS() {
-          useEffect(() => {
-            AOS.refresh();
-          }, []);
-          return <C />;
-        },
-      };
-    }),
-  { ssr: false, loading: () => <LazyPlaceholder h={450} /> }
-);
-
 const FeesSection = dynamic(
   () =>
     import('@/components/home/FeesSection').then((mod) => {
@@ -144,8 +128,6 @@ export default function Home() {
       <UnlockPotentialSection />
       <PlaybooksSection />
       <WhyHedgiumSection />
-      {/* uncomment this when sandbox is ready */}
-      {/* <SandboxSection /> */}
       <FeesSection />
       <ContactSection />
       <FAQSection />

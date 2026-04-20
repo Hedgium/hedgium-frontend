@@ -1,7 +1,6 @@
 // Edge runtime for low latency
 export const runtime = "edge";
 
-import { getSessionCookie } from '@/utils/sessions';
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
@@ -26,6 +25,12 @@ async function handleProxyRequest(request: Request) {
   const backendPath = pathSegments.join("/");
   const normalizedPath =
     backendPath.endsWith("/") ? backendPath : backendPath + "/";
+
+  // Marketing site: only forward public lead capture (adjust if you add more backend paths)
+  if (!normalizedPath.toLowerCase().startsWith("leads/")) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
   const backendUrl = `${process.env.BACKEND_API_URL}${normalizedPath}${search}`;
   const apiKey = process.env.BACKEND_API_KEY;
 
@@ -42,14 +47,6 @@ async function handleProxyRequest(request: Request) {
     return NextResponse.json(
       { error: "Forbidden - bad origin" },
       { status: 403 }
-    );
-  }
-
-  const session = await getSessionCookie();
-  if (!session) {
-    return NextResponse.json(
-      { error: "Unauthorized - no valid session" },
-      { status: 401 }
     );
   }
 
