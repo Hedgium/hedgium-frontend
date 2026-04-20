@@ -85,8 +85,7 @@ export default function PerformanceSection() {
 
         {/* Footnotes */}
         <div className="mt-6 text-xs text-primary-content/60 space-y-1">
-          <p>* Average of Equity Mutual funds performance (3M). Source: moneycontrol.com</p>
-          <p>* Calculated till 12th Mar’26</p>
+          <p>* Average multi-cap equity mutual funds performance (trailing 3M). Source: valueresearchonline.com</p>
           <p>Disclaimer: Past performance is not indicative of future returns</p>
         </div>
 
