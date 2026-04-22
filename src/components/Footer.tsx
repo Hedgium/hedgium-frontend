@@ -97,6 +97,13 @@ export default function Footer() {
               MITC-RA
             </Link>
 
+            <Link
+              href="/investor-charter"
+              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+            >
+              Investor Charter
+            </Link>
+
           </div>
 
           {/* Contact */}
