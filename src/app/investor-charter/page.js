@@ -46,9 +46,7 @@ export default function InvestorCharterPage() {
               id="printable"
               className="prose prose-sm md:prose-md max-w-none"
             >
-              <div className="bg-primary text-primary-content text-center font-semibold py-3 px-4 rounded-lg mb-6 not-prose">
-                Investor Charter - 1
-              </div>
+            
 
               <h2 className="text-lg font-bold underline decoration-2 underline-offset-2">
                 A. Vision and Mission Statements for investors
@@ -166,9 +164,6 @@ export default function InvestorCharterPage() {
                 </li>
               </ul>
 
-              <div className="bg-primary text-primary-content text-center font-semibold py-3 px-4 rounded-lg my-10 not-prose">
-                Investor Charter - 2
-              </div>
 
               <h2 className="text-lg font-bold underline decoration-2 underline-offset-2">
                 D. Details of grievance redressal mechanism and how to access it
@@ -284,6 +279,105 @@ export default function InvestorCharterPage() {
                   financial agreements
                 </li>
               </ul>
+
+              <h2 className="text-lg font-bold underline decoration-2 underline-offset-2">
+                F. Expectations from the investors (Responsibilities of
+                investors)
+              </h2>
+
+              <h3 className="text-base font-bold underline decoration-1 underline-offset-2 mt-6 not-prose">
+                Do&apos;s
+              </h3>
+              <ol className="[list-style-type:lower-roman] list-inside space-y-4 mt-3">
+                <li>
+                  Always deal with SEBI registered Research Analyst.
+                </li>
+                <li>
+                  Ensure that the Research Analyst has a valid registration
+                  certificate.
+                </li>
+                <li>
+                  Check for SEBI registration number.
+                  <p className="mt-2 text-base-content/90 pl-0 md:pl-6">
+                    Please refer to the list of all SEBI registered Research
+                    Analyst which is available on SEBI website in the following
+                    link:{" "}
+                    <a
+                      href="https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognisedFpi=yes&intmId=14"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link link-primary break-all"
+                    >
+                      https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognisedFpi=yes&intmId=14
+                    </a>
+                  </p>
+                </li>
+                <li>
+                  Always pay attention towards disclosures made in the research
+                  reports before investing.
+                </li>
+                <li>
+                  Pay your Research Analyst through banking channels only and
+                  maintain duly signed receipts mentioning the details of your
+                  payments.
+                  <p className="mt-2 text-sm text-base-content/80 pl-0 md:pl-6">
+                    <strong>Note:</strong> You may make payment of fees through
+                    Centralized Fee Collection Mechanism (CeFCoM) of RAASB if
+                    research analyst has opted for the mechanism. (Applicable for
+                    fee paying clients only)
+                  </p>
+                </li>
+                <li>
+                  Before buying/ selling securities or applying in public offer,
+                  check for the research recommendation provided by your Research
+                  Analyst.
+                </li>
+                <li>
+                  Ask all relevant questions and clear your doubts with your
+                  Research Analyst before acting on recommendation.
+                </li>
+                <li>
+                  Seek clarifications and guidance on research recommendations
+                  from your Research Analyst, especially if it involves complex
+                  and high risk financial products and services.
+                </li>
+                <li>
+                  Always be aware that you have the right to stop availing the
+                  service of a Research Analyst as per the terms of service agreed
+                  between you and your Research Analyst.
+                </li>
+                <li>
+                  Always be aware that you have the right to provide feedback to
+                  your Research Analyst in respect of the services received.
+                </li>
+                <li>
+                  Always be aware that you will not be bound by any clause,
+                  prescribed by the research analyst, which is contravening any
+                  regulatory provisions.
+                </li>
+                <li>
+                  Inform SEBI about Research Analyst offering assured or
+                  guaranteed returns.
+                </li>
+              </ol>
+
+              <h3 className="text-base font-bold underline decoration-1 underline-offset-2 mt-10 not-prose">
+                Don&apos;ts
+              </h3>
+              <ol className="[list-style-type:lower-roman] list-inside space-y-4 mt-3">
+                <li>Do not provide funds for investment to the Research Analyst.</li>
+                <li>
+                  Don&apos;t fall prey to luring advertisements or market rumors.
+                </li>
+                <li>
+                  Do not get attracted to limited period discount or other
+                  incentive, gifts, etc. offered by Research Analyst.
+                </li>
+                <li>
+                  Do not share login credential and password of your trading,
+                  demat or bank accounts with the Research Analyst.
+                </li>
+              </ol>
             </article>
           </div>
         </div>
