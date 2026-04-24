@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { X, Menu } from "lucide-react";
+import { X, Menu, LogIn } from "lucide-react";
 import Link from "next/link";
 
 const NAV_LINKS = [
@@ -61,10 +61,20 @@ export default function Navbar() {
         
         <Link
           href="/get-started"
-          className="btn btn-primary hidden lg:flex btn-md lg:btn-lg shadow hover:shadow-md shrink-0"
+          className="btn btn-primary hidden lg:flex btn-sm lg:btn-md shadow hover:shadow-md shrink-0"
         >
           Get Started
         </Link>
+
+
+                <Link
+                  href="https://app.hedgium.ai/"
+                  target="_blank"
+                  className="hidden lg:flex items-center gap-1.5 text-base-content hover:text-primary text-base font-medium tracking-wide shrink-0 justify-center"
+                >
+                  <LogIn className="h-5 w-5 shrink-0" aria-hidden />
+                  Login
+                </Link>
 
 
         <div
@@ -94,6 +104,17 @@ export default function Navbar() {
                   className="btn btn-primary btn-sm w-full my-2 justify-center"
                 >
                   Get Started
+                </Link>
+              </li>
+
+
+              <li className="px-2">
+                <Link
+                  href="https://app.hedgium.ai/"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="btn btn-outline btn-sm w-full mb-2 justify-center"
+                >
+                  Login
                 </Link>
               </li>
 
