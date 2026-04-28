@@ -7,8 +7,8 @@ export default function RefundPolicyPage() {
   return (
     <>
       <Navbar />
-      <div className="max-w-4xl mx-auto p-4 md:p-6">
-        <div className="card bg-base-100 shadow-lg">
+      <div className="max-w-4xl mx-auto">
+        <div className="bg-base-100">
           <div className="card-body gap-4">
             <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
               <div>

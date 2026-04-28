@@ -40,50 +40,43 @@ export default function LegalComplaintsInvestorCharterPage() {
             </nav>
 
             <article className="space-y-6">
-              <section id="terms-of-use" className="scroll-mt-24 border border-base-300 rounded-xl p-4 md:p-5">
-                <h2 className="text-xl font-semibold">Terms of Use</h2>
+              <section id="terms-of-use" className="scroll-mt-24 border border-base-300 rounded-xl">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
                   <TermsOfUsePage />
                 </div>
               </section>
 
-              <section id="privacy-policy" className="scroll-mt-24 border border-base-300 rounded-xl p-4 md:p-5">
-                <h2 className="text-xl font-semibold">Privacy Policy</h2>
+              <section id="privacy-policy" className="scroll-mt-24 border border-base-300 rounded-xl">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
                   <PrivacyPolicyPage />
                 </div>
               </section>
 
-              <section id="refund-policy" className="scroll-mt-24 border border-base-300 rounded-xl p-4 md:p-5">
-                <h2 className="text-xl font-semibold">Refund Policy</h2>
+              <section id="refund-policy" className="scroll-mt-24 border border-base-300 rounded-xl">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
                   <RefundPolicyPage />
                 </div>
               </section>
 
-              <section id="complaint-status" className="scroll-mt-24 border border-base-300 rounded-xl p-4 md:p-5">
-                <h2 className="text-xl font-semibold">Complaint Status</h2>
+              <section id="complaint-status" className="scroll-mt-24 border border-base-300 rounded-xl">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
                   <ComplaintStatusPage />
                 </div>
               </section>
 
-              <section id="grievance-redressal" className="scroll-mt-24 border border-base-300 rounded-xl p-4 md:p-5">
-                <h2 className="text-xl font-semibold">Grievance Redressal</h2>
+              <section id="grievance-redressal" className="scroll-mt-24 border border-base-300 rounded-xl">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
                   <GrievanceRedressalPage />
                 </div>
               </section>
 
               <section id="mitc-ra" className="scroll-mt-24 border border-base-300 rounded-xl p-4 md:p-5">
-                <h2 className="text-xl font-semibold">MITC-RA</h2>
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
                   <MitcRaPage />
                 </div>
               </section>
 
-              <section id="investor-charter" className="scroll-mt-24 border border-base-300 rounded-xl p-4 md:p-5">
-                <h2 className="text-xl font-semibold">Investor Charter</h2>
+              <section id="investor-charter" className="scroll-mt-24 border border-base-300 rounded-xl">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
                   <InvestorCharterPage />
                 </div>
