@@ -1,31 +1,32 @@
-# About Me — Frontend
+# About Me — Hedgium Frontend (Marketing)
 
 ## Role
-Tech Lead — sole designer, developer, and decision-maker for the Hedgium frontend.
+Tech Lead — sole designer, developer, and decision-maker for the Hedgium marketing site.
 
 ## React / Next.js Experience
 Advanced. Deep familiarity with the App Router, SSR/SSG patterns, component architecture,
-and hooks. Building and owning a production-grade Next.js frontend solo.
+and hooks. Building and owning a production-grade Next.js site solo.
 
 ## Project: Hedgium Frontend
-A Next.js SaaS frontend for an algorithmic trading platform. Covers:
-- **Trader dashboard** — live portfolio and trade visibility
-- **Admin panel** — user management, strategies, orders
-- **Auth flows** — login, registration, password reset, session handling
-- **Strategy Builder** — UI for constructing and configuring trading strategies
+The public-facing marketing and lead generation website for Hedgium.
+It is **not** the trading application — that lives in `hedgium_webapp`.
+
+Covers:
+- **Landing / home page** — brand messaging, product positioning, hero, features, CTA
+- **Lead capture** — get-started flow, registration entry point
+- **Legal pages** — privacy policy, terms of use, refund policy, grievance redressal, MITC, investor charter
+- **Complaint status** — public-facing complaint lookup
 
 ## Stack
-- **Framework:** Next.js (App Router)
-- **Styling:** Tailwind CSS + DaisyUI
-- **State:** Zustand (client-side global state)
-- **Backend:** Django REST API
+- **Framework:** Next.js 15 (App Router)
+- **Styling:** Tailwind CSS v4 + DaisyUI v5
+- **Animations:** AOS (Animate On Scroll) for scroll-triggered effects
+- **State:** Zustand (minimal — mostly for theme/UI state)
+- **No auth, no API integration** — this site does not talk to the Django backend directly
 
 ## Priorities (in order)
-1. **Security** — correct session handling, no token leaks, safe auth flows
-2. **Correctness** — UI must always reflect true backend state (especially trade data)
-3. **Performance** — fast load times, no layout shifts, efficient re-renders
-4. **UX** — clean, intuitive flows built for traders, not general users
-5. **Maintainability** — component structure I can revisit and extend solo
-
-## Known Pain Point
-Keeping TypeScript types in sync with the Django REST API — especially as models evolve.
+1. **Brand clarity** — messaging must be crisp, on-brand, and conversion-focused
+2. **Performance** — fast initial load, high Lighthouse scores, no layout shift
+3. **SEO** — metadata, OG tags, structured data, SSR/SSG for all public pages
+4. **Accessibility** — semantic HTML, contrast, keyboard navigation
+5. **Maintainability** — clean component structure, easy to update copy and sections

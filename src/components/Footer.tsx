@@ -56,49 +56,49 @@ export default function Footer() {
             </span>
 
             <Link
-              href="/terms-of-use"
+              href="/legal-complaints-investor-charter#terms-of-use"
               className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
             >
               Terms of Use
             </Link>
 
             <Link
-              href="/privacy-policy"
+              href="/legal-complaints-investor-charter#privacy-policy"
               className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
             >
               Privacy Policy
             </Link>
 
             <Link
-              href="/complaint-status"
+              href="/legal-complaints-investor-charter#complaint-status"
               className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
             >
               Complaint Status
             </Link>
 
             <Link
-              href="/grievance-redressal"
+              href="/legal-complaints-investor-charter#grievance-redressal"
               className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
             >
               Grievance Redressal
             </Link>
 
             <Link
-              href="/refund-policy"
+              href="/legal-complaints-investor-charter#refund-policy"
               className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
             >
               Refund Policy
             </Link>
 
             <Link
-              href="/mitc-ra"
+              href="/legal-complaints-investor-charter#mitc-ra"
               className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
             >
               MITC-RA
             </Link>
 
             <Link
-              href="/investor-charter"
+              href="/legal-complaints-investor-charter#investor-charter"
               className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
             >
               Investor Charter
