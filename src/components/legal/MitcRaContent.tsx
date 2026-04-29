@@ -155,10 +155,10 @@ export default function MitcRaPage() {
                     <strong>Step 1:</strong> The client should first contact the
                     RA using the details on its website (
                     <a
-                      href="/grievance-redressal"
+                      href="/legal-complaints-investor-charter#grievance-redressal"
                       className="link link-primary"
                     >
-                      www.hedgium.in/grievance-redressal
+                      link to grievance-redressal section
                     </a>
                     ) or the following contact details:
                     <br />
