@@ -76,6 +76,15 @@ export default function Footer() {
               Complaint Status
             </Link>
 
+
+            <Link
+              href="/legal-complaints-investor-charter#grievance-redressal"
+              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+            >
+              Grievance Redressal
+            </Link>
+            
+
             <Link
               href="/legal-complaints-investor-charter#refund-policy"
               className="text-sm text-neutral-content/70 hover:text-neutral-content transition"

@@ -152,9 +152,18 @@ export default function MitcRaPage() {
                     For any grievances, follow the steps below:
                   </p>
                   <p className="mt-2 text-base-content/80">
-                    <strong>Step 1:</strong> The client should first contact the
+                  <strong>Step 1:</strong> The client should first contact the
+                    RA using the details on its website (
+                    <a
+                      href="/legal-complaints-investor-charter#grievance-redressal"
+                      className="link link-primary"
+                    >
+                      link to grievance-redressal section
+                    </a>
+                    ) or the following contact details:
                     RA using the contact details below:
                     <br />
+                    
                     Grievance Officer: Aerik Wadhwani
                     <br />
                     Grievance Email ID:{" "}

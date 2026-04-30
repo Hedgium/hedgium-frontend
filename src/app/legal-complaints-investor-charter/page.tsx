@@ -34,6 +34,7 @@ export default function LegalComplaintsInvestorCharterPage() {
               <a href="#privacy-policy" className="btn btn-sm btn-outline">Privacy Policy</a>
               <a href="#refund-policy" className="btn btn-sm btn-outline">Refund Policy</a>
               <a href="#complaint-status" className="btn btn-sm btn-outline">Complaint Status</a>
+              <a href="#grievance-redressal" className="btn btn-sm btn-outline">Grievance Redressal</a>
               <a href="#mitc-ra" className="btn btn-sm btn-outline">MITC-RA</a>
               <a href="#investor-charter" className="btn btn-sm btn-outline">Investor Charter</a>
             </nav>
@@ -63,7 +64,7 @@ export default function LegalComplaintsInvestorCharterPage() {
                 </div>
               </section>
 
-              <section className="scroll-mt-24 border border-base-300 rounded-xl">
+              <section id="grievance-redressal" className="scroll-mt-24 border border-base-300 rounded-xl">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
                   <GrievanceRedressalPage />
                 </div>
