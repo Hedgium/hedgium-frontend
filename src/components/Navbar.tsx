@@ -67,14 +67,14 @@ export default function Navbar() {
         </Link>
 
 
-                {/* <Link
+          <Link
                   href="https://app.hedgium.ai/"
                   target="_blank"
                   className="hidden lg:flex items-center gap-1.5 text-base-content hover:text-primary text-base font-medium tracking-wide shrink-0 justify-center"
                 >
                   <LogIn className="h-5 w-5 shrink-0" aria-hidden />
                   Login
-                </Link> */}
+          </Link>
 
 
         <div
@@ -108,7 +108,7 @@ export default function Navbar() {
               </li>
 
 
-              {/* <li className="px-2">
+              <li className="px-2">
                 <Link
                   href="https://app.hedgium.ai/"
                   onClick={() => setIsMenuOpen(false)}
@@ -116,7 +116,7 @@ export default function Navbar() {
                 >
                   Login
                 </Link>
-              </li> */}
+              </li>
 
               {NAV_LINKS.map(({ label, href }) => (
                 <li key={href}>
