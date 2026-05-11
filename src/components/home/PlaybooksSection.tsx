@@ -47,7 +47,13 @@ export default function PlaybooksSection() {
             data-aos-delay="120"
             data-aos-once="true"
           >
-            <Image src="/images/home/playbook_image.png" className="rounded-lg" alt="Playbooks" width={500} height={500} />
+            <Image
+              src="/images/home/playbook_image.png"
+              className="rounded-lg"
+              alt="Illustration of customized investment playbooks aligned to portfolio income and total income goals"
+              width={500}
+              height={500}
+            />
           </div>
         </div>
       </div>

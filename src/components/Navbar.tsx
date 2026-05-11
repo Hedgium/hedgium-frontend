@@ -49,7 +49,7 @@ export default function Navbar() {
         >
           <img
             src="/images/logos/Hedgium Banner cropped.png"
-            alt="HEDGIUM"
+            alt="Hedgium logo"
             className="h-10 lg:h-12 w-auto "
           />
 
@@ -62,7 +62,7 @@ export default function Navbar() {
             <li key={href} className="shrink-0">
               <Link
                 href={href}
-                className="text-sm xl:text-base text-base-content hover:text-primary whitespace-nowrap"
+                className="text-sm xl:text-base text-base-content hover:text-primary whitespace-nowrap focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
               >
                 {label}
               </Link>
@@ -74,7 +74,7 @@ export default function Navbar() {
         
         <Link
           href="/get-started"
-          className="btn btn-primary hidden lg:flex btn-sm lg:btn-md shadow hover:shadow-md shrink-0"
+          className="btn btn-primary hidden lg:flex btn-sm lg:btn-md shadow hover:shadow-md shrink-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
           Get Started
         </Link>
@@ -83,7 +83,7 @@ export default function Navbar() {
           <Link
                   href="https://app.hedgium.ai/"
                   target="_blank"
-                  className="hidden lg:flex items-center gap-1.5 text-base-content hover:text-primary text-base font-medium tracking-wide shrink-0 justify-center"
+                  className="hidden lg:flex items-center gap-1.5 text-base-content hover:text-primary text-base font-medium tracking-wide shrink-0 justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
                 >
                   <LogIn className="h-5 w-5 shrink-0" aria-hidden />
                   Login
@@ -97,7 +97,7 @@ export default function Navbar() {
           <button
             ref={menuButtonRef}
             type="button"
-            className="btn btn-ghost px-2"
+            className="btn btn-ghost px-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-nav-menu"
             aria-haspopup="true"
@@ -120,7 +120,7 @@ export default function Navbar() {
                 <Link
                   href="/get-started"
                   onClick={() => setIsMenuOpen(false)}
-                  className="btn btn-primary btn-sm w-full my-2 justify-center"
+                  className="btn btn-primary btn-sm w-full my-2 justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
                   Get Started
                 </Link>
@@ -131,7 +131,7 @@ export default function Navbar() {
                 <Link
                   href="https://app.hedgium.ai/"
                   onClick={() => setIsMenuOpen(false)}
-                  className="btn btn-outline btn-sm w-full mb-2 justify-center"
+                  className="btn btn-outline btn-sm w-full mb-2 justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
                   Login
                 </Link>
@@ -139,7 +139,11 @@ export default function Navbar() {
 
               {NAV_LINKS.map(({ label, href }) => (
                 <li key={href}>
-                  <Link href={href} onClick={() => setIsMenuOpen(false)}>
+                  <Link
+                    href={href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
+                  >
                     {label}
                   </Link>
                 </li>

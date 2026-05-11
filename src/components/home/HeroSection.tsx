@@ -83,7 +83,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="relative z-40 mx-auto w-full max-w-4xl px-4 pb-6 pt-2">
+      {/* <div className="relative z-40 mx-auto w-full max-w-4xl px-4 pb-6 pt-2">
         <details className="rounded-lg border border-white/30 bg-base-100/95 text-base-content shadow-lg backdrop-blur-sm">
           <summary className="cursor-pointer select-none px-4 py-3 text-sm font-semibold outline-none focus-visible:ring-2 focus-visible:ring-primary">
             Hero video transcript
@@ -101,7 +101,7 @@ export default function HeroSection() {
             </p>
           </div>
         </details>
-      </div>
+      </div> */}
 
     </section>
   );

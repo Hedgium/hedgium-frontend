@@ -105,6 +105,25 @@
     outline: none;
 }
 
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[role="button"]:focus-visible,
+[role="tab"]:focus-visible,
+[role="menuitem"]:focus-visible {
+    outline: 2px solid var(--color-primary, #244061);
+    outline-offset: 2px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: color-mix(in oklab, var(--color-base-content) 70%, transparent);
+    opacity: 1;
+}
+
 /* hide scrollbar (webkit, firefox, IE/Edge) */
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
