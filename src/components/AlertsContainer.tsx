@@ -39,7 +39,13 @@ const AlertsContainer = () => {
   };
 
   return (
-    <div className="toast toast-top toast-end z-1000 mt-16">
+    <div
+      className="toast toast-top toast-end z-1000 mt-16"
+      role="region"
+      aria-live="polite"
+      aria-relevant="additions text"
+      aria-label="Notifications"
+    >
       {alerts.map((alert) => (
         <div
           key={alert.id}
@@ -53,8 +59,10 @@ const AlertsContainer = () => {
           </div>
           {!alert.hideClose && (
             <button
+              type="button"
               className="btn btn-ghost btn-sm btn-circle ml-4 flex-shrink-0"
               onClick={() => removeAlert(alert.id)}
+              aria-label="Dismiss notification"
             >
               ✕
             </button>

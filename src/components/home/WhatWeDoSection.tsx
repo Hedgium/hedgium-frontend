@@ -85,7 +85,7 @@ export default function WhatWeDoSection() {
                 <div className="flex-1 min-h-0 relative rounded-xl overflow-hidden">
                   <Image
                     src={WHAT_WE_DO_SLIDES[current].image}
-                    alt=""
+                    alt={`What we do: ${WHAT_WE_DO_SLIDES[current].bottomText}`}
                     fill
                     className="object-contain w-full h-full"
                     sizes="(max-width: 1024px) 100vw, 50vw"

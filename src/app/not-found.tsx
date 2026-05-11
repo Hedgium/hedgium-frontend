@@ -65,7 +65,7 @@ export default function Custom404() {
             </div>
 
             <div className="mt-6">
-              <p className="text-sm text-base-content/50">
+              <p className="text-sm text-base-content/65">
                 Need help? Contact our support team or check our market status
               </p>
             </div>

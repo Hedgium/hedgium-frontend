@@ -14,6 +14,7 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -23,6 +24,18 @@ export default function Navbar() {
     };
     document.addEventListener("pointerdown", close, true);
     return () => document.removeEventListener("pointerdown", close, true);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey, true);
+    return () => document.removeEventListener("keydown", onKey, true);
   }, [isMenuOpen]);
 
   return (
@@ -82,9 +95,12 @@ export default function Navbar() {
           className={`dropdown dropdown-end ${isMenuOpen ? "dropdown-open" : ""} lg:hidden`}
         >
           <button
+            ref={menuButtonRef}
             type="button"
             className="btn btn-ghost px-2"
             aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav-menu"
+            aria-haspopup="true"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
@@ -95,7 +111,10 @@ export default function Navbar() {
             )}
           </button>
           {isMenuOpen && (
-            <ul className="menu menu-sm dropdown-content mt-3 z-[200] p-2 shadow-lg bg-base-100 rounded-box w-52 border border-base-300">
+            <ul
+              id="mobile-nav-menu"
+              className="menu menu-sm dropdown-content mt-3 z-[200] p-2 shadow-lg bg-base-100 rounded-box w-52 border border-base-300"
+            >
 
               <li className="px-2">
                 <Link

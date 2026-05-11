@@ -1,7 +1,9 @@
 "use client";
 
+import * as React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import type { LegalDocVariant } from "@/components/legal/types";
 
 const MONTH_ENDING = "March 2026";
 
@@ -19,19 +21,25 @@ const ANNUAL_TREND = [
   { sr: 1, year: "2025-26", carriedForward: 0, received: 0, resolved: 0, pending: 0 },
 ];
 
-export default function ComplaintStatusPage() {
-  return (
-    <>
-      <Navbar />
+export default function ComplaintStatusPage({
+  variant = "standalone",
+}: {
+  variant?: LegalDocVariant;
+}) {
+  const embedded = variant === "embedded";
+
+  const mainBlock = (
       <div className="max-w-4xl mx-auto">
         <div className="bg-base-100">
           <div className="card-body gap-4">
             <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
               <div>
-                <h1 className="text-2xl md:text-3xl font-bold">
-                  Complaint Status
-                </h1>
-                <p className="text-sm text-base-content/60 mt-1">
+                {React.createElement(
+                  embedded ? "h2" : "h1",
+                  { className: "text-2xl md:text-3xl font-bold" },
+                  "Complaint Status"
+                )}
+                <p className="text-sm text-base-content/70 mt-1">
                   SEBI Registered Research Analyst – INH000025258
                 </p>
               </div>
@@ -44,6 +52,7 @@ export default function ComplaintStatusPage() {
                   }}
                   className="btn btn-ghost btn-sm"
                   title="Print complaint status"
+                  aria-label="Print complaint status"
                 >
                   Print
                 </a>
@@ -99,7 +108,7 @@ export default function ComplaintStatusPage() {
                 </table>
               </div>
 
-              <p className="text-xs text-base-content/60 mb-6">
+              <p className="text-xs text-base-content/70 mb-6">
                 ^ Average Resolution time is the sum total of time taken to
                 resolve each complaint in days, in the current month divided by
                 total number of complaints resolved in the current month.
@@ -144,7 +153,7 @@ export default function ComplaintStatusPage() {
                 </table>
               </div>
 
-              <p className="text-xs text-base-content/60 mb-6">
+              <p className="text-xs text-base-content/70 mb-6">
                 * Inclusive of complaints of previous months resolved in the
                 current month.
                 <br />
@@ -191,7 +200,7 @@ export default function ComplaintStatusPage() {
                 </table>
               </div>
 
-              <p className="text-xs text-base-content/60">
+              <p className="text-xs text-base-content/70">
                 * Inclusive of complaints of previous years resolved in the
                 current year.
                 <br />
@@ -236,7 +245,14 @@ export default function ComplaintStatusPage() {
           </div>
         </div>
       </div>
+  );
 
+  if (embedded) return mainBlock;
+
+  return (
+    <>
+      <Navbar />
+      {mainBlock}
       <Footer />
     </>
   );

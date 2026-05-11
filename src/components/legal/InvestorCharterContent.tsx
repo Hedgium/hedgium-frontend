@@ -1,7 +1,9 @@
 "use client";
 
+import * as React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import type { LegalDocVariant } from "@/components/legal/types";
 
 const SEBI_PHYSICAL_ADDRESS = `Office of Investor Assistance and Education,
 Securities and Exchange Board of India,
@@ -9,19 +11,25 @@ SEBI Bhavan, Plot No. C4-A, 'G' Block,
 Bandra-Kurla Complex, Bandra (E),
 Mumbai - 400 051`;
 
-export default function InvestorCharterPage() {
-  return (
-    <>
-      <Navbar />
+export default function InvestorCharterPage({
+  variant = "standalone",
+}: {
+  variant?: LegalDocVariant;
+}) {
+  const embedded = variant === "embedded";
+
+  const mainBlock = (
       <div className="max-w-4xl mx-auto">
         <div className="bg-base-100">
           <div className="card-body gap-4">
             <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
               <div>
-                <h1 className="text-2xl md:text-3xl font-bold">
-                  Investor Charter
-                </h1>
-                <p className="text-sm text-base-content/60 mt-1">
+                {React.createElement(
+                  embedded ? "h2" : "h1",
+                  { className: "text-2xl md:text-3xl font-bold" },
+                  "Investor Charter"
+                )}
+                <p className="text-sm text-base-content/70 mt-1">
                   SEBI Registered Research Analyst – INH000025258
                 </p>
               </div>
@@ -34,6 +42,7 @@ export default function InvestorCharterPage() {
                   }}
                   className="btn btn-ghost btn-sm"
                   title="Print investor charter"
+                  aria-label="Print investor charter"
                 >
                   Print
                 </a>
@@ -382,6 +391,14 @@ export default function InvestorCharterPage() {
           </div>
         </div>
       </div>
+  );
+
+  if (embedded) return mainBlock;
+
+  return (
+    <>
+      <Navbar />
+      {mainBlock}
       <Footer />
     </>
   );

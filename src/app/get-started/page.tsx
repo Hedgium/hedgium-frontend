@@ -20,6 +20,15 @@ const INVESTMENT_OPTIONS = [
 
 const BELOW_25L_VALUE = "below_25l";
 
+const FIELD_MOBILE = "get-started-mobile";
+const FIELD_NAME = "get-started-name";
+const FIELD_SOURCE = "get-started-source";
+const FIELD_MEETING_DATE = "get-started-meeting-date";
+const FIELD_MEETING_TIME = "get-started-meeting-time";
+const FIELD_FORM_ERROR = "get-started-form-error";
+const STEP2_HEADING = "get-started-step2-heading";
+const STEP3_MEET_HEADING = "get-started-step3-meet-heading";
+
 const VALID_SOURCES = ["website", "ads", "social_media", "direct_contact", "other"] as const;
 const SOURCE_OPTIONS: { value: typeof VALID_SOURCES[number]; label: string }[] = [
   { value: "website", label: "Website" },
@@ -43,7 +52,7 @@ function getLeftPanelContent(step: number, submitted: boolean, investmentValue?:
       <>
         <div className="w-16 h-16 rounded-full bg-success/20 flex items-center justify-center text-2xl mb-6">✓</div>
         <p className="text-lg font-medium text-base-content">Thank you for getting in touch.</p>
-        <p className="mt-3 text-sm text-base-content/60">
+        <p className="mt-3 text-sm text-base-content/70">
           {isBelow25l
             ? "We&apos;ve noted your interest, and we&apos;ll reach out if we expand our services to your investment range."
             : "We&apos;ll confirm your meeting and reach out shortly."}
@@ -60,7 +69,7 @@ function getLeftPanelContent(step: number, submitted: boolean, investmentValue?:
         <p className="text-lg lg:text-xl font-medium text-base-content leading-relaxed max-w-sm mt-2">
           The best time to start was yesterday. The next best is now.
         </p>
-        <p className="mt-5 text-sm text-base-content/60">— Get started in minutes</p>
+        <p className="mt-5 text-sm text-base-content/70">— Get started in minutes</p>
       </>
     );
   }
@@ -75,7 +84,7 @@ function getLeftPanelContent(step: number, submitted: boolean, investmentValue?:
         <p className="text-lg lg:text-xl font-medium text-base-content leading-relaxed max-w-sm">
           &ldquo;I did not know this opportunity existed before Hedgium.&rdquo;
         </p>
-        <p className="mt-5 text-sm text-base-content/60">– Hedgium Clients</p>
+        <p className="mt-5 text-sm text-base-content/70">– Hedgium Clients</p>
       </>
     );
   }
@@ -276,6 +285,9 @@ export default function GetStartedPage() {
         <div className="flex-1 flex items-center justify-center p-4 py-4">
           <div className="w-full max-w-md overflow-hidden">
             <div className="p-4">
+            {!submitted && (
+              <h1 className="text-xl font-bold text-base-content mb-3">Get started with Hedgium</h1>
+            )}
             {/* Header: Back + Step (when form) or just WhatsApp (when submitted) */}
             <div className="flex items-center justify-between mb-4">
               <span className="flex items-center gap-2">
@@ -284,11 +296,12 @@ export default function GetStartedPage() {
                     type="button"
                     onClick={handleBack}
                     className="btn btn-outline btn-sm"
+                    aria-label="Go back to previous step"
                   >
-                    <ChevronLeft className="w-4 h-4" />
+                    <ChevronLeft className="w-4 h-4" aria-hidden />
                   </button>
                 )}
-                {!submitted && <span className="text-sm text-base-content/60">Step {step} of 3</span>}
+                {!submitted && <span className="text-sm text-base-content/70">Step {step} of 3</span>}
               </span>
               {(whatsappUrl && !submitted) && (
                 <div>
@@ -308,7 +321,7 @@ export default function GetStartedPage() {
 
             {submitted ? (
               <div className="text-center">
-                <h2 className="text-xl font-bold text-base-content mb-2">We&apos;ll be in touch shortly</h2>
+                <h1 className="text-xl font-bold text-base-content mb-2">We&apos;ll be in touch shortly</h1>
                 <p className="text-base-content/70 text-sm mb-6">
                   {investmentValue === BELOW_25L_VALUE
                     ? "We&apos;ve noted your interest, and if we expand our services to your investment range, we&apos;ll reach out."
@@ -329,33 +342,39 @@ export default function GetStartedPage() {
             ) : null}
 
             {!submitted && step === 1 && (
-            <form onSubmit={handleStep1Continue} className="space-y-1">
-              <h2 className="text-lg font-bold text-base-content">Get started</h2>
+            <form onSubmit={handleStep1Continue} className="space-y-1" noValidate>
               <p className="text-base-content/70 text-sm">
                 Share your number and we&apos;ll get in touch.
               </p>
               <div className="space-y-3 pt-4">
                 <div>
-                  <label className="label py-0.5">
+                  <label className="label py-0.5" htmlFor={FIELD_MOBILE}>
                     <span className="label-text">Mobile number <span className="text-error">*</span></span>
                   </label>
                   <input
+                    id={FIELD_MOBILE}
                     type="tel"
                     inputMode="numeric"
                     autoComplete="tel"
+                    name="mobile"
                     maxLength={10}
                     value={mobile}
                     onChange={handleMobileChange}
                     placeholder="10-digit mobile number"
                     className="input input-bordered input-sm w-full"
+                    aria-invalid={error ? true : undefined}
+                    aria-describedby={error ? FIELD_FORM_ERROR : undefined}
                   />
                 </div>
                 <div>
-                  <label className="label py-0.5">
+                  <label className="label py-0.5" htmlFor={FIELD_NAME}>
                     <span className="label-text">Name</span>
                   </label>
                   <input
+                    id={FIELD_NAME}
                     type="text"
+                    name="name"
+                    autoComplete="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Your name"
@@ -363,10 +382,13 @@ export default function GetStartedPage() {
                   />
                 </div>
                 <div>
-                  <label className="label py-0.5">
+                  <label className="label py-0.5" htmlFor={FIELD_SOURCE}>
                     <span className="label-text">Where did you hear about us? (optional)</span>
                   </label>
                   <select
+                    id={FIELD_SOURCE}
+                    name="source"
+                    autoComplete="off"
                     value={source}
                     onChange={(e) => setSource(e.target.value)}
                     className="select select-bordered select-sm w-full"
@@ -379,7 +401,11 @@ export default function GetStartedPage() {
                   </select>
                 </div>
               </div>
-              {error && <p className="text-sm text-error">{error}</p>}
+              {error ? (
+                <p id={FIELD_FORM_ERROR} className="text-sm text-error" role="alert">
+                  {error}
+                </p>
+              ) : null}
               <button
                 type="submit"
                 disabled={!canProceedStep1}
@@ -391,12 +417,14 @@ export default function GetStartedPage() {
           )}
 
           {!submitted && step === 2 && (
-            <form onSubmit={handleStep2Continue} className="space-y-4">
-              <h2 className="text-lg font-bold text-base-content">What&apos;s the total value of your investments?</h2>
+            <form onSubmit={handleStep2Continue} className="space-y-4" noValidate>
+              <h2 id={STEP2_HEADING} className="text-lg font-bold text-base-content">
+                What&apos;s the total value of your investments?
+              </h2>
               <p className="text-base-content/70 text-sm">
                 Include Stocks, MFs, FDs, and cash. This will help us personalise your experience.
               </p>
-              <div className="space-y-2">
+              <div className="space-y-2" role="radiogroup" aria-labelledby={STEP2_HEADING}>
                 {INVESTMENT_OPTIONS.map((opt) => (
                   <label
                     key={opt.value}
@@ -418,7 +446,11 @@ export default function GetStartedPage() {
                   </label>
                 ))}
               </div>
-              {error && <p className="text-sm text-error">{error}</p>}
+              {error ? (
+                <p id={FIELD_FORM_ERROR} className="text-sm text-error" role="alert">
+                  {error}
+                </p>
+              ) : null}
               <button
                 type="submit"
                 disabled={!investmentValue}
@@ -441,37 +473,53 @@ export default function GetStartedPage() {
                   Submitting...
                 </div>
               )}
-              {error && <p className="text-sm text-error">{error}</p>}
+              {error ? (
+                <p id={FIELD_FORM_ERROR} className="text-sm text-error" role="alert">
+                  {error}
+                </p>
+              ) : null}
             </div>
           )}
 
           {!submitted && step === 3 && investmentValue !== BELOW_25L_VALUE && (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <h2 className="text-lg font-bold text-base-content">When would you like to meet?</h2>
+            <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+              <h2 id={STEP3_MEET_HEADING} className="text-lg font-bold text-base-content">
+                When would you like to meet?
+              </h2>
               <p className="text-base-content/70 text-sm">
                 Pick a date and time. We&apos;ll confirm via call or WhatsApp.
               </p>
               <div className="space-y-3">
                 <div>
-                  <label className="label py-0.5">
+                  <label className="label py-0.5" htmlFor={FIELD_MEETING_DATE}>
                     <span className="label-text">Date</span>
                   </label>
                   <input
+                    id={FIELD_MEETING_DATE}
                     type="date"
+                    name="meeting-date"
+                    autoComplete="off"
                     value={meetingDate}
                     onChange={(e) => setMeetingDate(e.target.value)}
                     min={todayStr}
                     className="input input-bordered input-sm w-full"
+                    aria-invalid={error ? true : undefined}
+                    aria-describedby={error ? FIELD_FORM_ERROR : undefined}
                   />
                 </div>
                 <div>
-                  <label className="label py-0.5">
+                  <label className="label py-0.5" htmlFor={FIELD_MEETING_TIME}>
                     <span className="label-text">Time</span>
                   </label>
                   <select
+                    id={FIELD_MEETING_TIME}
+                    name="meeting-time"
+                    autoComplete="off"
                     value={meetingTime}
                     onChange={(e) => setMeetingTime(e.target.value)}
                     className="select select-bordered select-sm w-full"
+                    aria-invalid={error ? true : undefined}
+                    aria-describedby={error ? FIELD_FORM_ERROR : undefined}
                   >
                     <option value="">Select time</option>
                     {timeOptionsForSelectedDate.length === 0 && meetingDate === todayStr ? (
@@ -487,7 +535,11 @@ export default function GetStartedPage() {
                   </select>
                 </div>
               </div>
-              {error && <p className="text-sm text-error">{error}</p>}
+              {error ? (
+                <p id={FIELD_FORM_ERROR} className="text-sm text-error" role="alert">
+                  {error}
+                </p>
+              ) : null}
               <button
                 type="submit"
                 disabled={
@@ -510,7 +562,7 @@ export default function GetStartedPage() {
             </form>
           )}
 
-          <p className="mt-5 pt-4 border-t border-base-300 flex items-center justify-center gap-2 text-xs text-base-content/50">
+          <p className="mt-5 pt-4 border-t border-base-300 flex items-center justify-center gap-2 text-xs text-base-content/65">
             <Shield className="w-3.5 h-3.5 flex-shrink-0" />
             Your data is 100% protected
           </p>

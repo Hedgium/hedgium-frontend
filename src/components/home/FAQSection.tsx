@@ -60,7 +60,7 @@ export default function FAQSection() {
           data-aos-once="true"
         >
         <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-base-content mb-3">Frequently Asked Questions</h2>
-        <p className="text-sm lg:text-base xl:text-lg 2xl:text-xl text-base-content/70 mb-8">
+        <p className="text-sm lg:text-base xl:text-lg 2xl:text-xl text-base-content/75 mb-8">
           Everything you need to know about Hedgium&apos;s framework, capital requirements, and portfolio setup.
         </p>
         </div>

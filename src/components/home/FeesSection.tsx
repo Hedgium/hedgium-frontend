@@ -97,7 +97,7 @@ export default function FeesSection() {
           </div>
         </div>
 
-        <p className="text-xs text-base-content/60 mt-5">
+        <p className="text-xs text-base-content/70 mt-5">
           * Subject to Regulatory framework prescribed by SEBI. Fees subject to GST as per applicable laws.
         </p>
       </div>

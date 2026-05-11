@@ -1,21 +1,29 @@
 "use client";
 
+import * as React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import type { LegalDocVariant } from "@/components/legal/types";
 
-export default function MitcRaPage() {
-  return (
-    <>
-      <Navbar />
+export default function MitcRaPage({
+  variant = "standalone",
+}: {
+  variant?: LegalDocVariant;
+}) {
+  const embedded = variant === "embedded";
+
+  const mainBlock = (
       <div className="max-w-4xl mx-auto">
         <div className="bg-base-100">
           <div className="card-body gap-4">
             <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
               <div>
-                <h1 className="text-2xl md:text-3xl font-bold">
-                  Most Important Terms and Conditions (MITC)
-                </h1>
-                <p className="text-sm text-base-content/60 mt-1">
+                {React.createElement(
+                  embedded ? "h2" : "h1",
+                  { className: "text-2xl md:text-3xl font-bold" },
+                  "Most Important Terms and Conditions (MITC)"
+                )}
+                <p className="text-sm text-base-content/70 mt-1">
                   Research Analyst (RA) – SEBI Registration No. INH000025258
                 </p>
               </div>
@@ -28,6 +36,7 @@ export default function MitcRaPage() {
                   }}
                   className="btn btn-ghost btn-sm"
                   title="Print MITC-RA"
+                  aria-label="Print MITC-RA"
                 >
                   Print
                 </a>
@@ -223,7 +232,14 @@ export default function MitcRaPage() {
           </div>
         </div>
       </div>
+  );
 
+  if (embedded) return mainBlock;
+
+  return (
+    <>
+      <Navbar />
+      {mainBlock}
       <Footer />
     </>
   );

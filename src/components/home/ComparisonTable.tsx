@@ -51,23 +51,32 @@ export default function ComparisonTable() {
         Take back control, gain liquidity, reduce costs & improve tax efficiency
       </p>
 
-      <div className="overflow-x-auto bg-base-100 mt-8 lg:mt-12 xl:mt-16 rounded-xl">
+      <div
+        className="overflow-x-auto bg-base-100 mt-8 lg:mt-12 xl:mt-16 rounded-xl"
+        role="region"
+        aria-label="Comparison of Hedgium with mutual funds, PMS, and AIF"
+      >
         <table className="w-full min-w-[800px] text-left border-separate border-spacing-0">
+          <caption className="sr-only">
+            Control, liquidity, tax, directional risk, and ROI compared across Hedgium, mutual funds and PMS, and AIF.
+          </caption>
 
           {/* HEADER */}
           <thead>
             <tr>
-              <th className=""></th>
+              <th scope="col" className="p-2">
+                <span className="sr-only">Comparison category</span>
+              </th>
 
-              <th className="p-4 text-secondary font-bold text-center text-base lg:text-lg xl:text-2xl border-t-2 border-l-2 border-r-2 border-dashed border-primary/60 rounded-t-2xl">
+              <th scope="col" className="p-4 text-secondary font-bold text-center text-base lg:text-lg xl:text-2xl border-t-2 border-l-2 border-r-2 border-dashed border-primary/60 rounded-t-2xl">
                 Hedgium
               </th>
 
-              <th className="p-4 font-bold text-base-content text-base lg:text-lg xl:text-2xl">
+              <th scope="col" className="p-4 font-bold text-base-content text-base lg:text-lg xl:text-2xl">
                 Mutual Funds & PMS
               </th>
 
-              <th className="p-4 font-bold text-base-content text-base lg:text-lg xl:text-2xl">
+              <th scope="col" className="p-4 font-bold text-base-content text-base lg:text-lg xl:text-2xl">
                 AIF
               </th>
             </tr>
@@ -83,7 +92,7 @@ export default function ComparisonTable() {
                 <tr key={row.category} className="border-b border-base-300">
 
                   {/* LEFT CATEGORY BUTTON */}
-                  <td className="py-3 px-2 md:px-4">
+                  <th scope="row" className="py-3 px-2 md:px-4 font-normal align-top">
                     <div className="inline-flex items-center">
                       <span
                         className="inline-flex items-center justify-center w-[160px] min-w-[160px] lg:w-[240px] lg:min-w-[240px] xl:w-[240px] xl:min-w-[240px] text-white text-sm lg:text-base xl:text-lg 2xl:text-xl font-semibold px-0 py-2 rounded-l-lg bg-cover bg-center bg-no-repeat"
@@ -93,7 +102,7 @@ export default function ComparisonTable() {
                       </span>
 
                     </div>
-                  </td>
+                  </th>
 
                   {/* HEDGIUM COLUMN */}
                   <td

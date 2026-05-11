@@ -21,7 +21,7 @@ export default function Footer() {
               alpha using the Twin Engine Investing framework.
             </p>
 
-            <div className="text-xs text-neutral-content/60 space-y-1">
+            <div className="text-xs text-neutral-content/70 space-y-1">
               <p>Registered Entity Name: Hedgium Services LLP</p>
               <p>LLP Identification Number: ACQ-3740 </p>
             </div>
@@ -42,7 +42,7 @@ export default function Footer() {
               <Link
                 key={label}
                 href={href}
-                className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+                className="text-sm text-neutral-content/80 hover:text-neutral-content transition"
               >
                 {label}
               </Link>
@@ -51,27 +51,27 @@ export default function Footer() {
 
           {/* Legal */}
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-content/50">
+            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-content/75">
               Legal
             </span>
 
             <Link
               href="/legal-complaints-investor-charter#terms-of-use"
-              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+              className="text-sm text-neutral-content/80 hover:text-neutral-content transition"
             >
               Terms of Use
             </Link>
 
             <Link
               href="/legal-complaints-investor-charter#privacy-policy"
-              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+              className="text-sm text-neutral-content/80 hover:text-neutral-content transition"
             >
               Privacy Policy
             </Link>
 
             <Link
               href="/legal-complaints-investor-charter#complaint-status"
-              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+              className="text-sm text-neutral-content/80 hover:text-neutral-content transition"
             >
               Complaint Status
             </Link>
@@ -79,7 +79,7 @@ export default function Footer() {
 
             <Link
               href="/legal-complaints-investor-charter#grievance-redressal"
-              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+              className="text-sm text-neutral-content/80 hover:text-neutral-content transition"
             >
               Grievance Redressal
             </Link>
@@ -87,21 +87,21 @@ export default function Footer() {
 
             <Link
               href="/legal-complaints-investor-charter#refund-policy"
-              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+              className="text-sm text-neutral-content/80 hover:text-neutral-content transition"
             >
               Refund Policy
             </Link>
 
             <Link
               href="/legal-complaints-investor-charter#mitc-ra"
-              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+              className="text-sm text-neutral-content/80 hover:text-neutral-content transition"
             >
               MITC-RA
             </Link>
 
             <Link
               href="/legal-complaints-investor-charter#investor-charter"
-              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+              className="text-sm text-neutral-content/80 hover:text-neutral-content transition"
             >
               Investor Charter
             </Link>
@@ -110,27 +110,27 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-content/50">
+            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-content/75">
               Contact
             </span>
 
             <a
               href="mailto:clients@hedgium.ai"
-              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+              className="text-sm text-neutral-content/80 hover:text-neutral-content transition"
             >
               clients@hedgium.ai
             </a>
 
             <a
               href={`tel:+91${process.env.NEXT_PUBLIC_PHONE_NUMBER}`}
-              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+              className="text-sm text-neutral-content/80 hover:text-neutral-content transition"
             >
               +91 {process.env.NEXT_PUBLIC_PHONE_NUMBER}
             </a>
 
             <a
               href="https://www.hedgium.ai"
-              className="text-sm text-neutral-content/70 hover:text-neutral-content transition"
+              className="text-sm text-neutral-content/80 hover:text-neutral-content transition"
             >
               www.hedgium.ai
             </a>
@@ -222,8 +222,8 @@ export default function Footer() {
 
 
         {/* Disclaimers */}
-        <div className="mt-10 text-xs text-neutral-content/60 space-y-3">
-          <h3 className="font-semibold text-neutral-content/80">
+        <div className="mt-10 text-xs text-neutral-content/70 space-y-3">
+          <h3 className="font-semibold text-neutral-content">
             Disclaimers
           </h3>
 
@@ -252,7 +252,7 @@ export default function Footer() {
 
 
         {/* Bottom */}
-        <div className="border-t border-neutral-content/20 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-content/40">
+        <div className="border-t border-neutral-content/20 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-content/65">
 
           <p>© {new Date().getFullYear()} Hedgium. All rights reserved.</p>
 

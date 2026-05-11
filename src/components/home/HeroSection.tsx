@@ -29,6 +29,7 @@ export default function HeroSection() {
         muted
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover"
+        aria-label="Background video introducing Hedgium and systematic investing"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       >
@@ -71,7 +72,7 @@ export default function HeroSection() {
       <div className="trapezium-wrap absolute bottom-0 left-1/2 -translate-x-1/2 px-4 md:px-8 w-full max-w-8xl z-30">
         <div className="trapezium-reverse mx-auto">
           <div className="trapezium-inner">
-            <p className="text-base text-center md:text-lg lg:text-xl  opacity-90 leading-relaxed">
+            <p className="text-base text-center md:text-lg lg:text-xl text-white leading-relaxed">
               <span className="text-center">
               Leveraging two decades of market experience, we identify real-time market opportunities and manage risk dynamically to deliver consistent, exceptional capital performance.
 
@@ -80,6 +81,26 @@ export default function HeroSection() {
             </p>
           </div>
         </div>
+      </div>
+
+      <div className="relative z-40 mx-auto w-full max-w-4xl px-4 pb-6 pt-2">
+        <details className="rounded-lg border border-white/30 bg-base-100/95 text-base-content shadow-lg backdrop-blur-sm">
+          <summary className="cursor-pointer select-none px-4 py-3 text-sm font-semibold outline-none focus-visible:ring-2 focus-visible:ring-primary">
+            Hero video transcript
+          </summary>
+          <div className="border-t border-base-300 px-4 py-3 text-sm leading-relaxed">
+            <p>
+              This hero video presents Hedgium as a quant-based investment platform: ambition guided by
+              intelligence and defined by performance. The narrative highlights two decades of market
+              experience, identifying real-time opportunities and managing risk dynamically to pursue
+              consistent, risk-aware capital outcomes.
+            </p>
+            <p className="mt-2">
+              Synchronized captions are not yet available for this clip; when a caption file is provided,
+              it will be linked here for full WCAG conformance.
+            </p>
+          </div>
+        </details>
       </div>
 
     </section>

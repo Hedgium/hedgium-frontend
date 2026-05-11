@@ -133,20 +133,50 @@ export default function UnlockPotentialSection() {
           </div>
 
           {/* Desktop: tabs + content */}
-          
-          {/* Desktop: tabs + content */}
 <div className="hidden lg:flex flex-row items-center">
   
   {/* Left column – step buttons */}
-  <div className="lg:w-[40%] flex flex-col justify-center">
+  <div
+    className="lg:w-[40%] flex flex-col justify-center"
+    role="tablist"
+    aria-label="Steps to unlock potential"
+    aria-orientation="vertical"
+  >
     {UNLOCK_STEPS.map((step, i) => {
       const isActive = activeStep === i;
+      const tabId = `unlock-tab-${step.id}`;
+      const focusSiblingTab = (next: number) => {
+        const clamped = Math.max(0, Math.min(UNLOCK_STEPS.length - 1, next));
+        setActiveStep(clamped);
+        const el = document.getElementById(`unlock-tab-${UNLOCK_STEPS[clamped].id}`);
+        window.requestAnimationFrame(() => el?.focus());
+      };
       return (
-        <div key={step.id} className="flex flex-col">
-          <div className="flex items-center w-full">
+        <div key={step.id} className="flex flex-col" role="presentation">
+          <div className="flex items-center w-full" role="presentation">
             <button
               type="button"
+              id={tabId}
+              role="tab"
+              aria-selected={isActive}
+              aria-controls={`unlock-panel-${step.id}`}
+              tabIndex={isActive ? 0 : -1}
               onClick={() => setActiveStep(i)}
+              onKeyDown={(e) => {
+                if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                  e.preventDefault();
+                  if (i < UNLOCK_STEPS.length - 1) focusSiblingTab(i + 1);
+                } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                  e.preventDefault();
+                  if (i > 0) focusSiblingTab(i - 1);
+                } else if (e.key === 'Home') {
+                  e.preventDefault();
+                  focusSiblingTab(0);
+                } else if (e.key === 'End') {
+                  e.preventDefault();
+                  focusSiblingTab(UNLOCK_STEPS.length - 1);
+                }
+              }}
               className={`flex-1 min-w-0 cursor-pointer text-left px-5 py-4 font-bold text-lg flex items-center justify-between transition-all shadow-sm active:scale-[0.98] ${
                 isActive
                   ? 'bg-primary text-primary-content'
@@ -154,7 +184,7 @@ export default function UnlockPotentialSection() {
               }`}
             >
               <span className="text-2xl">{step.label}</span>
-              <span className="font-bold text-xl">&gt;</span>
+              <span className="font-bold text-xl" aria-hidden>&gt;</span>
             </button>
 
             <div
@@ -182,9 +212,15 @@ export default function UnlockPotentialSection() {
 
   {/* Right column – fixed height + centered content */}
   <div className="lg:w-[60%] w-full">
-    <div className="border border-dashed border-2 border-primary/50 rounded-xl bg-base-200 p-6 
+    <div
+      id={`unlock-panel-${UNLOCK_STEPS[activeStep].id}`}
+      role="tabpanel"
+      aria-labelledby={`unlock-tab-${UNLOCK_STEPS[activeStep].id}`}
+      tabIndex={0}
+      className="border border-dashed border-2 border-primary/50 rounded-xl bg-base-200 p-6 
                     min-h-[360px] lg:min-h-[420px] 
-                    flex items-center justify-center">
+                    flex items-center justify-center outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+    >
 
       {/* Inner wrapper keeps content nicely centered */}
       <div className="w-full max-w-2xl">

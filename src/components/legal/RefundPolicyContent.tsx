@@ -1,21 +1,29 @@
 "use client";
 
+import * as React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import type { LegalDocVariant } from "@/components/legal/types";
 
-export default function RefundPolicyPage() {
-  return (
-    <>
-      <Navbar />
+export default function RefundPolicyPage({
+  variant = "standalone",
+}: {
+  variant?: LegalDocVariant;
+}) {
+  const embedded = variant === "embedded";
+
+  const mainBlock = (
       <div className="max-w-4xl mx-auto">
         <div className="bg-base-100">
           <div className="card-body gap-4">
             <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
               <div>
-                <h1 className="text-2xl md:text-3xl font-bold">
-                  Refund / Cancellation Policy
-                </h1>
-                <p className="text-sm text-base-content/60 mt-1">
+                {React.createElement(
+                  embedded ? "h2" : "h1",
+                  { className: "text-2xl md:text-3xl font-bold" },
+                  "Refund / Cancellation Policy"
+                )}
+                <p className="text-sm text-base-content/70 mt-1">
                   Last updated:{" "}
                   <time dateTime="2025-03-17">March 17, 2025</time>
                 </p>
@@ -29,6 +37,7 @@ export default function RefundPolicyPage() {
                   }}
                   className="btn btn-ghost btn-sm"
                   title="Print refund policy"
+                  aria-label="Print refund policy"
                 >
                   Print
                 </a>
@@ -79,7 +88,14 @@ export default function RefundPolicyPage() {
           </div>
         </div>
       </div>
+  );
 
+  if (embedded) return mainBlock;
+
+  return (
+    <>
+      <Navbar />
+      {mainBlock}
       <Footer />
     </>
   );

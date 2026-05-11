@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Lock, AlertTriangle, Shield, Check } from 'lucide-react';
 
 import PerformanceSection from './PerformanceSection';
@@ -150,13 +151,31 @@ const WHY_HEDGIUM_TABS = [
         </p>
         <div className="flex items-center justify-center gap-4 md:gap-8">
           <div className="flex flex-col items-center text-center gap-2">
-            <img src="/images/home/message.png" alt="Live Chat" className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 object-contain" />
+            <Image
+              src="/images/home/message.png"
+              alt="Live chat support"
+              width={112}
+              height={112}
+              className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 object-contain"
+            />
           </div>
           <div className="flex flex-col items-center text-center gap-2">
-            <img src="/images/home/call.png" alt="Dedicated Support" className="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 object-contain" />
+            <Image
+              src="/images/home/call.png"
+              alt="Phone support"
+              width={112}
+              height={112}
+              className="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 object-contain"
+            />
           </div>
           <div className="flex flex-col items-center text-center gap-2">
-            <img src="/images/home/mail.png" alt="Email" className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 object-contain" />
+            <Image
+              src="/images/home/mail.png"
+              alt="Email support"
+              width={112}
+              height={112}
+              className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 object-contain"
+            />
           </div>
         </div>
       </div>
@@ -206,25 +225,59 @@ export default function WhyHedgiumSection() {
 <div className="hidden lg:flex flex-row items-center min-h-[520px]">
   
   {/* Left column – centered like Unlock section */}
-  <div className="lg:w-[40%] w-full flex flex-col gap-10 justify-center">
+  <div
+    className="lg:w-[40%] w-full flex flex-col gap-10 justify-center"
+    role="tablist"
+    aria-label="What makes Hedgium different"
+    aria-orientation="vertical"
+  >
     {WHY_HEDGIUM_TABS.map((tab, i) => {
       const isActive = activeTab === i;
+      const tabId = `why-hedgium-tab-${tab.id}`;
+      const focusSiblingTab = (next: number) => {
+        const clamped = Math.max(0, Math.min(WHY_HEDGIUM_TABS.length - 1, next));
+        setActiveTab(clamped);
+        const el = document.getElementById(`why-hedgium-tab-${WHY_HEDGIUM_TABS[clamped].id}`);
+        window.requestAnimationFrame(() => el?.focus());
+      };
       return (
-        <div key={tab.id} className="flex items-center">
-          <img
+        <div key={tab.id} className="flex items-center" role="presentation">
+          <Image
             src="/images/logos/Hedgium icon cropped.png"
             alt=""
+            width={48}
+            height={48}
             aria-hidden
             className="shrink-0 w-10 h-10 md:w-12 md:h-12 object-contain"
           />
 
-          <div className="flex-1 flex items-center">
-            <div className="border-t border-dashed border-primary/50 w-4 shrink-0" />
+          <div className="flex-1 flex items-center" role="presentation">
+            <div className="border-t border-dashed border-primary/50 w-4 shrink-0" aria-hidden />
 
 
         <button
   type="button"
+  id={tabId}
+  role="tab"
+  aria-selected={isActive}
+  aria-controls={`why-hedgium-panel-${tab.id}`}
+  tabIndex={isActive ? 0 : -1}
   onClick={() => setActiveTab(i)}
+  onKeyDown={(e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      if (i < WHY_HEDGIUM_TABS.length - 1) focusSiblingTab(i + 1);
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      if (i > 0) focusSiblingTab(i - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      focusSiblingTab(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      focusSiblingTab(WHY_HEDGIUM_TABS.length - 1);
+    }
+  }}
   className={`flex-1 cursor-pointer rounded-xl text-left px-4 py-3 font-bold text-lg xl:text-2xl transition-all duration-200 active:scale-[0.97]
     ${
       isActive
@@ -236,7 +289,7 @@ export default function WhyHedgiumSection() {
         `
         : `
           bg-primary/10 
-          text-base-content/70
+          text-base-content/80
           hover:bg-primary/30 
           hover:text-primary-content
           hover:shadow-sm
@@ -261,8 +314,12 @@ export default function WhyHedgiumSection() {
   {/* Right column – SAME height + centered content */}
   <div className="lg:w-[60%] w-full">
     <div
+      id={`why-hedgium-panel-${WHY_HEDGIUM_TABS[activeTab].id}`}
+      role="tabpanel"
+      aria-labelledby={`why-hedgium-tab-${WHY_HEDGIUM_TABS[activeTab].id}`}
+      tabIndex={0}
       className="border-2 border-base-300 rounded-3xl bg-base-100
-                 h-[520px] flex items-center justify-center"
+                 h-[520px] flex items-center justify-center outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >
       <div className="w-full p-4">
         {WHY_HEDGIUM_TABS[activeTab].content}

@@ -1,4 +1,5 @@
-import { Mail, Phone, MapPin, Calendar, MessageCircle, Link } from "lucide-react";
+import Link from "next/link";
+import { Mail, Phone, MapPin, Calendar, MessageCircle } from "lucide-react";
 
 export default function ContactSection() {
   return (
@@ -21,7 +22,10 @@ export default function ContactSection() {
               {`Let’s get started`}
             </p>
 
-            <Link href="/get-started" className="btn btn-primary lg:btn-md gap-2"><Calendar size={18} /> Schedule an expert call</Link>
+            <Link href="/get-started" className="btn btn-primary lg:btn-md gap-2">
+              <Calendar size={18} aria-hidden />
+              Schedule an expert call
+            </Link>
           </div>
         </div>
 
@@ -37,7 +41,7 @@ export default function ContactSection() {
               <div className="flex items-center gap-4">
                 <Mail className="text-primary" size={22}/>
                 <div>
-                  <p className="text-sm text-base-content/60">Email</p>
+                  <p className="text-sm text-base-content/70">Email</p>
                   <p className="font-semibold">clients@hedgium.ai</p>
                 </div>
               </div>
@@ -45,7 +49,7 @@ export default function ContactSection() {
               <div className="flex items-center gap-4">
                 <Phone className="text-primary" size={22}/>
                 <div>
-                  <p className="text-sm text-base-content/60">Phone / WhatsApp</p>
+                  <p className="text-sm text-base-content/70">Phone / WhatsApp</p>
                   <p className="font-semibold">+91 {process.env.NEXT_PUBLIC_PHONE_NUMBER}</p>
                 </div>
               </div>
@@ -53,7 +57,7 @@ export default function ContactSection() {
               <div className="flex items-start gap-4">
                 <MapPin className="text-primary mt-1" size={22}/>
                 <div>
-                  <p className="text-sm text-base-content/60">Locations</p>
+                  <p className="text-sm text-base-content/70">Locations</p>
                   <p className="font-semibold leading-relaxed">
                     Haware City, Thane <br/>
                     Powai, Mumbai <br/>

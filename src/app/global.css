@@ -19,7 +19,7 @@
   --color-base-100: oklch(0.99 0.005 264);
   --color-base-200: oklch(0.96 0.01 264);
   --color-base-300: oklch(0.92 0.015 264);
-  --color-base-content: oklch(0.22 0.02 264);
+  --color-base-content: oklch(0.2 0.022 264);
 
   --color-primary: #244061;
   --color-primary-content: #f8fafc;
@@ -53,7 +53,7 @@
   --color-base-100: oklch(0.18 0.02 264);
   --color-base-200: oklch(0.22 0.025 264);
   --color-base-300: oklch(0.28 0.03 264);
-  --color-base-content: oklch(0.92 0.02 264);
+  --color-base-content: oklch(0.94 0.018 264);
 
   --color-primary: #6b8bb3;
   --color-primary-content: #0a1320;
@@ -93,6 +93,16 @@
 .card-hover:hover {
     transform: translateY(-5px);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Visible keyboard focus (WCAG 2.4.7) */
+:focus-visible {
+    outline: 2px solid var(--color-primary, #244061);
+    outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
 }
 
 /* hide scrollbar (webkit, firefox, IE/Edge) */

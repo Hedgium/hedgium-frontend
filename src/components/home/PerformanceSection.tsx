@@ -12,7 +12,7 @@ export default function PerformanceSection() {
             </span>
           </h2>
 
-          <p className="text-sm md:text-base lg:text-lg xl:text-xl text-primary-content/80 mt-2">
+          <p className="text-sm md:text-base lg:text-lg xl:text-xl text-primary-content/90 mt-2">
               Hedgium’s prop account performance using the two-engine framework
               post market top in December 2025
           </p>
@@ -29,34 +29,43 @@ export default function PerformanceSection() {
           </div>
 
           {/* Table */}
-          <div className="overflow-x-auto mt-4  p-4 lg:p-8 xl:p-10 lg:mt-4 xl:mt-6">
+          <div
+            className="overflow-x-auto mt-4  p-4 lg:p-8 xl:p-10 lg:mt-4 xl:mt-6"
+            role="region"
+            aria-label="Hedgium performance versus benchmarks"
+          >
             <table className="table w-full text-sm md:text-base border-separate border-spacing-0">
+              <caption className="sr-only">
+                Prop account performance for portfolio layer, trading layer, and total return compared to Nifty and average equity mutual funds.
+              </caption>
 
               <thead>
                 <tr>
-                  <th className="min-w-[220px] lg:min-w-[280px] xl:min-w-[300px]"></th>
-                  <th className="text-primary-content text-center border-l-2 border-t-2 border-dashed rounded-tl-xl">Hedgium</th>
-                  <th className="text-primary-content text-center border-r-2 border-t-2 border-dashed rounded-tr-xl">Alpha/ Outperformance</th>
-                  <th className="text-center text-primary-content">Benchmark Return (NIFTY)</th>
-                  <th className="text-center text-primary-content">Equity Mutual Funds (Avg.)*</th>
+                  <th scope="col" className="min-w-[220px] lg:min-w-[280px] xl:min-w-[300px] p-2">
+                    <span className="sr-only">Portfolio layer</span>
+                  </th>
+                  <th scope="col" className="text-primary-content text-center border-l-2 border-t-2 border-dashed rounded-tl-xl">Hedgium</th>
+                  <th scope="col" className="text-primary-content text-center border-r-2 border-t-2 border-dashed rounded-tr-xl">Alpha/ Outperformance</th>
+                  <th scope="col" className="text-center text-primary-content">Benchmark Return (NIFTY)</th>
+                  <th scope="col" className="text-center text-primary-content">Equity Mutual Funds (Avg.)*</th>
                 </tr>
               </thead>
 
               <tbody>
                 <tr>
-                  <td className="text-primary-content/80 min-w-[220px] lg:min-w-[280px] xl:min-w-[300px]">
+                  <th scope="row" className="text-primary-content/90 min-w-[220px] lg:min-w-[280px] xl:min-w-[300px] font-normal text-left align-top">
                     Portfolio Layer (Engine 1):-
-                  </td>
+                  </th>
                   <td className="text-center border-l-2 border-dashed">-3.9%</td>
                   <td className="font-medium text-center border-r-2 border-dashed">+7.8% / +5.3%</td>
-                  <td className="text-center text-primary-content/70">-11.7%</td>
-                  <td className="text-center text-primary-content/70">-9.2%</td>
+                  <td className="text-center text-primary-content/90">-11.7%</td>
+                  <td className="text-center text-primary-content/90">-9.2%</td>
                 </tr>
 
                 <tr>
-                  <td className="text-primary-content/80 min-w-[200px] lg:min-w-[260px] xl:min-w-[280px]">
+                  <th scope="row" className="text-primary-content/90 min-w-[200px] lg:min-w-[260px] xl:min-w-[280px] font-normal text-left align-top">
                     Trading Layer (Engine 2):-
-                  </td>
+                  </th>
                   <td className="text-center border-l-2 border-dashed">+4.5%</td>
                   <td className="font-medium text-center border-r-2 border-dashed">+4.5% / +4.5%</td>
                   <td className="text-center text-error">NA</td>
@@ -71,11 +80,11 @@ export default function PerformanceSection() {
                 </tr> */}
 
                 <tr className="font-semibold">
-                  <td className="text-primary-content/80 min-w-[200px] lg:min-w-[260px] xl:min-w-[280px]">TOTAL Return (1+2):-</td>
+                  <th scope="row" className="text-primary-content/90 min-w-[200px] lg:min-w-[260px] xl:min-w-[280px] font-semibold text-left align-top">TOTAL Return (1+2):-</th>
                   <td className="text-center border-l-2 border-b-2 border-dashed rounded-bl-xl">+0.6%</td>
                   <td className="font-medium text-center border-r-2 border-b-2 border-dashed rounded-br-xl">+12.3% / +9.8%</td>
-                  <td className="text-center text-primary-content/70">-11.7%</td>
-                  <td className="text-center text-primary-content/70">-9.2%</td>
+                  <td className="text-center text-primary-content/90">-11.7%</td>
+                  <td className="text-center text-primary-content/90">-9.2%</td>
                 </tr>
               </tbody>
             </table>
@@ -84,7 +93,7 @@ export default function PerformanceSection() {
         </div>
 
         {/* Footnotes */}
-        <div className="mt-6 text-xs text-primary-content/60 space-y-1">
+        <div className="mt-6 text-xs text-primary-content/75 space-y-1">
           <p>* Average multi-cap equity mutual funds performance (trailing 3M). Source: valueresearchonline.com</p>
           <p>Disclaimer: Past performance is not indicative of future returns</p>
         </div>
