@@ -22,7 +22,7 @@ export default function LegalComplaintsInvestorCharterPage() {
               <h1 className="text-2xl md:text-3xl font-bold">
                 Legal, Complaints & Investor Charter
               </h1>
-              <p className="text-sm text-base-content/70 mt-2">
+              <p className="text-sm text-base-content/90 mt-2">
                 Consolidated static disclosures and investor documents.
               </p>
             </header>

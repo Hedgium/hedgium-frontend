@@ -23,7 +23,7 @@ export default function MitcRaPage({
                   { className: "text-2xl md:text-3xl font-bold" },
                   "Most Important Terms and Conditions (MITC)"
                 )}
-                <p className="text-sm text-base-content/70 mt-1">
+                <p className="text-sm text-base-content/90 mt-1">
                   Research Analyst (RA) – SEBI Registration No. INH000025258
                 </p>
               </div>
@@ -52,7 +52,7 @@ export default function MitcRaPage({
               <ol className="list-decimal list-inside space-y-6">
                 <li>
                   <strong>Scope and trade execution</strong>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                     These terms and conditions, and consent thereon are for the
                     research services provided by the Research Analyst (RA) and
                     RA cannot execute/carry out any trade (purchase/sell
@@ -63,13 +63,13 @@ export default function MitcRaPage({
                 </li>
                 <li>
                   <strong>Fee limits</strong>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                     The fee charged by RA to the client will be subject to the
                     maximum amount prescribed by SEBI / Research Analyst
                     Administration and Supervisory Body (RAASB) from time to time
                     (applicable only for Individual and HUF Clients).
                   </p>
-                  <p className="mt-2 text-sm text-base-content/70">
+                  <p className="mt-2 text-sm text-base-content/90">
                     <strong>Note:</strong>
                     <br />
                     2.1. The current fee limit is Rs 1,51,000/- per annum per
@@ -83,7 +83,7 @@ export default function MitcRaPage({
                 </li>
                 <li>
                   <strong>Advance fees and refunds</strong>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                     RA may charge fees in advance if agreed by the client. Such
                     advance shall not exceed the period stipulated by SEBI;
                     presently it is one year. In case of pre-mature termination
@@ -94,7 +94,7 @@ export default function MitcRaPage({
                 </li>
                 <li>
                   <strong>Payment methods</strong>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                     Fees to RA may be paid by the client through any of the
                     specified modes like cheque, online bank transfer, UPI, etc.
                     Cash payment is not allowed. Optionally the client can make
@@ -105,7 +105,7 @@ export default function MitcRaPage({
                 </li>
                 <li>
                   <strong>Conflicts of interest</strong>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                     The RA is required to abide by the applicable
                     regulations/circulars/directions specified by SEBI and RAASB
                     from time to time in relation to disclosure and mitigation of
@@ -117,7 +117,7 @@ export default function MitcRaPage({
                 </li>
                 <li>
                   <strong>Prohibited schemes</strong>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                     Any assured/guaranteed/fixed returns schemes or any other
                     schemes of similar nature are prohibited by law. No scheme of
                     this nature shall be offered to the client by the RA.
@@ -125,7 +125,7 @@ export default function MitcRaPage({
                 </li>
                 <li>
                   <strong>No guaranteed returns</strong>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                     The RA cannot guarantee returns, profits, accuracy, or
                     risk-free investments from the use of the RA&apos;s research
                     services. All opinions, projections, estimates of the RA are
@@ -136,7 +136,7 @@ export default function MitcRaPage({
                 </li>
                 <li>
                   <strong>Market risks and reliance</strong>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                     Any investment made based on recommendations in research
                     reports is subject to market risks, and recommendations do
                     not provide any assurance of returns. There is no recourse to
@@ -149,7 +149,7 @@ export default function MitcRaPage({
                 </li>
                 <li>
                   <strong>Certifications and registration</strong>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                     The SEBI registration, Enlistment with RAASB, and NISM
                     certification do not guarantee the performance of the RA or
                     assure any returns to the client.
@@ -157,10 +157,10 @@ export default function MitcRaPage({
                 </li>
                 <li>
                   <strong>Grievance redressal</strong>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                     For any grievances, follow the steps below:
                   </p>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                   <strong>Step 1:</strong> The client should first contact the
                     RA using the details on its website (
                     <a
@@ -183,7 +183,7 @@ export default function MitcRaPage({
                       compliance@hedgium.in
                     </a>
                   </p>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                     <strong>Step 2:</strong> If the resolution is unsatisfactory,
                     the client can also lodge grievances through SEBI&apos;s
                     SCORES platform at{" "}
@@ -196,7 +196,7 @@ export default function MitcRaPage({
                       www.scores.sebi.gov.in
                     </a>
                   </p>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                     <strong>Step 3:</strong> The client may also consider the
                     Online Dispute Resolution (ODR) through the Smart ODR portal
                     at{" "}
@@ -212,7 +212,7 @@ export default function MitcRaPage({
                 </li>
                 <li>
                   <strong>Keep contact details updated</strong>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                     Clients are required to keep contact details, including
                     email id and mobile number/s updated with the RA at all
                     times.
@@ -220,7 +220,7 @@ export default function MitcRaPage({
                 </li>
                 <li>
                   <strong>Confidentiality & credentials</strong>
-                  <p className="mt-2 text-base-content/80">
+                  <p className="mt-2 text-base-content/90">
                     The RA shall never ask for the client&apos;s login
                     credentials and OTPs for the client&apos;s Trading Account,
                     Demat Account, or Bank Account. Never share such information

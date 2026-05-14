@@ -31,7 +31,7 @@ export default function GrievanceRedressalPage({
                   { className: "text-2xl md:text-3xl font-bold" },
                   "Grievance Redressal"
                 )}
-                <p className="text-sm text-base-content/70 mt-1">
+                <p className="text-sm text-base-content/90 mt-1">
                   SEBI Registered Research Analyst – INH000025258
                 </p>
               </div>
@@ -54,7 +54,7 @@ export default function GrievanceRedressalPage({
             <div className="divider my-0" />
 
             <article id="printable" className="prose prose-sm md:prose-md max-w-none">
-              <p className="text-base-content/80 mb-6">
+              <p className="text-base-content/90 mb-6">
                 Client&apos;s queries / complaints may arise due to lack of
                 understanding or a deficiency of service experienced by clients.
                 Deficiency of service may include lack of explanation,
@@ -155,10 +155,15 @@ export default function GrievanceRedressalPage({
                 </li>
               </ol>
 
-              <h2 className="text-lg font-semibold mt-8 mb-4">
+              <h2 id="grievance-escalation-matrix-heading" className="text-lg font-semibold mt-8 mb-4">
                 Escalation Matrix
               </h2>
-              <div className="overflow-x-auto mb-8">
+              <div
+                className="mb-8 overflow-x-auto outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                role="region"
+                aria-labelledby="grievance-escalation-matrix-heading"
+                tabIndex={0}
+              >
                 <table className="table table-zebra w-full text-sm">
                   <thead>
                     <tr>
@@ -194,7 +199,7 @@ export default function GrievanceRedressalPage({
 
               <section className="pt-6 border-t border-base-300">
                 <h2 className="text-lg font-semibold mb-3">SEBI SCORES & ODR</h2>
-                <p className="text-sm text-base-content/80">
+                <p className="text-sm text-base-content/90">
                   SEBI SCORES:{" "}
                   <a
                     href="https://scores.sebi.gov.in/scores-home"

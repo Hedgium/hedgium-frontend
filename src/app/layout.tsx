@@ -60,6 +60,12 @@ export default function RootLayout({
       <body
         className={font.className + ' min-h-screen flex flex-col'}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] rounded bg-black px-4 py-2 text-white"
+        >
+          Skip to main content
+        </a>
         <RootLayoutClient>{children}</RootLayoutClient>
       </body>
     </html>

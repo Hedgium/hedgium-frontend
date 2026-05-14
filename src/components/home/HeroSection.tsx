@@ -1,7 +1,11 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { Play, Pause } from 'lucide-react';
+import { ChevronDown, Play, Pause } from 'lucide-react';
+
+/** Full text transcript for the hero video (WCAG + `aria-describedby`). */
+const HERO_VIDEO_TRANSCRIPT =
+  'This hero clip plays on a loop, muted, with no spoken dialogue; it provides atmospheric visuals only. The main message is given in text on this screen: the headline "Ambition Guided by Intelligence. Defined by Performance" and the banner paragraph about market experience, opportunities, and risk-aware capital performance. English captions for the clip are supplied via a WebVTT track on the video element.';
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -29,12 +33,24 @@ export default function HeroSection() {
         muted
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover"
-        aria-label="Background video introducing Hedgium and systematic investing"
+        aria-label="Muted hero background video"
+        aria-describedby="hero-video-transcript"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       >
         <source src="/videos/hero_video.mp4" type="video/mp4" />
+        <track
+          kind="captions"
+          srcLang="en"
+          label="English captions"
+          src="/videos/hero_video_captions.vtt"
+        />
       </video>
+
+      {/* Screen-reader transcript + audit tools; not shown visually */}
+      <div id="hero-video-transcript" className="sr-only">
+        <p>{HERO_VIDEO_TRANSCRIPT}</p>
+      </div>
 
       {/* Play / Pause button - top right */}
       <button
@@ -68,6 +84,22 @@ export default function HeroSection() {
 
       </div>
 
+      {/* Optional readable transcript — small chip, keeps trapezium clean */}
+      <details className="absolute top-[4.75rem] right-4 z-40 max-w-xs rounded-lg border-2 border-white/55 bg-black/35 text-left text-white shadow-lg backdrop-blur-md open:max-w-sm open:bg-black/50 md:top-[5.25rem] md:right-6">
+        <summary className="flex cursor-pointer list-none items-center gap-1.5 px-3 py-2 text-[11px] font-medium uppercase tracking-wider text-white outline-none transition hover:bg-white/10 hover:text-white focus-visible:ring-2 focus-visible:ring-white/40 [&::-webkit-details-marker]:hidden">
+          Transcript
+          <ChevronDown className="size-3.5 shrink-0 opacity-80" aria-hidden />
+        </summary>
+        <div
+          className="max-h-36 overflow-y-auto border-t-2 border-white/45 px-3 py-2 text-xs leading-relaxed text-white outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/50"
+          tabIndex={0}
+          role="region"
+          aria-label="Hero video transcript text"
+        >
+          {HERO_VIDEO_TRANSCRIPT}
+        </div>
+      </details>
+
       {/* Bottom trapezium */}
       <div className="trapezium-wrap absolute bottom-0 left-1/2 -translate-x-1/2 px-4 md:px-8 w-full max-w-8xl z-30">
         <div className="trapezium-reverse mx-auto">
@@ -82,26 +114,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-
-      {/* <div className="relative z-40 mx-auto w-full max-w-4xl px-4 pb-6 pt-2">
-        <details className="rounded-lg border border-white/30 bg-base-100/95 text-base-content shadow-lg backdrop-blur-sm">
-          <summary className="cursor-pointer select-none px-4 py-3 text-sm font-semibold outline-none focus-visible:ring-2 focus-visible:ring-primary">
-            Hero video transcript
-          </summary>
-          <div className="border-t border-base-300 px-4 py-3 text-sm leading-relaxed">
-            <p>
-              This hero video presents Hedgium as a quant-based investment platform: ambition guided by
-              intelligence and defined by performance. The narrative highlights two decades of market
-              experience, identifying real-time opportunities and managing risk dynamically to pursue
-              consistent, risk-aware capital outcomes.
-            </p>
-            <p className="mt-2">
-              Synchronized captions are not yet available for this clip; when a caption file is provided,
-              it will be linked here for full WCAG conformance.
-            </p>
-          </div>
-        </details>
-      </div> */}
 
     </section>
   );

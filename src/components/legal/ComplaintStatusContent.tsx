@@ -39,7 +39,7 @@ export default function ComplaintStatusPage({
                   { className: "text-2xl md:text-3xl font-bold" },
                   "Complaint Status"
                 )}
-                <p className="text-sm text-base-content/70 mt-1">
+                <p className="text-sm text-base-content/90 mt-1">
                   SEBI Registered Research Analyst – INH000025258
                 </p>
               </div>
@@ -62,12 +62,17 @@ export default function ComplaintStatusPage({
             <div className="divider my-0" />
 
             <article id="printable" className="prose prose-sm md:prose-md max-w-none">
-              <p className="text-base-content/80 mb-6">
+              <p className="text-base-content/90 mb-6">
                 Data for the month ending – {MONTH_ENDING}
               </p>
 
               {/* Summary Table */}
-              <div className="overflow-x-auto mb-8">
+              <div
+                className="mb-8 overflow-x-auto outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                role="region"
+                aria-label="Complaint status summary data"
+                tabIndex={0}
+              >
                 <table className="table table-zebra w-full text-sm">
                   <thead>
                     <tr>
@@ -108,17 +113,22 @@ export default function ComplaintStatusPage({
                 </table>
               </div>
 
-              <p className="text-xs text-base-content/70 mb-6">
+              <p className="text-xs text-base-content mb-6">
                 ^ Average Resolution time is the sum total of time taken to
                 resolve each complaint in days, in the current month divided by
                 total number of complaints resolved in the current month.
               </p>
 
               {/* Monthly Trend */}
-              <h2 className="text-lg font-semibold mt-8 mb-4">
+              <h2 id="complaint-status-monthly-trend-heading" className="text-lg font-semibold mt-8 mb-4">
                 Trend of monthly disposal of complaints
               </h2>
-              <div className="overflow-x-auto mb-6">
+              <div
+                className="mb-6 overflow-x-auto outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                role="region"
+                aria-labelledby="complaint-status-monthly-trend-heading"
+                tabIndex={0}
+              >
                 <table className="table table-zebra w-full text-sm">
                   <thead>
                     <tr>
@@ -153,7 +163,7 @@ export default function ComplaintStatusPage({
                 </table>
               </div>
 
-              <p className="text-xs text-base-content/70 mb-6">
+              <p className="text-xs text-base-content mb-6">
                 * Inclusive of complaints of previous months resolved in the
                 current month.
                 <br />
@@ -162,10 +172,15 @@ export default function ComplaintStatusPage({
               </p>
 
               {/* Annual Trend */}
-              <h2 className="text-lg font-semibold mt-8 mb-4">
+              <h2 id="complaint-status-annual-trend-heading" className="text-lg font-semibold mt-8 mb-4">
                 Trend of annual disposal of complaints
               </h2>
-              <div className="overflow-x-auto mb-6">
+              <div
+                className="mb-6 overflow-x-auto outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                role="region"
+                aria-labelledby="complaint-status-annual-trend-heading"
+                tabIndex={0}
+              >
                 <table className="table table-zebra w-full text-sm">
                   <thead>
                     <tr>
@@ -200,7 +215,7 @@ export default function ComplaintStatusPage({
                 </table>
               </div>
 
-              <p className="text-xs text-base-content/70">
+              <p className="text-xs text-base-content">
                 * Inclusive of complaints of previous years resolved in the
                 current year.
                 <br />
@@ -209,7 +224,7 @@ export default function ComplaintStatusPage({
 
               <section className="mt-10 pt-6 border-t border-base-300">
                 <h2 className="text-lg font-semibold mb-3">Contact</h2>
-                <p className="text-sm text-base-content/80">
+                <p className="text-sm text-base-content/90">
                   For any complaints or grievances, please contact:
                   <br />
                   <a
@@ -219,7 +234,7 @@ export default function ComplaintStatusPage({
                     compliance@hedgium.in
                   </a>
                 </p>
-                <p className="text-sm text-base-content/80 mt-2">
+                <p className="text-sm text-base-content/90 mt-2">
                   SEBI SCORES:{" "}
                   <a
                     href="https://scores.sebi.gov.in/scores-home"

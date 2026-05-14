@@ -41,7 +41,7 @@ export default function ContactSection() {
               <div className="flex items-center gap-4">
                 <Mail className="text-primary" size={22}/>
                 <div>
-                  <p className="text-sm text-base-content/70">Email</p>
+                  <p className="text-sm text-base-content/90">Email</p>
                   <p className="font-semibold">clients@hedgium.ai</p>
                 </div>
               </div>
@@ -49,7 +49,7 @@ export default function ContactSection() {
               <div className="flex items-center gap-4">
                 <Phone className="text-primary" size={22}/>
                 <div>
-                  <p className="text-sm text-base-content/70">Phone / WhatsApp</p>
+                  <p className="text-sm text-base-content/90">Phone / WhatsApp</p>
                   <p className="font-semibold">+91 {process.env.NEXT_PUBLIC_PHONE_NUMBER}</p>
                 </div>
               </div>
@@ -57,7 +57,7 @@ export default function ContactSection() {
               <div className="flex items-start gap-4">
                 <MapPin className="text-primary mt-1" size={22}/>
                 <div>
-                  <p className="text-sm text-base-content/70">Locations</p>
+                  <p className="text-sm text-base-content/90">Locations</p>
                   <p className="font-semibold leading-relaxed">
                     Haware City, Thane <br/>
                     Powai, Mumbai <br/>
@@ -71,7 +71,7 @@ export default function ContactSection() {
             {/* whatsapp CTA */}
             <div className="flex flex-col md:border-l border-base-300 md:px-4 py-4 justify-center items-center md:items-start gap-4">
 
-              <p className="text-base-content/70 text-base">
+              <p className="text-base-content/90 text-base">
                 Prefer WhatsApp? Send us a quick message and our team will get back to you shortly.
               </p>
 

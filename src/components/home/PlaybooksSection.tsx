@@ -16,23 +16,23 @@ export default function PlaybooksSection() {
             </h2>
             <div className="relative flex flex-col gap-6">
               <div className="flex flex-col gap-1">
-                <div className="bg-primary text-primary-content px-2 lg:px-4 py-2 lg:py-3 font-bold text-base lg:text-lg rounded-sm">
+                <h3 className="bg-primary text-primary-content px-2 lg:px-4 py-2 lg:py-3 font-bold text-base lg:text-lg rounded-sm">
                   Portfolio income approach
-                </div>
+                </h3>
 
                 <div className='mt-1 ml-2 lg:ml-4'>
-                <p className="text-base lg:text-lg font-bold text-base-content">Build top-up income (only Engine-2)</p>
+                <h4 className="text-base lg:text-lg font-bold text-base-content">Build top-up income (only Engine-2)</h4>
                 <p className="text-base lg:text-lg text-primary">
                   Investors with an existing portfolio, who desire incremental returns by leveraging portfolio value using statistical-arbitrage low-risk strategies
                 </p>
                 </div>
               </div>
               <div className="flex flex-col gap-1 self-center">
-                <div className="bg-primary text-primary-content px-2 lg:px-4 py-2 lg:py-3 font-bold text-base lg:text-lg rounded-sm">
+                <h3 className="bg-primary text-primary-content px-2 lg:px-4 py-2 lg:py-3 font-bold text-base lg:text-lg rounded-sm">
                   Total income approach
-                </div>
+                </h3>
                 <div className='mt-1 ml-2 lg:ml-4'>
-                <p className="text-base lg:text-lg font-bold text-base-content">Build base portfolio + Top-up income (Engine-1 + Engine-2)</p>
+                <h4 className="text-base lg:text-lg font-bold text-base-content">Build base portfolio + Top-up income (Engine-1 + Engine-2)</h4>
                 <p className="text-base lg:text-lg text-primary">
                   Investors who want to build ground-up portfolios and leverage them for additional income, targeting superior risk-adjusted returns
                 </p>

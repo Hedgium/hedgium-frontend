@@ -52,7 +52,7 @@ function getLeftPanelContent(step: number, submitted: boolean, investmentValue?:
       <>
         <div className="w-16 h-16 rounded-full bg-success/20 flex items-center justify-center text-2xl mb-6">✓</div>
         <p className="text-lg font-medium text-base-content">Thank you for getting in touch.</p>
-        <p className="mt-3 text-sm text-base-content/70">
+        <p className="mt-3 text-sm text-base-content/90">
           {isBelow25l
             ? "We&apos;ve noted your interest, and we&apos;ll reach out if we expand our services to your investment range."
             : "We&apos;ll confirm your meeting and reach out shortly."}
@@ -65,11 +65,11 @@ function getLeftPanelContent(step: number, submitted: boolean, investmentValue?:
     // Quotation
     return wrapper(
       <>
-        <span className="text-4xl text-primary/50 font-serif leading-none">&ldquo;</span>
+        <span className="text-4xl text-primary font-serif leading-none" aria-hidden="true">&ldquo;</span>
         <p className="text-lg lg:text-xl font-medium text-base-content leading-relaxed max-w-sm mt-2">
           The best time to start was yesterday. The next best is now.
         </p>
-        <p className="mt-5 text-sm text-base-content/70">— Get started in minutes</p>
+        <p className="mt-5 text-sm text-base-content/90">— Get started in minutes</p>
       </>
     );
   }
@@ -84,7 +84,7 @@ function getLeftPanelContent(step: number, submitted: boolean, investmentValue?:
         <p className="text-lg lg:text-xl font-medium text-base-content leading-relaxed max-w-sm">
           &ldquo;I did not know this opportunity existed before Hedgium.&rdquo;
         </p>
-        <p className="mt-5 text-sm text-base-content/70">– Hedgium Clients</p>
+        <p className="mt-5 text-sm text-base-content/90">– Hedgium Clients</p>
       </>
     );
   }
@@ -100,7 +100,7 @@ function getLeftPanelContent(step: number, submitted: boolean, investmentValue?:
   return wrapper(
     <>
       <h3 className="text-base font-semibold text-base-content mb-3">What happens next</h3>
-      <ul className="text-sm text-base-content/80 text-left max-w-sm space-y-2 list-disc list-inside">
+      <ul className="text-sm text-base-content/90 text-left max-w-sm space-y-2 list-disc list-inside">
         <li>We&apos;ll confirm your slot via call or WhatsApp</li>
         <li>Our advisor will reach out at the chosen time</li>
         <li>Bring your portfolio or goals — we&apos;ll tailor the discussion</li>
@@ -268,7 +268,7 @@ export default function GetStartedPage() {
         <div className="px-4 pt-4 pb-2 border-b border-base-300">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm text-base-content/70 hover:text-base-content transition"
+            className="inline-flex items-center gap-1.5 text-sm text-base-content/90 hover:text-base-content transition"
           >
             <Home className="w-3.5 h-3.5" />
             Back to home
@@ -301,7 +301,7 @@ export default function GetStartedPage() {
                     <ChevronLeft className="w-4 h-4" aria-hidden />
                   </button>
                 )}
-                {!submitted && <span className="text-sm text-base-content/70">Step {step} of 3</span>}
+                {!submitted && <span className="text-sm text-base-content/90">Step {step} of 3</span>}
               </span>
               {(whatsappUrl && !submitted) && (
                 <div>
@@ -322,7 +322,7 @@ export default function GetStartedPage() {
             {submitted ? (
               <div className="text-center">
                 <h1 className="text-xl font-bold text-base-content mb-2">We&apos;ll be in touch shortly</h1>
-                <p className="text-base-content/70 text-sm mb-6">
+                <p className="text-base-content/90 text-sm mb-6">
                   {investmentValue === BELOW_25L_VALUE
                     ? "We&apos;ve noted your interest, and if we expand our services to your investment range, we&apos;ll reach out."
                     : "We&apos;ve received your details, and will confirm your meeting time. Prefer to chat now?"}
@@ -343,19 +343,19 @@ export default function GetStartedPage() {
 
             {!submitted && step === 1 && (
             <form onSubmit={handleStep1Continue} className="space-y-1" noValidate>
-              <p className="text-base-content/70 text-sm">
+              <p className="text-base-content/90 text-sm">
                 Share your number and we&apos;ll get in touch.
               </p>
               <div className="space-y-3 pt-4">
                 <div>
-                  <label className="label py-0.5" htmlFor={FIELD_MOBILE}>
-                    <span className="label-text">Mobile number <span className="text-error">*</span></span>
+                  <label className="label cursor-default py-0.5" htmlFor={FIELD_MOBILE}>
+                    Mobile number <span className="text-error" aria-hidden>*</span>
                   </label>
                   <input
                     id={FIELD_MOBILE}
                     type="tel"
                     inputMode="numeric"
-                    autoComplete="tel"
+                    autoComplete="tel-national"
                     name="mobile"
                     maxLength={10}
                     value={mobile}
@@ -367,8 +367,8 @@ export default function GetStartedPage() {
                   />
                 </div>
                 <div>
-                  <label className="label py-0.5" htmlFor={FIELD_NAME}>
-                    <span className="label-text">Name</span>
+                  <label className="label cursor-default py-0.5" htmlFor={FIELD_NAME}>
+                    Name
                   </label>
                   <input
                     id={FIELD_NAME}
@@ -382,13 +382,17 @@ export default function GetStartedPage() {
                   />
                 </div>
                 <div>
-                  <label className="label py-0.5" htmlFor={FIELD_SOURCE}>
-                    <span className="label-text">Where did you hear about us? (optional)</span>
+                  <label
+                    id={`${FIELD_SOURCE}-label`}
+                    className="label cursor-default py-0.5"
+                    htmlFor={FIELD_SOURCE}
+                  >
+                    Where did you hear about us? (optional)
                   </label>
                   <select
                     id={FIELD_SOURCE}
                     name="source"
-                    autoComplete="off"
+                    aria-labelledby={`${FIELD_SOURCE}-label`}
                     value={source}
                     onChange={(e) => setSource(e.target.value)}
                     className="select select-bordered select-sm w-full"
@@ -421,14 +425,17 @@ export default function GetStartedPage() {
               <h2 id={STEP2_HEADING} className="text-lg font-bold text-base-content">
                 What&apos;s the total value of your investments?
               </h2>
-              <p className="text-base-content/70 text-sm">
+              <p className="text-base-content/90 text-sm">
                 Include Stocks, MFs, FDs, and cash. This will help us personalise your experience.
               </p>
               <div className="space-y-2" role="radiogroup" aria-labelledby={STEP2_HEADING}>
-                {INVESTMENT_OPTIONS.map((opt) => (
+                {INVESTMENT_OPTIONS.map((opt) => {
+                  const investmentInputId = `get-started-investment-${opt.value}`;
+                  return (
                   <label
                     key={opt.value}
-                    className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-colors ${
+                    htmlFor={investmentInputId}
+                    className={`flex cursor-pointer items-center justify-between rounded-lg border p-3 transition-colors ${
                       investmentValue === opt.value
                         ? "border-primary bg-primary/5"
                         : "border-base-300 bg-base-200/50 hover:bg-base-200"
@@ -436,6 +443,7 @@ export default function GetStartedPage() {
                   >
                     <span className="text-sm text-base-content">{opt.label}</span>
                     <input
+                      id={investmentInputId}
                       type="radio"
                       name="investment_value"
                       value={opt.value}
@@ -444,7 +452,8 @@ export default function GetStartedPage() {
                       className="radio radio-primary radio-sm"
                     />
                   </label>
-                ))}
+                  );
+                })}
               </div>
               {error ? (
                 <p id={FIELD_FORM_ERROR} className="text-sm text-error" role="alert">
@@ -464,11 +473,11 @@ export default function GetStartedPage() {
           {!submitted && step === 3 && investmentValue === BELOW_25L_VALUE && (
             <div className="space-y-4">
               <h2 className="text-lg font-bold text-base-content">Thank you for your interest</h2>
-              <p className="text-base-content/70 text-sm">
+              <p className="text-base-content/90 text-sm">
                 We don&apos;t provide services for below ₹25 lakhs for now. If we provide it in the future we may contact you.
               </p>
               {submitting && (
-                <div className="flex items-center gap-2 text-sm text-base-content/70">
+                <div className="flex items-center gap-2 text-sm text-base-content/90">
                   <Loader2 className="w-4 h-4 animate-spin" />
                   Submitting...
                 </div>
@@ -486,19 +495,18 @@ export default function GetStartedPage() {
               <h2 id={STEP3_MEET_HEADING} className="text-lg font-bold text-base-content">
                 When would you like to meet?
               </h2>
-              <p className="text-base-content/70 text-sm">
+              <p className="text-base-content/90 text-sm">
                 Pick a date and time. We&apos;ll confirm via call or WhatsApp.
               </p>
               <div className="space-y-3">
                 <div>
-                  <label className="label py-0.5" htmlFor={FIELD_MEETING_DATE}>
-                    <span className="label-text">Date</span>
+                  <label className="label cursor-default py-0.5" htmlFor={FIELD_MEETING_DATE}>
+                    Date
                   </label>
                   <input
                     id={FIELD_MEETING_DATE}
                     type="date"
                     name="meeting-date"
-                    autoComplete="off"
                     value={meetingDate}
                     onChange={(e) => setMeetingDate(e.target.value)}
                     min={todayStr}
@@ -508,13 +516,17 @@ export default function GetStartedPage() {
                   />
                 </div>
                 <div>
-                  <label className="label py-0.5" htmlFor={FIELD_MEETING_TIME}>
-                    <span className="label-text">Time</span>
+                  <label
+                    id={`${FIELD_MEETING_TIME}-label`}
+                    className="label cursor-default py-0.5"
+                    htmlFor={FIELD_MEETING_TIME}
+                  >
+                    Time
                   </label>
                   <select
                     id={FIELD_MEETING_TIME}
                     name="meeting-time"
-                    autoComplete="off"
+                    aria-labelledby={`${FIELD_MEETING_TIME}-label`}
                     value={meetingTime}
                     onChange={(e) => setMeetingTime(e.target.value)}
                     className="select select-bordered select-sm w-full"
@@ -562,7 +574,7 @@ export default function GetStartedPage() {
             </form>
           )}
 
-          <p className="mt-5 pt-4 border-t border-base-300 flex items-center justify-center gap-2 text-xs text-base-content/65">
+          <p className="mt-5 pt-4 border-t border-base-300 flex items-center justify-center gap-2 text-xs text-base-content/90">
             <Shield className="w-3.5 h-3.5 flex-shrink-0" />
             Your data is 100% protected
           </p>

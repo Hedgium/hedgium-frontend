@@ -16,18 +16,18 @@ const WHY_HEDGIUM_TABS = [
         <div className="flex flex-col gap-3 p-0 lg:p-4">
 
           <ul className="list-disc list-inside flex flex-col gap-4">
-            <li className="text-base lg:text-lg xl:text-xl text-base-content/80">
+            <li className="text-base lg:text-lg xl:text-xl text-base-content/90">
               Developed, optimized &amp; operational since last 5 years
             </li>
-            <li className="text-base lg:text-lg xl:text-xl text-base-content/80">
+            <li className="text-base lg:text-lg xl:text-xl text-base-content/90">
               Tested in live, diverse market conditions including periods of high
               volatility, with built-in downside protections
             </li>
-            <li className="text-base lg:text-lg xl:text-xl text-base-content/80">
+            <li className="text-base lg:text-lg xl:text-xl text-base-content/90">
               Adaptable to different risk-appetites. Focused on better risk-adjusted
               returns
             </li>
-            <li className="text-base lg:text-lg xl:text-xl text-base-content/80">
+            <li className="text-base lg:text-lg xl:text-xl text-base-content/90">
               Suited for various capital sizes — From 25 Lakh to 25 Crore+
             </li>
           </ul>
@@ -43,12 +43,12 @@ const WHY_HEDGIUM_TABS = [
       <div className="flex flex-col gap-3">
         {/* Headers – hidden on mobile, shown on lg+ */}
         <div className="hidden lg:grid grid-cols-[35fr_65fr] gap-4">
-          <div className="flex items-center gap-2 font-bold text-base lg:text-lg xl:text-xl text-base-content border-b border-base-300 pb-2">
-            <AlertTriangle className="size-5 xl:size-6 shrink-0 text-warning" /> RISKS
-          </div>
-          <div className="flex items-center gap-2 font-bold text-base lg:text-lg xl:text-xl text-base-content border-b border-base-300 pb-2">
-            <Shield className="size-5 xl:size-6 shrink-0 text-primary" /> MITIGATION
-          </div>
+          <h3 className="flex items-center gap-2 font-bold text-base lg:text-lg xl:text-xl text-base-content border-b border-base-300 pb-2">
+            <AlertTriangle className="size-5 xl:size-6 shrink-0 text-warning" aria-hidden /> RISKS
+          </h3>
+          <h3 className="flex items-center gap-2 font-bold text-base lg:text-lg xl:text-xl text-base-content border-b border-base-300 pb-2">
+            <Shield className="size-5 xl:size-6 shrink-0 text-primary" aria-hidden /> MITIGATION
+          </h3>
         </div>
   
         {[
@@ -72,10 +72,10 @@ const WHY_HEDGIUM_TABS = [
             className="grid grid-cols-1 lg:grid-cols-[35fr_65fr] gap-2 lg:gap-4 items-start border-b border-base-300/50 py-2 last:border-0"
           >
             {/* Risk row – now with responsive layout */}
-            <p className="text-base lg:text-lg xl:text-xl font-bold text-base-content flex items-center gap-1 px-0 lg:px-2 py-1">
-              <span className="hidden lg:inline text-primary mr-1">→</span> 
+            <h4 className="text-base lg:text-lg xl:text-xl font-bold text-base-content flex items-center gap-1 px-0 lg:px-2 py-1">
+              <span className="hidden lg:inline text-primary mr-1" aria-hidden>→</span> 
               <span>{risk}</span>
-            </p>
+            </h4>
             <p className="text-base lg:text-lg xl:text-xl text-primary lg:pl-0 pl-2">
               {mitigation}
             </p>
@@ -93,7 +93,7 @@ const WHY_HEDGIUM_TABS = [
 
         {/* Central Lock */}
         <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-          <div className="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full bg-base-100 border-2 border-accent/30 flex items-center justify-center text-primary shadow-md z-10">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-accent/55 bg-base-100 text-primary shadow-md md:h-16 md:w-16 lg:h-20 lg:w-20 z-10">
             <Lock className="w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10" strokeWidth={2} />
           </div>
         </div>
@@ -289,7 +289,7 @@ export default function WhyHedgiumSection() {
         `
         : `
           bg-primary/10 
-          text-base-content/80
+          text-base-content/90
           hover:bg-primary/30 
           hover:text-primary-content
           hover:shadow-sm

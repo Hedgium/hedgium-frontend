@@ -60,7 +60,7 @@ export default function FAQSection() {
           data-aos-once="true"
         >
         <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-base-content mb-3">Frequently Asked Questions</h2>
-        <p className="text-sm lg:text-base xl:text-lg 2xl:text-xl text-base-content/75 mb-8">
+        <p className="text-sm lg:text-base xl:text-lg 2xl:text-xl text-base-content/90 mb-8">
           Everything you need to know about Hedgium&apos;s framework, capital requirements, and portfolio setup.
         </p>
         </div>
@@ -74,15 +74,13 @@ export default function FAQSection() {
               data-aos-delay={String(Math.min(i * 50, 200))}
               data-aos-once="true"
             >
-              <summary className="list-none cursor-pointer px-4 py-3 md:px-5 md:py-4 flex items-center gap-3 justify-between">
-                <span className="font-semibold text-base lg:text-lg text-base-content">
-                  Q{i + 1}. {item.question}
-                </span>
-                <ChevronDown className="w-5 h-5 shrink-0 text-primary transition-transform duration-200 group-open:rotate-180" />
+              <summary className="list-none cursor-pointer px-4 py-3 md:px-5 md:py-4 flex items-center gap-3 justify-between font-semibold text-base lg:text-lg text-base-content">
+                Q{i + 1}. {item.question}
+                <ChevronDown className="w-5 h-5 shrink-0 text-primary transition-transform duration-200 group-open:rotate-180" aria-hidden />
               </summary>
               <div className="px-5 pb-5 pt-1 space-y-3">
                 {item.answer.map((paragraph, index) => (
-                  <p key={`${item.question}-${index}`} className="text-sm lg:text-base text-base-content/80 leading-relaxed">
+                  <p key={`${item.question}-${index}`} className="text-sm lg:text-base text-base-content/90 leading-relaxed">
                     {paragraph}
                   </p>
                 ))}

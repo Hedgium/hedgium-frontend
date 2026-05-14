@@ -68,7 +68,7 @@ export default function WhatWeDoSection() {
                 Outperform Benchmark Returns with Our{' '}
                 <span className="text-primary font-bold">Twin Engine Investing</span> Framework
               </h2>
-              <p className="text-base md:text-lg lg:text-xl xl:text-xl 2xl:text-2xl text-base-content/80 mb-8">
+              <p className="text-base md:text-lg lg:text-xl xl:text-xl 2xl:text-2xl text-base-content/90 mb-8">
                 Hedgium is a quant-driven research house focused on generating{' '}
                 <span className="text-primary font-bold">market-neutral alpha</span> for clients.
               </p>

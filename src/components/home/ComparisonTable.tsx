@@ -52,9 +52,10 @@ export default function ComparisonTable() {
       </p>
 
       <div
-        className="overflow-x-auto bg-base-100 mt-8 lg:mt-12 xl:mt-16 rounded-xl"
+        className="mt-8 overflow-x-auto rounded-xl bg-base-100 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-base-200 lg:mt-12 xl:mt-16"
         role="region"
         aria-label="Comparison of Hedgium with mutual funds, PMS, and AIF"
+        tabIndex={0}
       >
         <table className="w-full min-w-[800px] text-left border-separate border-spacing-0">
           <caption className="sr-only">
@@ -114,12 +115,12 @@ export default function ComparisonTable() {
                   </td>
 
                   {/* MUTUAL FUNDS */}
-                  <td className="p-4 text-sm lg:text-base xl:text-lg text-base-content/80 min-w-[180px]">
+                  <td className="p-4 text-sm lg:text-base xl:text-lg text-base-content/90 min-w-[180px]">
                     {row.mutualFundsPms}
                   </td>
 
                   {/* AIF */}
-                  <td className="p-4 text-sm lg:text-base xl:text-lg text-base-content/80 min-w-[180px]">
+                  <td className="p-4 text-sm lg:text-base xl:text-lg text-base-content/90 min-w-[180px]">
                     {row.aif}
                   </td>
 

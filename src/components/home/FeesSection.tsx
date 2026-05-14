@@ -2,7 +2,7 @@ import Image from "next/image";
 
 /** Same label column width so description text aligns across Retail + Institutional */
 const TIER_COL = "w-[8rem] min-w-[8rem] shrink-0 font-bold text-lg md:text-xl text-base-content leading-tight";
-const DESC_COL = "text-base font-medium md:text-lg text-base-content/80 leading-relaxed pt-0.5";
+const DESC_COL = "text-base font-medium md:text-lg text-base-content/90 leading-relaxed pt-0.5";
 
 export default function FeesSection() {
   return (
@@ -97,7 +97,7 @@ export default function FeesSection() {
           </div>
         </div>
 
-        <p className="text-xs text-base-content/70 mt-5">
+        <p className="mt-5 text-xs text-base-content">
           * Subject to Regulatory framework prescribed by SEBI. Fees subject to GST as per applicable laws.
         </p>
       </div>

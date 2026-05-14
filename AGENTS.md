@@ -36,18 +36,13 @@ Registration and get-started flows link out or redirect to `hedgium_webapp`.
 
 | Route | Purpose |
 |-------|---------|
-| `/` | Home / landing page — hero, features, CTA |
-| `/get-started` | Lead capture / entry point to sign-up |
-| `/register` | Registration entry (may redirect to webapp) |
-| `/privacy-policy` | Legal |
-| `/terms-of-use` | Legal |
-| `/refund-policy` | Legal |
-| `/grievance-redressal` | Legal / SEBI compliance |
-| `/complaint-status` | Public complaint lookup |
-| `/mitc-ia` | MITC — Investment Adviser disclosure |
-| `/mitc-ra` | MITC — Research Analyst disclosure |
+| `/` | Home / landing — hero, features, CTA |
+| `/get-started` | Lead capture / schedule a call (links or copy may point users toward `hedgium_webapp`) |
+| `/legal-complaints-investor-charter` | Single consolidated page: Terms of Use, Privacy, Refund, Complaint Status, Grievance Redressal, MITC-RA, Investor Charter (in-page anchors) |
 
-All routes are public. No protected routes, no middleware auth checks.
+**Not in this repo:** standalone legal and disclosure pages (e.g. `/privacy-policy`, `/terms-of-use`, `/refund-policy`, `/complaint-status`, `/grievance-redressal`, `/mitc-ra`) live in **`hedgium_webapp`** under `src/app/` — see `hedgium_webapp/AGENTS.md` → Routes. Do not add duplicate legal pages here unless product explicitly asks.
+
+All routes above are public. No protected routes, no middleware auth checks.
 
 ---
 
@@ -101,6 +96,7 @@ See `00_Context/design-principles.md` for the full visual system. Core rules for
 - **DaisyUI semantic tokens only** — no raw hex or hardcoded grays.
 - **AOS** — entrance animations only; avoid infinite or looping effects.
 - **Typography** — use `@tailwindcss/typography` for long-form legal/policy pages.
+- **Accessibility:** UI and content should meet **WCAG 2.1 Level A and Level AA** (contrast, focus states, semantics, keyboard paths, forms, and error messaging).
 
 ---
 

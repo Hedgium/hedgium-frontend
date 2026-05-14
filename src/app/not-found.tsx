@@ -41,7 +41,7 @@ export default function Custom404() {
               Trade Route Not Found
             </h2>
             
-            <p className="mt-4 text-base-content/70">
+            <p className="mt-4 text-base-content">
               {`The market data you're looking for seems to have moved or doesn't exist. 
               Maybe it's been delisted or you took a wrong turn in the market charts.`}
             </p>
@@ -65,7 +65,7 @@ export default function Custom404() {
             </div>
 
             <div className="mt-6">
-              <p className="text-sm text-base-content/65">
+              <p className="text-sm text-base-content">
                 Need help? Contact our support team or check our market status
               </p>
             </div>

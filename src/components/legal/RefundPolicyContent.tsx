@@ -23,7 +23,7 @@ export default function RefundPolicyPage({
                   { className: "text-2xl md:text-3xl font-bold" },
                   "Refund / Cancellation Policy"
                 )}
-                <p className="text-sm text-base-content/70 mt-1">
+                <p className="text-sm text-base-content/90 mt-1">
                   Last updated:{" "}
                   <time dateTime="2025-03-17">March 17, 2025</time>
                 </p>
@@ -51,7 +51,7 @@ export default function RefundPolicyPage({
               className="prose prose-sm md:prose-md max-w-none"
             >
               <section className="mb-6">
-                <p className="text-base-content/80 leading-relaxed">
+                <p className="text-base-content/90 leading-relaxed">
                   We value transparency and fairness in all our client
                   relationships. If a client decides to discontinue their
                   services before the completion of the current billing cycle,
@@ -60,7 +60,7 @@ export default function RefundPolicyPage({
                   refund will be calculated based on the unused quarters of the
                   service period.
                 </p>
-                <p className="text-base-content/80 leading-relaxed mt-4">
+                <p className="text-base-content/90 leading-relaxed mt-4">
                   Please note that any applicable taxes or statutory fees will be
                   deducted from the refundable amount. Once approved, the
                   eligible refund amount will be processed within 7–10 working
@@ -72,7 +72,7 @@ export default function RefundPolicyPage({
 
               <section className="pt-6 border-t border-base-300">
                 <h2 className="text-lg font-semibold mb-3">Contact</h2>
-                <p className="text-sm text-base-content/80">
+                <p className="text-sm text-base-content/90">
                   For any queries regarding refunds or cancellations, please
                   contact us at{" "}
                   <a

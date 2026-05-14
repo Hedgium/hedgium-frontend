@@ -29,7 +29,7 @@ export default function InvestorCharterPage({
                   { className: "text-2xl md:text-3xl font-bold" },
                   "Investor Charter"
                 )}
-                <p className="text-sm text-base-content/70 mt-1">
+                <p className="text-sm text-base-content/90 mt-1">
                   SEBI Registered Research Analyst – INH000025258
                 </p>
               </div>
@@ -329,7 +329,7 @@ export default function InvestorCharterPage({
                   Pay your Research Analyst through banking channels only and
                   maintain duly signed receipts mentioning the details of your
                   payments.
-                  <p className="mt-2 text-sm text-base-content/80 pl-0 md:pl-6">
+                  <p className="mt-2 text-sm text-base-content/90 pl-0 md:pl-6">
                     <strong>Note:</strong> You may make payment of fees through
                     Centralized Fee Collection Mechanism (CeFCoM) of RAASB if
                     research analyst has opted for the mechanism. (Applicable for

@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage({
                   { className: "text-2xl md:text-3xl font-bold" },
                   "Privacy Policy"
                 )}
-                <p className="text-sm text-base-content/70 mt-1">
+                <p className="text-sm text-base-content/90 mt-1">
                   Last updated:{" "}
                   <time dateTime="2025-03-17">March 17, 2025</time>
                 </p>

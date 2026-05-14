@@ -8,7 +8,7 @@ export default function TwinEngineFrameworkSection() {
           <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-bold text-base-content">
             The Twin Engine Investing Framework
           </h2>
-          <p className="mt-2 md:mt-4 lg:mt-4 text-base md:text-lg lg:text-xl xl:text-xl 2xl:text-2xl font-medium text-base-content/80">
+          <p className="mt-2 md:mt-4 lg:mt-4 text-base md:text-lg lg:text-xl xl:text-xl 2xl:text-2xl font-medium text-base-content/90">
             Our quant based dual approach to generating superior risk-adjusted returns
           </p>
         </div>
@@ -46,7 +46,7 @@ export default function TwinEngineFrameworkSection() {
       <h3 className="hidden md:block text-xl md:text-2xl font-semibold text-primary mb-3">
         Build Model Portfolio
       </h3>
-      <p className="text-base md:text-lg text-base-content/70 leading-relaxed">
+      <p className="text-base md:text-lg text-base-content/90 leading-relaxed">
         Construct or restructure a base portfolio with securities using Hedgium&apos;s model portfolio to achieve optimal diversification
       </p>
     </div>
@@ -91,7 +91,7 @@ export default function TwinEngineFrameworkSection() {
                 <h3 className="hidden md:block text-xl md:text-2xl font-semibold text-primary mb-3">
                   Deploy Statistical Arbitrage
                 </h3>
-                <p className="text-base md:text-lg text-base-content/70 leading-relaxed">
+                <p className="text-base md:text-lg text-base-content/90 leading-relaxed">
                   Leverage margin from the portfolio to execute non-directional, algorithm-driven options strategies to generate consistent income
                 </p>
               </div>
@@ -112,7 +112,7 @@ export default function TwinEngineFrameworkSection() {
           data-aos-delay="80"
           data-aos-once="true"
         >
-          <p className="text-center text-base md:text-lg font-semibold mb-6">Combined, our approach aims to:</p>
+          <h3 className="text-center text-base md:text-lg font-semibold mb-6">Combined, our approach aims to:</h3>
           <ul className="space-y-2">
             {[
               'Generate consistent market-neutral alpha',
