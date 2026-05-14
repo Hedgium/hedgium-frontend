@@ -7,7 +7,7 @@ export default function PerformanceSection() {
         <div className="mb-12 lg:mb-16 xl:mb-20">
           <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-snug">
             Make volatility work for you,{" "}
-            <span className="text-blue-200 dark:text-primary-content">
+            <span className="text-secondary-on-primary">
               rather against you
             </span>
           </h2>

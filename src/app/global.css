@@ -23,8 +23,9 @@
 
   --color-primary: #244061;
   --color-primary-content: #f8fafc;
-  --color-secondary: #4f81bd;
+  --color-secondary: #3d6a9e;
   --color-secondary-content: #f8fafc;
+  --color-secondary-on-primary: #9cc2e8;
   --color-accent: #31859b;
   --color-accent-content: #0f172a;
 
@@ -60,6 +61,7 @@
   --color-primary-content: #0a1320;
   --color-secondary: #7f9abf;
   --color-secondary-content: #0a1320;
+  --color-secondary-on-primary: #0a1320;
   --color-accent: #9bb0cc;
   --color-accent-content: #0a1320;
 
@@ -80,6 +82,10 @@
 }
 
 
+
+@utility text-secondary-on-primary {
+  color: var(--color-secondary-on-primary);
+}
 
 .gradient-bg {
     background: linear-gradient(90deg, #244061 0%, #5f7fa8 100%);
