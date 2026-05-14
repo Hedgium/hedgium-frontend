@@ -7,7 +7,7 @@ export default function PerformanceSection() {
         <div className="mb-12 lg:mb-16 xl:mb-20">
           <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-snug">
             Make volatility work for you,{" "}
-            <span className="text-secondary">
+            <span className="text-blue-200 dark:text-primary-content">
               rather against you
             </span>
           </h2>
@@ -73,8 +73,20 @@ export default function PerformanceSection() {
                   </th>
                   <td className="border-l-2 border-dashed border-primary-content/60 text-center">+4.5%</td>
                   <td className="border-r-2 border-dashed border-primary-content/60 text-center font-medium">+4.5% / +4.5%</td>
-                  <td className="text-center text-error">NA</td>
-                  <td className="text-center text-error">NA</td>
+                  <td
+                    className="text-center text-primary-content italic"
+                    title="Not applicable"
+                    aria-label="Not applicable"
+                  >
+                    NA
+                  </td>
+                  <td
+                    className="text-center text-primary-content italic"
+                    title="Not applicable"
+                    aria-label="Not applicable"
+                  >
+                    NA
+                  </td>
                 </tr>
 
                 {/* Divider

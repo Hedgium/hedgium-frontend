@@ -28,7 +28,8 @@
   --color-accent: #31859b;
   --color-accent-content: #0f172a;
 
-  --color-neutral: oklch(0.48 0.02 264);
+  /* Darker than 0.48 so white/neutral-content text on bg-neutral meets WCAG AAA (7:1) */
+  --color-neutral: oklch(0.4 0.02 264);
   --color-neutral-content: oklch(0.98 0.01 264);
   --color-info: oklch(0.65 0.18 250);
   --color-info-content: oklch(0.99 0.01 250);
