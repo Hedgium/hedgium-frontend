@@ -25,7 +25,7 @@ function StepContent({ stepIndex }: { stepIndex: number }) {
           ].map((item) => (
             <li key={item} className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-secondary shrink-0" aria-hidden />
-              <span className="text-secondary font-medium">{item}</span>
+              <span className="font-medium text-base-content">{item}</span>
             </li>
           ))}
         </ul>
@@ -51,7 +51,7 @@ function StepContent({ stepIndex }: { stepIndex: number }) {
           ].map((item) => (
             <li key={item} className="flex items-center gap-2">
               <span className="w-3 h-3 rotate-45 bg-secondary shrink-0" aria-hidden />
-              <span className="text-secondary font-medium">{item}</span>
+              <span className="font-medium text-base-content">{item}</span>
             </li>
           ))}
         </ul>
@@ -76,7 +76,7 @@ function StepContent({ stepIndex }: { stepIndex: number }) {
         ].map((item) => (
           <li key={item} className="flex items-center gap-2">
             <Check className="w-4 h-4 shrink-0 text-secondary mt-0.5" aria-hidden />
-            <span className="text-secondary text-base-content">{item}</span>
+            <span className="text-base-content">{item}</span>
           </li>
         ))}
       </ul>
