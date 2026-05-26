@@ -50,6 +50,7 @@ Apply these principles across all UI so the product feels like a modern, profess
 ## Color & theme
 
 - Use DaisyUI semantic tokens: `text-base-content`, `text-base-content/55`–`/60` (muted), `text-primary`, `bg-base-100`, `bg-base-200`, `border-base-300` (often with `/50`–`/70` opacity), `text-error`, `text-success`.
+- **Contrast (WCAG AA):** `text-success` is for light surfaces (`base-100` / cards). On `bg-primary` use `text-positive-on-primary` for positive figures (~7:1 on `#244061`), `text-secondary-on-primary` for highlights, and `text-primary-content` for body copy — never `text-success` on navy (fails AA).
 - Avoid raw grays or hex in UI; prefer theme tokens so light/dark and future themes stay consistent.
 - Accent tints (e.g. `from-primary/10`, `border-primary/20`) for one highlighted KPI or focus state — sparingly.
 

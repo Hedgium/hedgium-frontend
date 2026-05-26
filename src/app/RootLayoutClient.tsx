@@ -13,7 +13,12 @@ export default function RootLayoutClient({
   return (
     <>
       <NextTopLoader color="#2440ff" showSpinner height={2} />
-      <ThemeProvider defaultTheme="light">
+      <ThemeProvider
+        attribute="data-theme"
+        defaultTheme="light"
+        forcedTheme="light"
+        enableSystem={false}
+      >
         <main id="main-content" tabIndex={-1} className="flex min-h-0 w-full flex-1 flex-col outline-none">
           {children}
         </main>

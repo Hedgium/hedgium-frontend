@@ -96,7 +96,7 @@ See `00_Context/design-principles.md` for the full visual system. Core rules for
 - **DaisyUI semantic tokens only** — no raw hex or hardcoded grays.
 - **AOS** — entrance animations only; avoid infinite or looping effects.
 - **Typography** — use `@tailwindcss/typography` for long-form legal/policy pages.
-- **Accessibility:** UI and content should meet **WCAG 2.1 Level A and Level AA** (contrast, focus states, semantics, keyboard paths, forms, and error messaging).
+- **Accessibility:** UI and content should meet **WCAG 2.1 Level A and Level AA** (contrast, focus states, semantics, keyboard paths, forms, and error messaging). On `bg-primary`, use `text-primary-content`, `text-secondary-on-primary`, or `text-positive-on-primary` — not `text-success` (fails ~3:1 on brand navy).
 
 ---
 
