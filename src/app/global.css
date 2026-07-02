@@ -28,7 +28,8 @@
   --color-secondary-on-primary: #9cc2e8;
   /* ≥4.5:1 on --color-primary (#244061); do not use text-success on bg-primary */
   --color-positive-on-primary: #9ae6b8;
-  --color-accent: #2d7a8f;
+  /* Darkened from #2d7a8f: text-accent on bg-base-200 was 4.36:1, failing WCAG AA 4.5:1 */
+  --color-accent: #29768b;
   --color-accent-content: #0f172a;
 
   /* Darker than 0.48 so white/neutral-content text on bg-neutral meets WCAG AAA (7:1) */

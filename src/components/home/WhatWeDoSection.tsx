@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Calendar } from 'lucide-react';
+import { Calendar, Pause, Play } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import TwinEngineFrameworkSection from '@/components/home/TwinEngineFrameworkSection';
@@ -39,6 +39,7 @@ const WHAT_WE_DO_SLIDES = [
 
 export default function WhatWeDoSection() {
   const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const total = WHAT_WE_DO_SLIDES.length;
 
   const moveSlide = (next: number) => {
@@ -47,11 +48,12 @@ export default function WhatWeDoSection() {
   };
 
   useEffect(() => {
+    if (isPaused) return;
     const t = setInterval(() => {
       setCurrent((c) => (c + 1) % total);
     }, 5000);
     return () => clearInterval(t);
-  }, [total]);
+  }, [total, isPaused]);
 
   return (
     <>
@@ -86,7 +88,13 @@ export default function WhatWeDoSection() {
               data-aos-delay="100"
               data-aos-once="true"
             >
-              <div className="h-[320px] md:h-[480px] min-h-0 flex flex-col gap-2 md:p-4">
+              <div
+                className="h-[320px] md:h-[480px] min-h-0 flex flex-col gap-2 md:p-4"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+                onFocus={() => setIsPaused(true)}
+                onBlur={() => setIsPaused(false)}
+              >
                 <div
                   id={`what-we-do-slide-${current + 1}`}
                   role="tabpanel"
@@ -105,36 +113,51 @@ export default function WhatWeDoSection() {
                   <span className="text-base lg:text-lg xl:text-xl text-primary font-semibold">{WHAT_WE_DO_SLIDES[current].bottomText}</span>
                 </div>
               </div>
-              <div className="flex justify-center gap-2 py-4 shrink-0" role="tablist" aria-label="What we do slides">
-                {WHAT_WE_DO_SLIDES.map((_, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    role="tab"
-                    aria-selected={i === current}
-                    aria-controls={`what-we-do-slide-${i + 1}`}
-                    id={`what-we-do-tab-${i + 1}`}
-                    tabIndex={i === current ? 0 : -1}
-                    aria-label={`Slide ${i + 1}`}
-                    onClick={() => setCurrent(i)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'ArrowRight') {
-                        e.preventDefault();
-                        moveSlide(i + 1);
-                      } else if (e.key === 'ArrowLeft') {
-                        e.preventDefault();
-                        moveSlide(i - 1);
-                      } else if (e.key === 'Home') {
-                        e.preventDefault();
-                        moveSlide(0);
-                      } else if (e.key === 'End') {
-                        e.preventDefault();
-                        moveSlide(total - 1);
-                      }
-                    }}
-                    className={`h-2 rounded-sm transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${i === current ? 'w-6 bg-primary' : 'w-2 bg-base-300'}`}
-                  />
-                ))}
+              <div className="flex items-center justify-center gap-3 py-4 shrink-0">
+                <div className="flex gap-2" role="tablist" aria-label="What we do slides">
+                  {WHAT_WE_DO_SLIDES.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      role="tab"
+                      aria-selected={i === current}
+                      aria-controls={`what-we-do-slide-${i + 1}`}
+                      id={`what-we-do-tab-${i + 1}`}
+                      tabIndex={i === current ? 0 : -1}
+                      aria-label={`Slide ${i + 1}`}
+                      onClick={() => setCurrent(i)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'ArrowRight') {
+                          e.preventDefault();
+                          moveSlide(i + 1);
+                        } else if (e.key === 'ArrowLeft') {
+                          e.preventDefault();
+                          moveSlide(i - 1);
+                        } else if (e.key === 'Home') {
+                          e.preventDefault();
+                          moveSlide(0);
+                        } else if (e.key === 'End') {
+                          e.preventDefault();
+                          moveSlide(total - 1);
+                        }
+                      }}
+                      className={`h-2 rounded-sm transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${i === current ? 'w-6 bg-primary' : 'w-2 bg-base-300'}`}
+                    />
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsPaused((p) => !p)}
+                  aria-label={isPaused ? 'Play slideshow' : 'Pause slideshow'}
+                  aria-pressed={isPaused}
+                  className="p-1 rounded-full text-base-content/70 hover:text-base-content hover:bg-base-200 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                >
+                  {isPaused ? (
+                    <Play className="w-3.5 h-3.5" aria-hidden="true" />
+                  ) : (
+                    <Pause className="w-3.5 h-3.5" aria-hidden="true" />
+                  )}
+                </button>
               </div>
             </div>
           </div>

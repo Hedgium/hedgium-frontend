@@ -43,9 +43,9 @@ export default function ComparisonTable() {
       data-aos-duration="650"
       data-aos-once="true"
     >
-      <h3 className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-bold text-base-content mb-2">
+      <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-bold text-base-content mb-2">
         Think beyond Mutual Funds, PMS, AIF –
-      </h3>
+      </h2>
 
       <p className="text-base lg:text-lg xl:text-xl text-secondary mb-6">
         Take back control, gain liquidity, reduce costs & improve tax efficiency

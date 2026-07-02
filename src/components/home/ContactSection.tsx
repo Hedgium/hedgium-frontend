@@ -39,7 +39,7 @@ export default function ContactSection() {
             <div className="space-y-6">
 
               <div className="flex items-center gap-4">
-                <Mail className="text-primary" size={22}/>
+                <Mail className="text-primary" size={22} aria-hidden="true"/>
                 <div>
                   <p className="text-sm text-base-content/90">Email</p>
                   <p className="font-semibold">clients@hedgium.ai</p>
@@ -47,7 +47,7 @@ export default function ContactSection() {
               </div>
 
               <div className="flex items-center gap-4">
-                <Phone className="text-primary" size={22}/>
+                <Phone className="text-primary" size={22} aria-hidden="true"/>
                 <div>
                   <p className="text-sm text-base-content/90">Phone / WhatsApp</p>
                   <p className="font-semibold">+91 {process.env.NEXT_PUBLIC_PHONE_NUMBER}</p>
@@ -55,7 +55,7 @@ export default function ContactSection() {
               </div>
 
               <div className="flex items-start gap-4">
-                <MapPin className="text-primary mt-1" size={22}/>
+                <MapPin className="text-primary mt-1" size={22} aria-hidden="true"/>
                 <div>
                   <p className="text-sm text-base-content/90">Locations</p>
                   <p className="font-semibold leading-relaxed">
@@ -79,7 +79,7 @@ export default function ContactSection() {
                 href={`https://wa.me/+91${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I'm interested in Hedgium. I'd like to schedule a call or learn more.")}`}
                 className="btn btn-outline btn-primary gap-2"
               >
-                <MessageCircle size={18} />
+                <MessageCircle size={18} aria-hidden="true" />
                 Send us a “Hi” on WhatsApp
               </a>
 

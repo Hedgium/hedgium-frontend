@@ -52,17 +52,18 @@ export default function HeroSection() {
         <p>{HERO_VIDEO_TRANSCRIPT}</p>
       </div>
 
-      {/* Play / Pause button - top right */}
+      {/* Play / Pause button - top right. Persistent dark backdrop (not just on hover)
+          guarantees the icon meets 3:1 non-text contrast regardless of the video frame behind it. */}
       <button
         type="button"
         onClick={togglePlay}
-        className="absolute cursor-pointer top-4 right-4 md:top-6 md:right-6 z-20 p-2 lg:p-3 rounded-full hover:bg-white/30 hover:backdrop-blur-sm transition-colors"
+        className="absolute cursor-pointer top-4 right-4 md:top-6 md:right-6 z-20 p-2 lg:p-3 rounded-full bg-black/75 backdrop-blur-sm hover:bg-black/85 transition-colors"
         aria-label={isPlaying ? 'Pause video' : 'Play video'}
       >
         {isPlaying ? (
-          <Pause className="w-5 h-5 lg:w-6 lg:h-6 xl:w-6 xl:h-6 2xl:w-7 2xl:h-7" strokeWidth={2} />
+          <Pause className="w-5 h-5 lg:w-6 lg:h-6 xl:w-6 xl:h-6 2xl:w-7 2xl:h-7 text-white" strokeWidth={2} aria-hidden="true" />
         ) : (
-          <Play className="w-5 h-5 lg:w-6 lg:h-6 xl:w-6 xl:h-6 2xl:w-7 2xl:h-7" strokeWidth={2} />
+          <Play className="w-5 h-5 lg:w-6 lg:h-6 xl:w-6 xl:h-6 2xl:w-7 2xl:h-7 text-white" strokeWidth={2} aria-hidden="true" />
         )}
       </button>
 
