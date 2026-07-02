@@ -3,7 +3,7 @@
 import * as React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import type { LegalDocVariant } from "@/components/legal/types";
+import type { LegalDocIdPrefix, LegalDocVariant } from "@/components/legal/types";
 
 const HEDGIUM_ADDRESS = "Haware City, Thane; Powai, Mumbai; Seawoods, Navi Mumbai, Maharashtra, India";
 
@@ -15,8 +15,10 @@ const ESCALATION_ROWS = [
 
 export default function GrievanceRedressalPage({
   variant = "standalone",
+  idPrefix = "",
 }: {
   variant?: LegalDocVariant;
+  idPrefix?: LegalDocIdPrefix;
 }) {
   const embedded = variant === "embedded";
 
@@ -37,7 +39,7 @@ export default function GrievanceRedressalPage({
               </div>
               <div className="flex gap-2">
                 <a
-                  href="#printable"
+                  href={`#${idPrefix}printable`}
                   onClick={(e) => {
                     e.preventDefault();
                     window.print();
@@ -53,7 +55,7 @@ export default function GrievanceRedressalPage({
 
             <div className="divider my-0" />
 
-            <article id="printable" className="prose prose-sm md:prose-md max-w-none">
+            <article id={`${idPrefix}printable`} className="prose prose-sm md:prose-md max-w-none">
               <p className="text-base-content/90 mb-6">
                 Client&apos;s queries / complaints may arise due to lack of
                 understanding or a deficiency of service experienced by clients.

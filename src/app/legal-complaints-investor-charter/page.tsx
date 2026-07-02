@@ -42,43 +42,43 @@ export default function LegalComplaintsInvestorCharterPage() {
             <article className="space-y-6">
               <section id="terms-of-use" className="scroll-mt-24 border border-base-300 rounded-xl">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
-                  <TermsOfUsePage variant="embedded" />
+                  <TermsOfUsePage variant="embedded" idPrefix="terms-" />
                 </div>
               </section>
 
               <section id="privacy-policy" className="scroll-mt-24 border border-base-300 rounded-xl">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
-                  <PrivacyPolicyPage variant="embedded" />
+                  <PrivacyPolicyPage variant="embedded" idPrefix="privacy-" />
                 </div>
               </section>
 
               <section id="refund-policy" className="scroll-mt-24 border border-base-300 rounded-xl">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
-                  <RefundPolicyPage variant="embedded" />
+                  <RefundPolicyPage variant="embedded" idPrefix="refund-" />
                 </div>
               </section>
 
               <section id="complaint-status" className="scroll-mt-24 border border-base-300 rounded-xl">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
-                  <ComplaintStatusPage variant="embedded" />
+                  <ComplaintStatusPage variant="embedded" idPrefix="complaint-" />
                 </div>
               </section>
 
               <section id="grievance-redressal" className="scroll-mt-24 border border-base-300 rounded-xl">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
-                  <GrievanceRedressalPage variant="embedded" />
+                  <GrievanceRedressalPage variant="embedded" idPrefix="grievance-" />
                 </div>
               </section>
 
               <section id="mitc-ra" className="scroll-mt-24 border border-base-300 rounded-xl p-4 md:p-5">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
-                  <MitcRaPage variant="embedded" />
+                  <MitcRaPage variant="embedded" idPrefix="mitc-" />
                 </div>
               </section>
 
               <section id="investor-charter" className="scroll-mt-24 border border-base-300 rounded-xl">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
-                  <InvestorCharterPage variant="embedded" />
+                  <InvestorCharterPage variant="embedded" idPrefix="charter-" />
                 </div>
               </section>
             </article>

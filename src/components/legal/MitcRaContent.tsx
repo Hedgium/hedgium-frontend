@@ -3,12 +3,14 @@
 import * as React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import type { LegalDocVariant } from "@/components/legal/types";
+import type { LegalDocIdPrefix, LegalDocVariant } from "@/components/legal/types";
 
 export default function MitcRaPage({
   variant = "standalone",
+  idPrefix = "",
 }: {
   variant?: LegalDocVariant;
+  idPrefix?: LegalDocIdPrefix;
 }) {
   const embedded = variant === "embedded";
 
@@ -29,7 +31,7 @@ export default function MitcRaPage({
               </div>
               <div className="flex gap-2">
                 <a
-                  href="#printable"
+                  href={`#${idPrefix}printable`}
                   onClick={(e) => {
                     e.preventDefault();
                     window.print();
@@ -46,7 +48,7 @@ export default function MitcRaPage({
             <div className="divider my-0" />
 
             <article
-              id="printable"
+              id={`${idPrefix}printable`}
               className="prose prose-sm md:prose-md max-w-none"
             >
               <ol className="list-decimal list-inside space-y-6">

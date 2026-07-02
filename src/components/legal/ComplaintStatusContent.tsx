@@ -3,7 +3,7 @@
 import * as React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import type { LegalDocVariant } from "@/components/legal/types";
+import type { LegalDocIdPrefix, LegalDocVariant } from "@/components/legal/types";
 
 const MONTH_ENDING = "March 2026";
 
@@ -23,8 +23,10 @@ const ANNUAL_TREND = [
 
 export default function ComplaintStatusPage({
   variant = "standalone",
+  idPrefix = "",
 }: {
   variant?: LegalDocVariant;
+  idPrefix?: LegalDocIdPrefix;
 }) {
   const embedded = variant === "embedded";
 
@@ -45,7 +47,7 @@ export default function ComplaintStatusPage({
               </div>
               <div className="flex gap-2">
                 <a
-                  href="#printable"
+                  href={`#${idPrefix}printable`}
                   onClick={(e) => {
                     e.preventDefault();
                     window.print();
@@ -61,7 +63,7 @@ export default function ComplaintStatusPage({
 
             <div className="divider my-0" />
 
-            <article id="printable" className="prose prose-sm md:prose-md max-w-none">
+            <article id={`${idPrefix}printable`} className="prose prose-sm md:prose-md max-w-none">
               <p className="text-base-content/90 mb-6">
                 Data for the month ending – {MONTH_ENDING}
               </p>

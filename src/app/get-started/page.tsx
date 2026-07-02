@@ -23,8 +23,10 @@ const BELOW_25L_VALUE = "below_25l";
 const FIELD_MOBILE = "get-started-mobile";
 const FIELD_NAME = "get-started-name";
 const FIELD_SOURCE = "get-started-source";
+const FIELD_SOURCE_LABEL = "Where did you hear about us? (optional)";
 const FIELD_MEETING_DATE = "get-started-meeting-date";
 const FIELD_MEETING_TIME = "get-started-meeting-time";
+const FIELD_MEETING_TIME_LABEL = "Time";
 const FIELD_FORM_ERROR = "get-started-form-error";
 const STEP2_HEADING = "get-started-step2-heading";
 const STEP3_MEET_HEADING = "get-started-step3-meet-heading";
@@ -50,7 +52,7 @@ function getLeftPanelContent(step: number, submitted: boolean, investmentValue?:
     const isBelow25l = investmentValue === BELOW_25L_VALUE;
     return wrapper(
       <>
-        <div className="w-16 h-16 rounded-full bg-success/20 flex items-center justify-center text-2xl mb-6">✓</div>
+        <div className="w-16 h-16 rounded-full bg-success/20 flex items-center justify-center text-2xl mb-6" aria-hidden="true">✓</div>
         <p className="text-lg font-medium text-base-content">Thank you for getting in touch.</p>
         <p className="mt-3 text-sm text-base-content/90">
           {isBelow25l
@@ -99,7 +101,7 @@ function getLeftPanelContent(step: number, submitted: boolean, investmentValue?:
   }
   return wrapper(
     <>
-      <h3 className="text-base font-semibold text-base-content mb-3">What happens next</h3>
+      <p className="text-base font-semibold text-base-content mb-3">What happens next</p>
       <ul className="text-sm text-base-content/90 text-left max-w-sm space-y-2 list-disc list-inside">
         <li>We&apos;ll confirm your slot via call or WhatsApp</li>
         <li>Our advisor will reach out at the chosen time</li>
@@ -270,7 +272,7 @@ export default function GetStartedPage() {
             href="/"
             className="inline-flex items-center gap-1.5 text-sm text-base-content/90 hover:text-base-content transition"
           >
-            <Home className="w-3.5 h-3.5" />
+            <Home className="w-3.5 h-3.5" aria-hidden="true" />
             Back to home
           </Link>
         </div>
@@ -312,7 +314,7 @@ export default function GetStartedPage() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 text-sm btn btn-primary btn-sm normal-case"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <MessageCircle className="w-4 h-4" aria-hidden="true" />
                   WhatsApp
                 </a>
                 </div>
@@ -320,7 +322,7 @@ export default function GetStartedPage() {
             </div>
 
             {submitted ? (
-              <div className="text-center">
+              <div className="text-center" role="status" aria-live="polite">
                 <h1 className="text-xl font-bold text-base-content mb-2">We&apos;ll be in touch shortly</h1>
                 <p className="text-base-content/90 text-sm mb-6">
                   {investmentValue === BELOW_25L_VALUE
@@ -334,7 +336,7 @@ export default function GetStartedPage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 btn btn-primary btn-sm normal-case"
                   >
-                    <MessageCircle className="w-4 h-4" />
+                    <MessageCircle className="w-4 h-4" aria-hidden="true" />
                     Chat on WhatsApp
                   </a>
                 )}
@@ -362,6 +364,8 @@ export default function GetStartedPage() {
                     onChange={handleMobileChange}
                     placeholder="10-digit mobile number"
                     className="input input-bordered input-sm w-full"
+                    required
+                    aria-required="true"
                     aria-invalid={error ? true : undefined}
                     aria-describedby={error ? FIELD_FORM_ERROR : undefined}
                   />
@@ -381,18 +385,12 @@ export default function GetStartedPage() {
                     className="input input-bordered input-sm w-full"
                   />
                 </div>
-                <div>
-                  <label
-                    id={`${FIELD_SOURCE}-label`}
-                    className="label cursor-default py-0.5"
-                    htmlFor={FIELD_SOURCE}
-                  >
-                    Where did you hear about us? (optional)
-                  </label>
+                <label className="block cursor-default">
+                  <span className="label cursor-default py-0.5 block">{FIELD_SOURCE_LABEL}</span>
                   <select
                     id={FIELD_SOURCE}
                     name="source"
-                    aria-labelledby={`${FIELD_SOURCE}-label`}
+                    aria-label={FIELD_SOURCE_LABEL}
                     value={source}
                     onChange={(e) => setSource(e.target.value)}
                     className="select select-bordered select-sm w-full"
@@ -403,7 +401,7 @@ export default function GetStartedPage() {
                       </option>
                     ))}
                   </select>
-                </div>
+                </label>
               </div>
               {error ? (
                 <p id={FIELD_FORM_ERROR} className="text-sm text-error" role="alert">
@@ -413,7 +411,7 @@ export default function GetStartedPage() {
               <button
                 type="submit"
                 disabled={!canProceedStep1}
-                className="btn btn-primary w-full btn-sm normal-case mt-4"
+                className="btn btn-primary w-full btn-sm normal-case mt-4 disabled:cursor-not-allowed disabled:opacity-90 disabled:!bg-primary disabled:!text-primary-content"
               >
                 Continue →
               </button>
@@ -463,7 +461,7 @@ export default function GetStartedPage() {
               <button
                 type="submit"
                 disabled={!investmentValue}
-                className="btn btn-primary w-full btn-sm normal-case mt-4"
+                className="btn btn-primary w-full btn-sm normal-case mt-4 disabled:cursor-not-allowed disabled:opacity-90 disabled:!bg-primary disabled:!text-primary-content"
               >
                 Continue →
               </button>
@@ -477,8 +475,12 @@ export default function GetStartedPage() {
                 We don&apos;t provide services for below ₹25 lakhs for now. If we provide it in the future we may contact you.
               </p>
               {submitting && (
-                <div className="flex items-center gap-2 text-sm text-base-content/90">
-                  <Loader2 className="w-4 h-4 animate-spin" />
+                <div
+                  className="flex items-center gap-2 text-sm text-base-content/90"
+                  role="status"
+                  aria-live="polite"
+                >
+                  <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
                   Submitting...
                 </div>
               )}
@@ -501,7 +503,7 @@ export default function GetStartedPage() {
               <div className="space-y-3">
                 <div>
                   <label className="label cursor-default py-0.5" htmlFor={FIELD_MEETING_DATE}>
-                    Date
+                    Date <span className="text-error" aria-hidden>*</span>
                   </label>
                   <input
                     id={FIELD_MEETING_DATE}
@@ -511,25 +513,25 @@ export default function GetStartedPage() {
                     onChange={(e) => setMeetingDate(e.target.value)}
                     min={todayStr}
                     className="input input-bordered input-sm w-full"
+                    required
+                    aria-required="true"
                     aria-invalid={error ? true : undefined}
                     aria-describedby={error ? FIELD_FORM_ERROR : undefined}
                   />
                 </div>
-                <div>
-                  <label
-                    id={`${FIELD_MEETING_TIME}-label`}
-                    className="label cursor-default py-0.5"
-                    htmlFor={FIELD_MEETING_TIME}
-                  >
-                    Time
-                  </label>
+                <label className="block cursor-default">
+                  <span className="label cursor-default py-0.5 block">
+                    {FIELD_MEETING_TIME_LABEL} <span className="text-error" aria-hidden>*</span>
+                  </span>
                   <select
                     id={FIELD_MEETING_TIME}
                     name="meeting-time"
-                    aria-labelledby={`${FIELD_MEETING_TIME}-label`}
+                    aria-label={FIELD_MEETING_TIME_LABEL}
                     value={meetingTime}
                     onChange={(e) => setMeetingTime(e.target.value)}
                     className="select select-bordered select-sm w-full"
+                    required
+                    aria-required="true"
                     aria-invalid={error ? true : undefined}
                     aria-describedby={error ? FIELD_FORM_ERROR : undefined}
                   >
@@ -545,7 +547,7 @@ export default function GetStartedPage() {
                       </option>
                     ))}
                   </select>
-                </div>
+                </label>
               </div>
               {error ? (
                 <p id={FIELD_FORM_ERROR} className="text-sm text-error" role="alert">
@@ -560,11 +562,12 @@ export default function GetStartedPage() {
                   !meetingTime ||
                   timeOptionsForSelectedDate.length === 0
                 }
-                className="btn btn-primary w-full btn-sm normal-case mt-4 gap-2"
+                className="btn btn-primary w-full btn-sm normal-case mt-4 gap-2 disabled:cursor-not-allowed disabled:opacity-90 disabled:!bg-primary disabled:!text-primary-content"
+                aria-busy={submitting}
               >
                 {submitting ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
                     Submitting...
                   </>
                 ) : (
@@ -575,7 +578,7 @@ export default function GetStartedPage() {
           )}
 
           <p className="mt-5 pt-4 border-t border-base-300 flex items-center justify-center gap-2 text-xs text-base-content/90">
-            <Shield className="w-3.5 h-3.5 flex-shrink-0" />
+            <Shield className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
             Your data is 100% protected
           </p>
             </div>

@@ -3,12 +3,14 @@
 import * as React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import type { LegalDocVariant } from "@/components/legal/types";
+import type { LegalDocIdPrefix, LegalDocVariant } from "@/components/legal/types";
 
 export default function TermsOfUsePage({
   variant = "standalone",
+  idPrefix = "",
 }: {
   variant?: LegalDocVariant;
+  idPrefix?: LegalDocIdPrefix;
 }) {
   const embedded = variant === "embedded";
 
@@ -30,7 +32,7 @@ export default function TermsOfUsePage({
               </div>
               <div className="flex gap-2">
                 <a
-                  href="#printable"
+                  href={`#${idPrefix}printable`}
                   onClick={(e) => {
                     e.preventDefault();
                     window.print();
@@ -47,10 +49,10 @@ export default function TermsOfUsePage({
             <div className="divider my-0" />
 
             <article
-              id="printable"
+              id={`${idPrefix}printable`}
               className="prose prose-sm md:prose-md max-w-none"
             >
-              <section id="introduction" className="mb-6">
+              <section id={`${idPrefix}introduction`} className="mb-6">
                 <p>
                   Thank you for visiting our website www.hedgium.in and for
                   downloading our mobile application Hedgium (&quot;Application&quot;).
@@ -91,7 +93,7 @@ export default function TermsOfUsePage({
                 </p>
               </section>
 
-              <section id="acceptance" className="mb-6">
+              <section id={`${idPrefix}acceptance`} className="mb-6">
                 <h2>1. Acceptance of Terms</h2>
                 <p>
                   The Services of the Company can be availed by the User only by
@@ -102,7 +104,7 @@ export default function TermsOfUsePage({
                 </p>
               </section>
 
-              <section id="registration" className="mb-6">
+              <section id={`${idPrefix}registration`} className="mb-6">
                 <h2>2. Registration and Account Information</h2>
                 <p>
                   To access the Platform, you need to register on the Platform
@@ -124,7 +126,7 @@ export default function TermsOfUsePage({
                 </p>
               </section>
 
-              <section id="services" className="mb-6">
+              <section id={`${idPrefix}services`} className="mb-6">
                 <h2>3. Services</h2>
                 <ol className="list-decimal list-inside space-y-3">
                   <li>
@@ -155,7 +157,7 @@ export default function TermsOfUsePage({
                 </ol>
               </section>
 
-              <section id="declarations" className="mb-6">
+              <section id={`${idPrefix}declarations`} className="mb-6">
                 <h2>4. Declarations by the User</h2>
                 <ol className="list-decimal list-inside space-y-3">
                   <li>
@@ -270,7 +272,7 @@ export default function TermsOfUsePage({
                 </ol>
               </section>
 
-              <section id="user-conduct" className="mb-6">
+              <section id={`${idPrefix}user-conduct`} className="mb-6">
                 <h2>5. User Conduct and Rules</h2>
                 <p>
                   You agree and undertake to use the Platforms only for the
@@ -361,7 +363,7 @@ export default function TermsOfUsePage({
                 </ol>
               </section>
 
-              <section id="termination" className="mb-6">
+              <section id={`${idPrefix}termination`} className="mb-6">
                 <h2>6. Termination of Account or Services</h2>
                 <p>
                   You agree that the Company may at any time and for any or no
@@ -374,7 +376,7 @@ export default function TermsOfUsePage({
                 </p>
               </section>
 
-              <section id="ip" className="mb-6">
+              <section id={`${idPrefix}ip`} className="mb-6">
                 <h2>7. Intellectual Property Rights</h2>
                 <p>
                   All materials on our Platforms, including, without limitation,
@@ -397,7 +399,7 @@ export default function TermsOfUsePage({
                 </p>
               </section>
 
-              <section id="third-party" className="mb-6">
+              <section id={`${idPrefix}third-party`} className="mb-6">
                 <h2>8. Links to Third Parties</h2>
                 <p>
                   Platforms will contain links to other websites (&quot;Linked
@@ -412,7 +414,7 @@ export default function TermsOfUsePage({
                 </p>
               </section>
 
-              <section id="force-majeure" className="mb-6">
+              <section id={`${idPrefix}force-majeure`} className="mb-6">
                 <h2>9. Force Majeure</h2>
                 <p>
                   The Company shall have no liability to you whatsoever for any
@@ -432,7 +434,7 @@ export default function TermsOfUsePage({
                 </p>
               </section>
 
-              <section id="indemnity" className="mb-6">
+              <section id={`${idPrefix}indemnity`} className="mb-6">
                 <h2>10. Indemnity</h2>
                 <ol className="list-decimal list-inside space-y-3">
                   <li>
@@ -467,7 +469,7 @@ export default function TermsOfUsePage({
                 </ol>
               </section>
 
-              <section id="disclaimer" className="mb-6">
+              <section id={`${idPrefix}disclaimer`} className="mb-6">
                 <h2>11. Disclaimer of Warranties</h2>
                 <ol className="list-decimal list-inside space-y-3">
                   <li>
@@ -495,7 +497,7 @@ export default function TermsOfUsePage({
                 </ol>
               </section>
 
-              <section id="investment-disclosure" className="mb-6">
+              <section id={`${idPrefix}investment-disclosure`} className="mb-6">
                 <h2>12. General Investment Disclosure</h2>
                 <ol className="list-decimal list-inside space-y-3">
                   <li>
@@ -570,7 +572,7 @@ export default function TermsOfUsePage({
                 </ol>
               </section>
 
-              <section id="modification" className="mb-6">
+              <section id={`${idPrefix}modification`} className="mb-6">
                 <h2>13. Modification</h2>
                 <p>
                   The Company reserves the right to modify, amend or waive any of
@@ -585,7 +587,7 @@ export default function TermsOfUsePage({
                 </p>
               </section>
 
-              <section id="entire-agreement" className="mb-6">
+              <section id={`${idPrefix}entire-agreement`} className="mb-6">
                 <h2>14. Entire Agreement</h2>
                 <p>
                   These Terms along with the Privacy Policy shall constitute the
@@ -595,7 +597,7 @@ export default function TermsOfUsePage({
                 </p>
               </section>
 
-              <section id="waiver" className="mb-6">
+              <section id={`${idPrefix}waiver`} className="mb-6">
                 <h2>15. Waiver and Severability</h2>
                 <ul className="list-disc list-inside space-y-2">
                   <li>
@@ -619,7 +621,7 @@ export default function TermsOfUsePage({
                 </ul>
               </section>
 
-              <section id="governing-law" className="mb-6">
+              <section id={`${idPrefix}governing-law`} className="mb-6">
                 <h2>16. Governing Law and Venue</h2>
                 <p>
                   These Terms shall be governed by the laws of India. The courts
@@ -628,7 +630,7 @@ export default function TermsOfUsePage({
                 </p>
               </section>
 
-              <section id="grievance" className="mb-6">
+              <section id={`${idPrefix}grievance`} className="mb-6">
                 <h2>17. Grievance Officer</h2>
                 <p>
                   Any complaints, abuse or concerns with regards to content and

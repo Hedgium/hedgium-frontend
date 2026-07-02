@@ -3,12 +3,14 @@
 import * as React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import type { LegalDocVariant } from "@/components/legal/types";
+import type { LegalDocIdPrefix, LegalDocVariant } from "@/components/legal/types";
 
 export default function PrivacyPolicyPage({
   variant = "standalone",
+  idPrefix = "",
 }: {
   variant?: LegalDocVariant;
+  idPrefix?: LegalDocIdPrefix;
 }) {
   const embedded = variant === "embedded";
 
@@ -30,7 +32,7 @@ export default function PrivacyPolicyPage({
               </div>
               <div className="flex gap-2">
                 <a
-                  href="#printable"
+                  href={`#${idPrefix}printable`}
                   onClick={(e) => {
                     e.preventDefault();
                     window.print();
@@ -47,10 +49,10 @@ export default function PrivacyPolicyPage({
             <div className="divider my-0" />
 
             <article
-              id="printable"
+              id={`${idPrefix}printable`}
               className="prose prose-sm md:prose-md max-w-none"
             >
-              <section id="introduction" className="mb-6">
+              <section id={`${idPrefix}introduction`} className="mb-6">
                 <p>
                   The Website www.hedgium.in and the Application Hedgium
                   (&quot;Platforms&quot;) are owned and operated by Hedgium Services LLP
@@ -78,7 +80,7 @@ export default function PrivacyPolicyPage({
                 </p>
               </section>
 
-              <section id="type-of-information" className="mb-6">
+              <section id={`${idPrefix}type-of-information`} className="mb-6">
                 <h2>1. Type of Personal or Sensitive Personal Information Collected</h2>
                 <ol className="list-decimal list-inside space-y-3">
                   <li>
@@ -148,7 +150,7 @@ export default function PrivacyPolicyPage({
                 </ol>
               </section>
 
-              <section id="information-via-technology" className="mb-6">
+              <section id={`${idPrefix}information-via-technology`} className="mb-6">
                 <h2>2. Information Collected via Technology</h2>
                 <p>
                   Due to the communications standards on the internet, when a
@@ -170,7 +172,7 @@ export default function PrivacyPolicyPage({
                 </p>
               </section>
 
-              <section id="purpose" className="mb-6">
+              <section id={`${idPrefix}purpose`} className="mb-6">
                 <h2>3. Purpose of Collection and Usage of Information</h2>
                 <ol className="list-decimal list-inside space-y-3">
                   <li>
@@ -220,7 +222,7 @@ export default function PrivacyPolicyPage({
                 </ol>
               </section>
 
-              <section id="third-party" className="mb-6">
+              <section id={`${idPrefix}third-party`} className="mb-6">
                 <h2>4. Third Party Links</h2>
                 <ol className="list-decimal list-inside space-y-3">
                   <li>
@@ -260,7 +262,7 @@ export default function PrivacyPolicyPage({
                 </ol>
               </section>
 
-              <section id="retention" className="mb-6">
+              <section id={`${idPrefix}retention`} className="mb-6">
                 <h2>5. Retention of Information</h2>
                 <p>
                   If you wish to cancel your account or request that we no
@@ -282,7 +284,7 @@ export default function PrivacyPolicyPage({
                 </p>
               </section>
 
-              <section id="disclosure" className="mb-6">
+              <section id={`${idPrefix}disclosure`} className="mb-6">
                 <h2>6. Disclosure of Information</h2>
                 <p>
                   The Company will only disclose your personal information,
@@ -302,7 +304,7 @@ export default function PrivacyPolicyPage({
                 </p>
               </section>
 
-              <section id="liability" className="mb-6">
+              <section id={`${idPrefix}liability`} className="mb-6">
                 <h2>7. Limited Liability</h2>
                 <p>
                   The Company shall not be held liable for any loss whatsoever
@@ -323,7 +325,7 @@ export default function PrivacyPolicyPage({
                 </p>
               </section>
 
-              <section id="casual-visitors" className="mb-6">
+              <section id={`${idPrefix}casual-visitors`} className="mb-6">
                 <h2>8. Casual Visitors Note</h2>
                 <p>
                   No sensitive personal data or information is automatically
@@ -344,7 +346,7 @@ export default function PrivacyPolicyPage({
                 </p>
               </section>
 
-              <section id="confidentiality" className="mb-6">
+              <section id={`${idPrefix}confidentiality`} className="mb-6">
                 <h2>9. Confidentiality and Security</h2>
                 <p>
                   Your personal information is maintained by the Company in
@@ -369,7 +371,7 @@ export default function PrivacyPolicyPage({
                 </p>
               </section>
 
-              <section id="changes" className="mb-6">
+              <section id={`${idPrefix}changes`} className="mb-6">
                 <h2>10. Changes to Privacy Policy</h2>
                 <p>
                   We reserve the right to change, modify, add or delete portions
@@ -395,7 +397,7 @@ export default function PrivacyPolicyPage({
                 </p>
               </section>
 
-              <section id="contact" className="mb-6">
+              <section id={`${idPrefix}contact`} className="mb-6">
                 <h2>11. Address for Privacy Questions</h2>
                 <p>
                   If you have questions about this Privacy Policy or the
