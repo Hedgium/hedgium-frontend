@@ -124,9 +124,6 @@ export default function ComplaintStatusPage({
               </h2>
               <div
                 className="mb-6 overflow-x-auto outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                role="region"
-                aria-labelledby="complaint-status-monthly-trend-heading"
-                tabIndex={0}
               >
                 <table className="table table-zebra w-full text-sm">
                   <thead>
@@ -176,9 +173,7 @@ export default function ComplaintStatusPage({
               </h2>
               <div
                 className="mb-6 overflow-x-auto outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                role="region"
-                aria-labelledby="complaint-status-annual-trend-heading"
-                tabIndex={0}
+                
               >
                 <table className="table table-zebra w-full text-sm">
                   <thead>

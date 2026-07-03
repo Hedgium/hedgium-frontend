@@ -161,9 +161,6 @@ export default function GrievanceRedressalPage({
               </h2>
               <div
                 className="mb-8 overflow-x-auto outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                role="region"
-                aria-labelledby="grievance-escalation-matrix-heading"
-                tabIndex={0}
               >
                 <table className="table table-zebra w-full text-sm">
                   <thead>
