@@ -76,27 +76,6 @@ export default function FeesSection() {
           </div>
         </div>
 
-        {/* Offer Banner — single column, consistent alignment */}
-        <div
-          className="bg-primary text-primary-content mt-12 rounded-xl px-4 py-2"
-          data-aos="fade-up"
-          data-aos-duration="650"
-          data-aos-once="true"
-        >
-          <div className="space-y-1 text-left">
-            <p className="font-semibold text-lg md:text-xl leading-snug">
-              New Fiscal Year Offer (valid only till 30ᵗʰ Apr 2026):
-            </p>
-            <p className="text-base md:text-lg">
-              <span className="underline">Free first month </span>- <span className="text-sm sm:text-base opacity-95 leading-relaxed pl-0 sm:pl-1">
-              Potentially earn back a significant portion of the fees at no cost before you
-              even pay.
-            </span>
-            </p>
-            
-          </div>
-        </div>
-
         <p className="mt-5 text-xs text-base-content">
           * Subject to Regulatory framework prescribed by SEBI. Fees subject to GST as per applicable laws.
         </p>
