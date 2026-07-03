@@ -31,18 +31,14 @@ export default function PrivacyPolicyPage({
                 </p>
               </div>
               <div className="flex gap-2">
-                <a
-                  href={`#${idPrefix}printable`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.print();
-                  }}
+                <button
+                  type="button"
+                  onClick={() => window.print()}
                   className="btn btn-ghost btn-sm"
-                  title="Print privacy policy"
                   aria-label="Print privacy policy"
                 >
                   Print
-                </a>
+                </button>
               </div>
             </header>
 

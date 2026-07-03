@@ -1,4 +1,5 @@
 import Link from "next/link";
+import OpensInNewTabHint from "@/components/OpensInNewTabHint";
 
 export default function Footer() {
   return (
@@ -205,6 +206,7 @@ export default function Footer() {
                 className="underline hover:text-neutral-content"
               >
                 SEBI SCORES
+                <OpensInNewTabHint />
               </a>
 
               <a
@@ -214,6 +216,7 @@ export default function Footer() {
                 className="underline hover:text-neutral-content"
               >
                 SMARTODR
+                <OpensInNewTabHint />
               </a>
             </div>
           </div>

@@ -31,18 +31,14 @@ export default function TermsOfUsePage({
                 </p>
               </div>
               <div className="flex gap-2">
-                <a
-                  href={`#${idPrefix}printable`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.print();
-                  }}
+                <button
+                  type="button"
+                  onClick={() => window.print()}
                   className="btn btn-ghost btn-sm"
-                  title="Print terms of use"
                   aria-label="Print terms of use"
                 >
                   Print
-                </a>
+                </button>
               </div>
             </header>
 

@@ -82,20 +82,23 @@ const FAQSection = dynamic(
 
 export default function Home() {
   useEffect(() => {
-    AOS.init({
-      duration: 750,
-      once: false,
-      offset: 100,
-      easing: 'ease-out-cubic',
-      anchorPlacement: 'top-bottom',
-    });
-    const id = requestAnimationFrame(() => AOS.refresh());
-    const onLoad = () => AOS.refresh();
-    window.addEventListener('load', onLoad);
-    return () => {
-      cancelAnimationFrame(id);
-      window.removeEventListener('load', onLoad);
-    };
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reducedMotion) {
+      AOS.init({
+        duration: 750,
+        once: true,
+        offset: 100,
+        easing: 'ease-out-cubic',
+        anchorPlacement: 'top-bottom',
+      });
+      const id = requestAnimationFrame(() => AOS.refresh());
+      const onLoad = () => AOS.refresh();
+      window.addEventListener('load', onLoad);
+      return () => {
+        cancelAnimationFrame(id);
+        window.removeEventListener('load', onLoad);
+      };
+    }
   }, []);
 
   useEffect(() => {
@@ -105,7 +108,10 @@ export default function Home() {
       if (href && href.startsWith('#')) {
         e.preventDefault();
         const element = document.querySelector(href);
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
+        if (element) {
+          const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          element.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
+        }
       }
     };
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

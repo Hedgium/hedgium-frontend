@@ -49,6 +49,8 @@ export default function WhatWeDoSection() {
 
   useEffect(() => {
     if (isPaused) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) return;
     const t = setInterval(() => {
       setCurrent((c) => (c + 1) % total);
     }, 5000);
@@ -110,7 +112,12 @@ export default function WhatWeDoSection() {
                   />
                 </div>
                 <div className="flex items-center text-center justify-center gap-2 mt-auto shrink-0">
-                  <span className="text-base lg:text-lg xl:text-xl text-primary font-semibold">{WHAT_WE_DO_SLIDES[current].bottomText}</span>
+                  <p className="sr-only" aria-live="polite" aria-atomic="true">
+                    Slide {current + 1} of {total}: {WHAT_WE_DO_SLIDES[current].bottomText}
+                  </p>
+                  <span className="text-base lg:text-lg xl:text-xl text-primary font-semibold" aria-hidden="true">
+                    {WHAT_WE_DO_SLIDES[current].bottomText}
+                  </span>
                 </div>
               </div>
               <div className="flex items-center justify-center gap-3 py-4 shrink-0">
@@ -124,7 +131,7 @@ export default function WhatWeDoSection() {
                       aria-controls={`what-we-do-slide-${i + 1}`}
                       id={`what-we-do-tab-${i + 1}`}
                       tabIndex={i === current ? 0 : -1}
-                      aria-label={`Slide ${i + 1}`}
+                      aria-label={`Slide ${i + 1} of ${total}: ${WHAT_WE_DO_SLIDES[i].bottomText}`}
                       onClick={() => setCurrent(i)}
                       onKeyDown={(e) => {
                         if (e.key === 'ArrowRight') {
@@ -141,7 +148,7 @@ export default function WhatWeDoSection() {
                           moveSlide(total - 1);
                         }
                       }}
-                      className={`h-2 rounded-sm transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${i === current ? 'w-6 bg-primary' : 'w-2 bg-base-300'}`}
+                      className={`touch-target inline-flex items-center justify-center rounded-sm transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${i === current ? 'w-6 h-2 bg-primary' : 'w-2 h-2 bg-base-300'}`}
                     />
                   ))}
                 </div>
@@ -150,7 +157,7 @@ export default function WhatWeDoSection() {
                   onClick={() => setIsPaused((p) => !p)}
                   aria-label={isPaused ? 'Play slideshow' : 'Pause slideshow'}
                   aria-pressed={isPaused}
-                  className="p-1 rounded-full text-base-content/70 hover:text-base-content hover:bg-base-200 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  className="touch-target inline-flex items-center justify-center rounded-full text-base-content hover:text-base-content hover:bg-base-200 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
                   {isPaused ? (
                     <Play className="w-3.5 h-3.5" aria-hidden="true" />

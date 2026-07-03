@@ -31,18 +31,14 @@ export default function RefundPolicyPage({
                 </p>
               </div>
               <div className="flex gap-2">
-                <a
-                  href={`#${idPrefix}printable`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.print();
-                  }}
+                <button
+                  type="button"
+                  onClick={() => window.print()}
                   className="btn btn-ghost btn-sm"
-                  title="Print refund policy"
                   aria-label="Print refund policy"
                 >
                   Print
-                </a>
+                </button>
               </div>
             </header>
 

@@ -4,6 +4,7 @@ import * as React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { LegalDocIdPrefix, LegalDocVariant } from "@/components/legal/types";
+import OpensInNewTabHint from "@/components/OpensInNewTabHint";
 
 export default function MitcRaPage({
   variant = "standalone",
@@ -30,18 +31,14 @@ export default function MitcRaPage({
                 </p>
               </div>
               <div className="flex gap-2">
-                <a
-                  href={`#${idPrefix}printable`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.print();
-                  }}
+                <button
+                  type="button"
+                  onClick={() => window.print()}
                   className="btn btn-ghost btn-sm"
-                  title="Print MITC-RA"
                   aria-label="Print MITC-RA"
                 >
                   Print
-                </a>
+                </button>
               </div>
             </header>
 
@@ -196,6 +193,7 @@ export default function MitcRaPage({
                       className="link link-primary"
                     >
                       www.scores.sebi.gov.in
+                      <OpensInNewTabHint />
                     </a>
                   </p>
                   <p className="mt-2 text-base-content/90">
@@ -209,6 +207,7 @@ export default function MitcRaPage({
                       className="link link-primary"
                     >
                       smartodr.in
+                      <OpensInNewTabHint />
                     </a>
                   </p>
                 </li>

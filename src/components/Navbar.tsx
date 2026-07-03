@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { X, Menu, LogIn } from "lucide-react";
 import Link from "next/link";
+import OpensInNewTabHint from "@/components/OpensInNewTabHint";
 
 const NAV_LINKS = [
   { label: "What We Do", href: "/#what-we-do" },
@@ -11,10 +12,13 @@ const NAV_LINKS = [
   { label: "Fees", href: "/#fees" },
 ] as const;
 
+const APP_LOGIN_URL = "https://app.hedgium.ai/";
+
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -28,12 +32,35 @@ export default function Navbar() {
 
   useEffect(() => {
     if (!isMenuOpen) return;
+
+    const firstLink = mobileMenuRef.current?.querySelector<HTMLElement>("a, button");
+    firstLink?.focus();
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setIsMenuOpen(false);
         menuButtonRef.current?.focus();
+        return;
+      }
+      if (e.key !== "Tab" || !mobileMenuRef.current) return;
+
+      const focusable = mobileMenuRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled])'
+      );
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     };
+
     document.addEventListener("keydown", onKey, true);
     return () => document.removeEventListener("keydown", onKey, true);
   }, [isMenuOpen]);
@@ -52,8 +79,6 @@ export default function Navbar() {
             alt="Hedgium logo"
             className="h-10 lg:h-12 w-auto "
           />
-
-
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -71,7 +96,6 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-end flex items-center gap-2 lg:gap-6">
-        
         <Link
           href="/get-started"
           className="btn btn-primary hidden lg:flex btn-sm lg:btn-md shadow hover:shadow-md shrink-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
@@ -79,16 +103,16 @@ export default function Navbar() {
           Get Started
         </Link>
 
-
-          <Link
-                  href="https://app.hedgium.ai/"
-                  target="_blank"
-                  className="hidden lg:flex items-center gap-1.5 text-base-content hover:text-primary text-base font-medium tracking-wide shrink-0 justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
-                >
-                  <LogIn className="h-5 w-5 shrink-0" aria-hidden />
-                  Login
-          </Link>
-
+        <Link
+          href={APP_LOGIN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden lg:flex items-center gap-1.5 text-base-content hover:text-primary text-base font-medium tracking-wide shrink-0 justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
+        >
+          <LogIn className="h-5 w-5 shrink-0" aria-hidden="true" />
+          Login
+          <OpensInNewTabHint />
+        </Link>
 
         <div
           ref={menuRef}
@@ -97,7 +121,7 @@ export default function Navbar() {
           <button
             ref={menuButtonRef}
             type="button"
-            className="btn btn-ghost px-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            className="btn btn-ghost touch-target inline-flex items-center justify-center px-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-nav-menu"
             aria-haspopup="true"
@@ -105,17 +129,17 @@ export default function Navbar() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <X size={24} height={24} />
+              <X size={24} height={24} aria-hidden="true" />
             ) : (
-              <Menu size={24} height={24} />
+              <Menu size={24} height={24} aria-hidden="true" />
             )}
           </button>
           {isMenuOpen && (
             <ul
+              ref={mobileMenuRef}
               id="mobile-nav-menu"
               className="menu menu-sm dropdown-content mt-3 z-[200] p-2 shadow-lg bg-base-100 rounded-box w-52 border border-base-300"
             >
-
               <li className="px-2">
                 <Link
                   href="/get-started"
@@ -126,14 +150,16 @@ export default function Navbar() {
                 </Link>
               </li>
 
-
               <li className="px-2">
                 <Link
-                  href="https://app.hedgium.ai/"
+                  href={APP_LOGIN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setIsMenuOpen(false)}
                   className="btn btn-outline btn-sm w-full mb-2 justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
                   Login
+                  <OpensInNewTabHint />
                 </Link>
               </li>
 
@@ -148,7 +174,6 @@ export default function Navbar() {
                   </Link>
                 </li>
               ))}
-              
             </ul>
           )}
         </div>

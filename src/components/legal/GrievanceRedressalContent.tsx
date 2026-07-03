@@ -4,6 +4,7 @@ import * as React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { LegalDocIdPrefix, LegalDocVariant } from "@/components/legal/types";
+import OpensInNewTabHint from "@/components/OpensInNewTabHint";
 
 const HEDGIUM_ADDRESS = "Haware City, Thane; Powai, Mumbai; Seawoods, Navi Mumbai, Maharashtra, India";
 
@@ -38,18 +39,14 @@ export default function GrievanceRedressalPage({
                 </p>
               </div>
               <div className="flex gap-2">
-                <a
-                  href={`#${idPrefix}printable`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.print();
-                  }}
+                <button
+                  type="button"
+                  onClick={() => window.print()}
                   className="btn btn-ghost btn-sm"
-                  title="Print grievance redressal"
                   aria-label="Print grievance redressal"
                 >
                   Print
-                </a>
+                </button>
               </div>
             </header>
 
@@ -119,6 +116,7 @@ export default function GrievanceRedressalPage({
                     className="link link-primary"
                   >
                     scores.sebi.gov.in
+                    <OpensInNewTabHint />
                   </a>{" "}
                   or you may also write to any of the offices of SEBI. SCORES
                   may be accessed through SCORES mobile application as well.
@@ -140,6 +138,7 @@ export default function GrievanceRedressalPage({
                     className="link link-primary"
                   >
                     smartodr.in
+                    <OpensInNewTabHint />
                   </a>
                   .
                 </li>
@@ -169,10 +168,10 @@ export default function GrievanceRedressalPage({
                 <table className="table table-zebra w-full text-sm">
                   <thead>
                     <tr>
-                      <th>Designation</th>
-                      <th>Address</th>
-                      <th>Contact</th>
-                      <th>Email</th>
+                      <th scope="col">Designation</th>
+                      <th scope="col">Address</th>
+                      <th scope="col">Contact</th>
+                      <th scope="col">Email</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -210,6 +209,7 @@ export default function GrievanceRedressalPage({
                     className="link link-primary"
                   >
                     scores.sebi.gov.in
+                    <OpensInNewTabHint />
                   </a>
                   {" | "}
                   SMARTODR:{" "}
@@ -220,6 +220,7 @@ export default function GrievanceRedressalPage({
                     className="link link-primary"
                   >
                     smartodr.in
+                    <OpensInNewTabHint />
                   </a>
                 </p>
               </section>

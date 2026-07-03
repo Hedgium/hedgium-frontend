@@ -57,7 +57,7 @@ export default function HeroSection() {
       <button
         type="button"
         onClick={togglePlay}
-        className="absolute cursor-pointer top-4 right-4 md:top-6 md:right-6 z-20 p-2 lg:p-3 rounded-full bg-black/75 backdrop-blur-sm hover:bg-black/85 transition-colors"
+        className="absolute cursor-pointer top-4 right-4 md:top-6 md:right-6 z-20 touch-target inline-flex items-center justify-center rounded-full bg-black/75 backdrop-blur-sm hover:bg-black/85 transition-colors"
         aria-label={isPlaying ? 'Pause video' : 'Play video'}
       >
         {isPlaying ? (
@@ -87,7 +87,7 @@ export default function HeroSection() {
 
       {/* Optional readable transcript — small chip, keeps trapezium clean */}
       <details className="absolute top-[4.75rem] right-4 z-40 max-w-xs rounded-lg border-2 border-white/55 bg-black/35 text-left text-white shadow-lg backdrop-blur-md open:max-w-sm open:bg-black/50 md:top-[5.25rem] md:right-6">
-        <summary className="flex cursor-pointer list-none items-center gap-1.5 px-3 py-2 text-[11px] font-medium uppercase tracking-wider text-white outline-none transition hover:bg-white/10 hover:text-white focus-visible:ring-2 focus-visible:ring-white/40 [&::-webkit-details-marker]:hidden">
+        <summary className="flex cursor-pointer list-none items-center gap-1.5 px-3 py-2 text-xs font-medium uppercase tracking-wider text-white outline-none transition hover:bg-white/10 hover:text-white focus-visible:ring-2 focus-visible:ring-white/40 [&::-webkit-details-marker]:hidden">
           Transcript
           <ChevronDown className="size-3.5 shrink-0 opacity-80" aria-hidden />
         </summary>

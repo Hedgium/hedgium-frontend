@@ -4,6 +4,7 @@ import * as React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { LegalDocIdPrefix, LegalDocVariant } from "@/components/legal/types";
+import OpensInNewTabHint from "@/components/OpensInNewTabHint";
 
 const MONTH_ENDING = "March 2026";
 
@@ -46,18 +47,14 @@ export default function ComplaintStatusPage({
                 </p>
               </div>
               <div className="flex gap-2">
-                <a
-                  href={`#${idPrefix}printable`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.print();
-                  }}
+                <button
+                  type="button"
+                  onClick={() => window.print()}
                   className="btn btn-ghost btn-sm"
-                  title="Print complaint status"
                   aria-label="Print complaint status"
                 >
                   Print
-                </a>
+                </button>
               </div>
             </header>
 
@@ -78,14 +75,14 @@ export default function ComplaintStatusPage({
                 <table className="table table-zebra w-full text-sm">
                   <thead>
                     <tr>
-                      <th>Sr. No.</th>
-                      <th>Received from</th>
-                      <th>Pending at the end of last month</th>
-                      <th>Received</th>
-                      <th>Resolved*</th>
-                      <th>Total Pending#</th>
-                      <th>Pending complaints &gt; 3 months</th>
-                      <th>Average Resolution time^ (in days)</th>
+                      <th scope="col">Sr. No.</th>
+                      <th scope="col">Received from</th>
+                      <th scope="col">Pending at the end of last month</th>
+                      <th scope="col">Received</th>
+                      <th scope="col">Resolved*</th>
+                      <th scope="col">Total Pending#</th>
+                      <th scope="col">Pending complaints &gt; 3 months</th>
+                      <th scope="col">Average Resolution time^ (in days)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -102,7 +99,7 @@ export default function ComplaintStatusPage({
                       </tr>
                     ))}
                     <tr className="font-semibold bg-base-200">
-                      <td></td>
+                      <td aria-hidden="true"></td>
                       <td>Grand Total</td>
                       <td>0</td>
                       <td>0</td>
@@ -134,12 +131,12 @@ export default function ComplaintStatusPage({
                 <table className="table table-zebra w-full text-sm">
                   <thead>
                     <tr>
-                      <th>Sr. No.</th>
-                      <th>Month</th>
-                      <th>Carried forward from previous month</th>
-                      <th>Received</th>
-                      <th>Resolved*</th>
-                      <th>Pending#</th>
+                      <th scope="col">Sr. No.</th>
+                      <th scope="col">Month</th>
+                      <th scope="col">Carried forward from previous month</th>
+                      <th scope="col">Received</th>
+                      <th scope="col">Resolved*</th>
+                      <th scope="col">Pending#</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -154,7 +151,7 @@ export default function ComplaintStatusPage({
                       </tr>
                     ))}
                     <tr className="font-semibold bg-base-200">
-                      <td></td>
+                      <td aria-hidden="true"></td>
                       <td>Grand Total</td>
                       <td>0</td>
                       <td>0</td>
@@ -186,12 +183,12 @@ export default function ComplaintStatusPage({
                 <table className="table table-zebra w-full text-sm">
                   <thead>
                     <tr>
-                      <th>Sr. No.</th>
-                      <th>Year</th>
-                      <th>Carried forward from previous year</th>
-                      <th>Received</th>
-                      <th>Resolved*</th>
-                      <th>Pending#</th>
+                      <th scope="col">Sr. No.</th>
+                      <th scope="col">Year</th>
+                      <th scope="col">Carried forward from previous year</th>
+                      <th scope="col">Received</th>
+                      <th scope="col">Resolved*</th>
+                      <th scope="col">Pending#</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -206,7 +203,7 @@ export default function ComplaintStatusPage({
                       </tr>
                     ))}
                     <tr className="font-semibold bg-base-200">
-                      <td></td>
+                      <td aria-hidden="true"></td>
                       <td>Grand Total</td>
                       <td>0</td>
                       <td>0</td>
@@ -245,6 +242,7 @@ export default function ComplaintStatusPage({
                     className="link link-primary"
                   >
                     scores.sebi.gov.in
+                    <OpensInNewTabHint />
                   </a>
                   {" | "}
                   SMARTODR:{" "}
@@ -255,6 +253,7 @@ export default function ComplaintStatusPage({
                     className="link link-primary"
                   >
                     smartodr.in
+                    <OpensInNewTabHint />
                   </a>
                 </p>
               </section>

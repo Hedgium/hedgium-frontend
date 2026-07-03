@@ -120,7 +120,7 @@ export default function PerformanceSection() {
           </div>
         </div>
 
-        <div className="mt-6 space-y-1 text-xs text-primary-content/80">
+        <div className="mt-6 space-y-1 text-xs text-primary-content">
           <p>* Average multi-cap equity mutual funds performance (trailing 3M). Source: valueresearchonline.com</p>
           <p>Disclaimer: Past performance is not indicative of future returns</p>
         </div>
@@ -135,7 +135,7 @@ export default function PerformanceSection() {
             And we have been delivering for quite a while
           </h2>
 
-          <p className="text-sm md:text-base lg:text-lg text-primary-content/80 italic mt-2">
+          <p className="text-sm md:text-base lg:text-lg text-primary-content italic mt-2">
             Apr 1, 2023 – 31 Mar 2026 · Strategy performance
           </p>
 
@@ -215,7 +215,7 @@ export default function PerformanceSection() {
             </div>
           </div>
 
-          <div className="mt-6 space-y-2 text-xs text-primary-content/80">
+          <div className="mt-6 space-y-2 text-xs text-primary-content">
             <p>
               *Engine-1 or Portfolio construction is assumed here to be 100% allocated to Liquid Funds, and thus will vary in case of a different allocation
             </p>

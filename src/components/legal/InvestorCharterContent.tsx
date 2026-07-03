@@ -4,6 +4,7 @@ import * as React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { LegalDocIdPrefix, LegalDocVariant } from "@/components/legal/types";
+import OpensInNewTabHint from "@/components/OpensInNewTabHint";
 
 const SEBI_PHYSICAL_ADDRESS = `Office of Investor Assistance and Education,
 Securities and Exchange Board of India,
@@ -36,18 +37,14 @@ export default function InvestorCharterPage({
                 </p>
               </div>
               <div className="flex gap-2">
-                <a
-                  href={`#${idPrefix}printable`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.print();
-                  }}
+                <button
+                  type="button"
+                  onClick={() => window.print()}
                   className="btn btn-ghost btn-sm"
-                  title="Print investor charter"
                   aria-label="Print investor charter"
                 >
                   Print
-                </a>
+                </button>
               </div>
             </header>
 
@@ -209,6 +206,7 @@ export default function InvestorCharterPage({
                         className="link link-primary"
                       >
                         https://scores.sebi.gov.in
+                        <OpensInNewTabHint />
                       </a>
                       )
                     </li>
@@ -320,6 +318,7 @@ export default function InvestorCharterPage({
                       className="link link-primary break-all"
                     >
                       https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognisedFpi=yes&intmId=14
+                      <OpensInNewTabHint />
                     </a>
                   </p>
                 </li>

@@ -7,6 +7,7 @@ import { MessageCircle, Loader2, ChevronLeft, Shield, Home } from "lucide-react"
 import { myFetch } from "@/utils/api";
 import useAlert from "@/hooks/useAlert";
 import { TIME_OPTIONS_15MIN } from "@/utils/timeOptions";
+import OpensInNewTabHint from "@/components/OpensInNewTabHint";
 
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "";
 const DEFAULT_MESSAGE = "Hi, I'm interested in Hedgium. I'd like to schedule a call or learn more.";
@@ -248,6 +249,28 @@ export default function GetStartedPage() {
   };
 
   const hasAutoSubmittedBelow25l = useRef(false);
+  const skipInitialFocus = useRef(true);
+
+  useEffect(() => {
+    if (skipInitialFocus.current) {
+      skipInitialFocus.current = false;
+      return;
+    }
+    if (submitted) {
+      document.getElementById("get-started-success-heading")?.focus();
+      return;
+    }
+    const headingId =
+      step === 1
+        ? "get-started-main-heading"
+        : step === 2
+          ? STEP2_HEADING
+          : investmentValue === BELOW_25L_VALUE
+            ? "get-started-below25-heading"
+            : STEP3_MEET_HEADING;
+    document.getElementById(headingId)?.focus();
+  }, [step, submitted, investmentValue]);
+
   useEffect(() => {
     if (
       step === 3 &&
@@ -288,7 +311,7 @@ export default function GetStartedPage() {
           <div className="w-full max-w-md overflow-hidden">
             <div className="p-4">
             {!submitted && (
-              <h1 className="text-xl font-bold text-base-content mb-3">Get started with Hedgium</h1>
+              <h1 id="get-started-main-heading" tabIndex={-1} className="text-xl font-bold text-base-content mb-3 outline-none">Get started with Hedgium</h1>
             )}
             {/* Header: Back + Step (when form) or just WhatsApp (when submitted) */}
             <div className="flex items-center justify-between mb-4">
@@ -303,7 +326,11 @@ export default function GetStartedPage() {
                     <ChevronLeft className="w-4 h-4" aria-hidden />
                   </button>
                 )}
-                {!submitted && <span className="text-sm text-base-content/90">Step {step} of 3</span>}
+                {!submitted && (
+                  <span className="text-sm text-base-content/90" aria-current="step">
+                    Step {step} of 3
+                  </span>
+                )}
               </span>
               {(whatsappUrl && !submitted) && (
                 <div>
@@ -316,6 +343,7 @@ export default function GetStartedPage() {
                 >
                   <MessageCircle className="w-4 h-4" aria-hidden="true" />
                   WhatsApp
+                  <OpensInNewTabHint />
                 </a>
                 </div>
               )}
@@ -323,7 +351,7 @@ export default function GetStartedPage() {
 
             {submitted ? (
               <div className="text-center" role="status" aria-live="polite">
-                <h1 className="text-xl font-bold text-base-content mb-2">We&apos;ll be in touch shortly</h1>
+                <h1 id="get-started-success-heading" tabIndex={-1} className="text-xl font-bold text-base-content mb-2 outline-none">We&apos;ll be in touch shortly</h1>
                 <p className="text-base-content/90 text-sm mb-6">
                   {investmentValue === BELOW_25L_VALUE
                     ? "We&apos;ve noted your interest, and if we expand our services to your investment range, we&apos;ll reach out."
@@ -338,6 +366,7 @@ export default function GetStartedPage() {
                   >
                     <MessageCircle className="w-4 h-4" aria-hidden="true" />
                     Chat on WhatsApp
+                    <OpensInNewTabHint />
                   </a>
                 )}
               </div>
@@ -420,13 +449,13 @@ export default function GetStartedPage() {
 
           {!submitted && step === 2 && (
             <form onSubmit={handleStep2Continue} className="space-y-4" noValidate>
-              <h2 id={STEP2_HEADING} className="text-lg font-bold text-base-content">
+              <h2 id={STEP2_HEADING} tabIndex={-1} className="text-lg font-bold text-base-content outline-none">
                 What&apos;s the total value of your investments?
               </h2>
               <p className="text-base-content/90 text-sm">
                 Include Stocks, MFs, FDs, and cash. This will help us personalise your experience.
               </p>
-              <div className="space-y-2" role="radiogroup" aria-labelledby={STEP2_HEADING}>
+              <div className="space-y-2" role="radiogroup" aria-labelledby={STEP2_HEADING} aria-required="true">
                 {INVESTMENT_OPTIONS.map((opt) => {
                   const investmentInputId = `get-started-investment-${opt.value}`;
                   return (
@@ -470,7 +499,7 @@ export default function GetStartedPage() {
 
           {!submitted && step === 3 && investmentValue === BELOW_25L_VALUE && (
             <div className="space-y-4">
-              <h2 className="text-lg font-bold text-base-content">Thank you for your interest</h2>
+              <h2 id="get-started-below25-heading" tabIndex={-1} className="text-lg font-bold text-base-content outline-none">Thank you for your interest</h2>
               <p className="text-base-content/90 text-sm">
                 We don&apos;t provide services for below ₹25 lakhs for now. If we provide it in the future we may contact you.
               </p>
@@ -480,7 +509,7 @@ export default function GetStartedPage() {
                   role="status"
                   aria-live="polite"
                 >
-                  <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
+                  <Loader2 className="w-4 h-4 animate-spin motion-reduce:animate-none" aria-hidden="true" />
                   Submitting...
                 </div>
               )}
@@ -494,7 +523,7 @@ export default function GetStartedPage() {
 
           {!submitted && step === 3 && investmentValue !== BELOW_25L_VALUE && (
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-              <h2 id={STEP3_MEET_HEADING} className="text-lg font-bold text-base-content">
+              <h2 id={STEP3_MEET_HEADING} tabIndex={-1} className="text-lg font-bold text-base-content outline-none">
                 When would you like to meet?
               </h2>
               <p className="text-base-content/90 text-sm">
@@ -567,7 +596,7 @@ export default function GetStartedPage() {
               >
                 {submitting ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
+                    <Loader2 className="w-4 h-4 animate-spin motion-reduce:animate-none" aria-hidden="true" />
                     Submitting...
                   </>
                 ) : (

@@ -94,7 +94,7 @@ const WHY_HEDGIUM_TABS = [
         {/* Central Lock */}
         <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
           <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-accent/55 bg-base-100 text-primary shadow-md md:h-16 md:w-16 lg:h-20 lg:w-20 z-10">
-            <Lock className="w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10" strokeWidth={2} />
+            <Lock className="w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10" strokeWidth={2} aria-hidden="true" />
           </div>
         </div>
 

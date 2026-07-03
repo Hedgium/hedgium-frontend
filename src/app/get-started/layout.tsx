@@ -15,8 +15,13 @@ export default function GetStartedLayout({
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-base-200 flex items-center justify-center">
-          <div className="loading loading-spinner loading-lg text-primary" />
+        <div
+          className="min-h-screen bg-base-200 flex items-center justify-center"
+          role="status"
+          aria-live="polite"
+          aria-label="Loading"
+        >
+          <div className="loading loading-spinner loading-lg text-primary motion-reduce:animate-none" />
         </div>
       }
     >

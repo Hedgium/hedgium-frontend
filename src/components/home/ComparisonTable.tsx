@@ -96,7 +96,7 @@ export default function ComparisonTable() {
                   <th scope="row" className="py-3 px-2 md:px-4 font-normal align-top">
                     <div className="inline-flex items-center">
                       <span
-                        className="inline-flex items-center justify-center w-[160px] min-w-[160px] lg:w-[240px] lg:min-w-[240px] xl:w-[240px] xl:min-w-[240px] text-white text-sm lg:text-base xl:text-lg 2xl:text-xl font-semibold px-0 py-2 rounded-l-lg bg-cover bg-center bg-no-repeat"
+                        className="inline-flex items-center justify-center w-[160px] min-w-[160px] lg:w-[240px] lg:min-w-[240px] xl:w-[240px] xl:min-w-[240px] text-white text-sm lg:text-base xl:text-lg 2xl:text-xl font-semibold px-0 py-2 rounded-l-lg bg-primary bg-cover bg-center bg-no-repeat"
                         style={{ backgroundImage: 'url(/images/home/button_bg.png)' }}
                       >
                         {row.category}

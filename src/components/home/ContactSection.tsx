@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { Mail, Phone, MapPin, Calendar, MessageCircle } from "lucide-react";
 
+const EMAIL = "clients@hedgium.ai";
+const PHONE = process.env.NEXT_PUBLIC_PHONE_NUMBER ?? "";
+const WHATSAPP = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
+
 export default function ContactSection() {
   return (
     <section className="relative bg-base-100 py-20">
@@ -23,7 +27,7 @@ export default function ContactSection() {
             </p>
 
             <Link href="/get-started" className="btn btn-primary lg:btn-md gap-2">
-              <Calendar size={18} aria-hidden />
+              <Calendar size={18} aria-hidden="true" />
               Schedule an expert call
             </Link>
           </div>
@@ -42,7 +46,9 @@ export default function ContactSection() {
                 <Mail className="text-primary" size={22} aria-hidden="true"/>
                 <div>
                   <p className="text-sm text-base-content/90">Email</p>
-                  <p className="font-semibold">clients@hedgium.ai</p>
+                  <a href={`mailto:${EMAIL}`} className="font-semibold link link-hover">
+                    {EMAIL}
+                  </a>
                 </div>
               </div>
 
@@ -50,7 +56,13 @@ export default function ContactSection() {
                 <Phone className="text-primary" size={22} aria-hidden="true"/>
                 <div>
                   <p className="text-sm text-base-content/90">Phone / WhatsApp</p>
-                  <p className="font-semibold">+91 {process.env.NEXT_PUBLIC_PHONE_NUMBER}</p>
+                  {PHONE ? (
+                    <a href={`tel:+91${PHONE.replace(/\D/g, "")}`} className="font-semibold link link-hover">
+                      +91 {PHONE}
+                    </a>
+                  ) : (
+                    <p className="font-semibold">—</p>
+                  )}
                 </div>
               </div>
 
@@ -75,13 +87,18 @@ export default function ContactSection() {
                 Prefer WhatsApp? Send us a quick message and our team will get back to you shortly.
               </p>
 
-              <a
-                href={`https://wa.me/+91${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I'm interested in Hedgium. I'd like to schedule a call or learn more.")}`}
-                className="btn btn-outline btn-primary gap-2"
-              >
-                <MessageCircle size={18} aria-hidden="true" />
-                Send us a “Hi” on WhatsApp
-              </a>
+              {WHATSAPP ? (
+                <a
+                  href={`https://wa.me/+91${WHATSAPP.replace(/\D/g, "")}?text=${encodeURIComponent("Hi, I'm interested in Hedgium. I'd like to schedule a call or learn more.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline btn-primary gap-2"
+                >
+                  <MessageCircle size={18} aria-hidden="true" />
+                  Send us a “Hi” on WhatsApp
+                  <span className="sr-only"> (opens in new tab)</span>
+                </a>
+              ) : null}
 
             </div>
 

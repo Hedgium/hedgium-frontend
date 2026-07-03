@@ -25,6 +25,8 @@ export default function Custom404() {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
+                  focusable="false"
                 >
                   <path
                     strokeLinecap="round"
@@ -53,6 +55,8 @@ export default function Custom404() {
                   className="h-5 w-5 mr-2"
                   viewBox="0 0 20 20"
                   fill="currentColor"
+                  aria-hidden="true"
+                  focusable="false"
                 >
                   <path
                     fillRule="evenodd"
