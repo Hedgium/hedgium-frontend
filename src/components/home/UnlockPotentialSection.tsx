@@ -96,17 +96,16 @@ export default function UnlockPotentialSection() {
     <section id="unlock-potential">
       <div className="bg-primary text-primary-content py-6 ">
         <div className="max-w-8xl mx-auto px-4 lg:px-8">
-          <h2
-            className="text-2xl md:w-3/4 md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-bold leading-snug"
+          <div
             data-aos="fade-up"
             data-aos-duration="650"
             data-aos-once="true"
           >
-            Unlock incremental Alpha,{' '}
-            <span className="">
+            <h2 className="text-2xl md:w-3/4 md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-bold leading-snug text-primary-content">
+              Unlock incremental Alpha,{' '}
               by exploiting market inefficiencies, using Hedgium&apos;s platform
-            </span>
-          </h2>
+            </h2>
+          </div>
         </div>
       </div>
 

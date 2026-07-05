@@ -20,15 +20,10 @@ export default function ContactSection() {
             we focus on systematic probability-driven alpha.
           </h2>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-
-            <p className="text-lg font-medium lg:text-xl text-accent">
-              {`Let’s get started`}
-            </p>
-
+          <div className="flex justify-center">
             <Link href="/get-started" className="btn btn-primary lg:btn-md gap-2">
               <Calendar size={18} aria-hidden="true" />
-              Schedule an expert call
+              Let&apos;s get started — schedule an expert call
             </Link>
           </div>
         </div>

@@ -135,8 +135,9 @@ export default function PerformanceSection() {
             And we have been delivering for quite a while
           </h2>
 
-          <p className="text-sm md:text-base lg:text-lg text-primary-content italic mt-2">
-            Apr 1, 2023 – 31 Mar 2026 · Strategy performance
+          <p className="mt-2 text-sm text-primary-content/90">
+            <time dateTime="2023-04-01/2026-03-31">Apr 1, 2023 – 31 Mar 2026</time>
+            {' · '}Strategy performance
           </p>
 
           <div className="relative mt-10 lg:mt-12 rounded-xl border-2 border-primary-content/55">
