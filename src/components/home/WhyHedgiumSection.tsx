@@ -153,7 +153,7 @@ const WHY_HEDGIUM_TABS = [
           <div className="flex flex-col items-center text-center gap-2">
             <Image
               src="/images/home/message.png"
-              alt="Live chat support"
+              alt="Live chat"
               width={112}
               height={112}
               className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 object-contain"
@@ -162,7 +162,7 @@ const WHY_HEDGIUM_TABS = [
           <div className="flex flex-col items-center text-center gap-2">
             <Image
               src="/images/home/call.png"
-              alt="Phone support"
+              alt="Phone"
               width={112}
               height={112}
               className="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 object-contain"
@@ -171,7 +171,7 @@ const WHY_HEDGIUM_TABS = [
           <div className="flex flex-col items-center text-center gap-2">
             <Image
               src="/images/home/mail.png"
-              alt="Email support"
+              alt="Email"
               width={112}
               height={112}
               className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 object-contain"

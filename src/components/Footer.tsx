@@ -11,9 +11,11 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="md:col-span-2 flex flex-col gap-5">
+            {/* Decorative: brand name is in adjacent copy / registered entity text */}
             <img
               src="/images/logos_darkmode/Hedgium stacked darkmode.png"
-              alt="Hedgium"
+              alt=""
+              aria-hidden="true"
               className="w-24"
             />
 
@@ -154,9 +156,9 @@ export default function Footer() {
             <p>SEBI Registration No: INH000025258</p>
 
             <div>
-              <p className="font-medium text-white">
+              <h4 className="font-medium text-white">
                 Principal Officer
-              </p>
+              </h4>
               <p>Kamlesh Ramchandani</p>
               <p>
                 <a
@@ -170,9 +172,9 @@ export default function Footer() {
             </div>
 
             <div>
-              <p className="font-medium text-white">
+              <h4 className="font-medium text-white">
                 Compliance Officer
-              </p>
+              </h4>
               <p>Aerik Wadhwani</p>
               <p>
                 <a

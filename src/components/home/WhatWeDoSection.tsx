@@ -45,6 +45,9 @@ export default function WhatWeDoSection() {
   const moveSlide = (next: number) => {
     const normalized = (next + total) % total;
     setCurrent(normalized);
+    window.requestAnimationFrame(() => {
+      document.getElementById(`what-we-do-tab-${normalized + 1}`)?.focus();
+    });
   };
 
   useEffect(() => {
@@ -98,10 +101,11 @@ export default function WhatWeDoSection() {
                 onBlur={() => setIsPaused(false)}
               >
                 <div
-                  id={`what-we-do-slide-${current + 1}`}
+                  id="what-we-do-slide-panel"
                   role="tabpanel"
                   aria-labelledby={`what-we-do-tab-${current + 1}`}
-                  className="flex-1 min-h-0 relative rounded-xl overflow-hidden"
+                  tabIndex={0}
+                  className="flex-1 min-h-0 relative rounded-xl overflow-hidden outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
                   <Image
                     src={WHAT_WE_DO_SLIDES[current].image}
@@ -128,7 +132,7 @@ export default function WhatWeDoSection() {
                       type="button"
                       role="tab"
                       aria-selected={i === current}
-                      aria-controls={`what-we-do-slide-${i + 1}`}
+                      aria-controls="what-we-do-slide-panel"
                       id={`what-we-do-tab-${i + 1}`}
                       tabIndex={i === current ? 0 : -1}
                       aria-label={`Slide ${i + 1} of ${total}: ${WHAT_WE_DO_SLIDES[i].bottomText}`}

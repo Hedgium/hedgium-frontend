@@ -74,9 +74,11 @@ export default function Navbar() {
           className="flex items-center text-base-content hover:opacity-90 transition-opacity"
           aria-label="Hedgium home"
         >
+          {/* Decorative: link aria-label provides the accessible name */}
           <img
             src="/images/logos/Hedgium Banner cropped.png"
-            alt="Hedgium logo"
+            alt=""
+            aria-hidden="true"
             className="h-10 lg:h-12 w-auto "
           />
         </Link>

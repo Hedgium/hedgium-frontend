@@ -379,7 +379,7 @@ export default function GetStartedPage() {
               </p>
               <div className="space-y-3 pt-4">
                 <div>
-                  <label className="label cursor-default py-0.5" htmlFor={FIELD_MOBILE}>
+                  <label className="label cursor-default py-0.5 text-base-content" htmlFor={FIELD_MOBILE}>
                     Mobile number <span className="text-error" aria-hidden>*</span>
                   </label>
                   <input
@@ -392,7 +392,7 @@ export default function GetStartedPage() {
                     value={mobile}
                     onChange={handleMobileChange}
                     placeholder="10-digit mobile number"
-                    className="input input-bordered input-sm w-full"
+                    className="input input-bordered input-sm w-full text-base-content bg-base-100"
                     required
                     aria-required="true"
                     aria-invalid={error ? true : undefined}
@@ -400,7 +400,7 @@ export default function GetStartedPage() {
                   />
                 </div>
                 <div>
-                  <label className="label cursor-default py-0.5" htmlFor={FIELD_NAME}>
+                  <label className="label cursor-default py-0.5 text-base-content" htmlFor={FIELD_NAME}>
                     Name
                   </label>
                   <input
@@ -411,21 +411,21 @@ export default function GetStartedPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Your name"
-                    className="input input-bordered input-sm w-full"
+                    className="input input-bordered input-sm w-full text-base-content bg-base-100"
                   />
                 </div>
                 <label className="block cursor-default">
-                  <span className="label cursor-default py-0.5 block">{FIELD_SOURCE_LABEL}</span>
+                  <span className="label cursor-default py-0.5 block text-base-content">{FIELD_SOURCE_LABEL}</span>
                   <select
                     id={FIELD_SOURCE}
                     name="source"
                     aria-label={FIELD_SOURCE_LABEL}
                     value={source}
                     onChange={(e) => setSource(e.target.value)}
-                    className="select select-bordered select-sm w-full"
+                    className="select select-bordered select-sm w-full text-base-content bg-base-100"
                   >
                     {SOURCE_OPTIONS.map((opt) => (
-                      <option key={opt.value} value={opt.value}>
+                      <option key={opt.value} value={opt.value} className="text-base-content bg-base-100">
                         {opt.label}
                       </option>
                     ))}
@@ -531,7 +531,7 @@ export default function GetStartedPage() {
               </p>
               <div className="space-y-3">
                 <div>
-                  <label className="label cursor-default py-0.5" htmlFor={FIELD_MEETING_DATE}>
+                  <label className="label cursor-default py-0.5 text-base-content" htmlFor={FIELD_MEETING_DATE}>
                     Date <span className="text-error" aria-hidden>*</span>
                   </label>
                   <input
@@ -541,7 +541,7 @@ export default function GetStartedPage() {
                     value={meetingDate}
                     onChange={(e) => setMeetingDate(e.target.value)}
                     min={todayStr}
-                    className="input input-bordered input-sm w-full"
+                    className="input input-bordered input-sm w-full text-base-content bg-base-100"
                     required
                     aria-required="true"
                     aria-invalid={error ? true : undefined}
@@ -549,7 +549,7 @@ export default function GetStartedPage() {
                   />
                 </div>
                 <label className="block cursor-default">
-                  <span className="label cursor-default py-0.5 block">
+                  <span className="label cursor-default py-0.5 block text-base-content">
                     {FIELD_MEETING_TIME_LABEL} <span className="text-error" aria-hidden>*</span>
                   </span>
                   <select
@@ -558,13 +558,13 @@ export default function GetStartedPage() {
                     aria-label={FIELD_MEETING_TIME_LABEL}
                     value={meetingTime}
                     onChange={(e) => setMeetingTime(e.target.value)}
-                    className="select select-bordered select-sm w-full"
+                    className="select select-bordered select-sm w-full text-base-content bg-base-100"
                     required
                     aria-required="true"
                     aria-invalid={error ? true : undefined}
                     aria-describedby={error ? FIELD_FORM_ERROR : undefined}
                   >
-                    <option value="">Select time</option>
+                    <option value="" className="text-base-content bg-base-100">Select time</option>
                     {timeOptionsForSelectedDate.length === 0 && meetingDate === todayStr ? (
                       <option value="" disabled>
                         No slots left today — pick tomorrow

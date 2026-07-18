@@ -50,7 +50,7 @@ export default function PlaybooksSection() {
             <Image
               src="/images/home/playbook_image.png"
               className="rounded-lg"
-              alt="Illustration of customized investment playbooks aligned to portfolio income and total income goals"
+              alt="Diagram comparing Hedgium playbooks: portfolio income via Engine-2 only, versus total income via Engine-1 plus Engine-2"
               width={500}
               height={500}
             />

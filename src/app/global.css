@@ -165,8 +165,33 @@ summary:focus-visible,
 
 input::placeholder,
 textarea::placeholder {
+    /* ≥4.5:1 on base-100 (WCAG 1.4.3); 70% of base-content clears AA */
     color: color-mix(in oklab, var(--color-base-content) 70%, transparent);
     opacity: 1;
+}
+
+/*
+ * DaisyUI v5 defaults fail WCAG contrast on form controls:
+ * - .select / .input border uses --input-color at 20% base-content (~1.5:1)
+ * - .label text uses currentColor at 60% (~borderline / fails on base-200)
+ * Auditors often flag the <select> itself when sampling muted border/caret color.
+ * Force readable text (1.4.3) and ≥3:1 UI borders (1.4.11).
+ */
+.select,
+.input {
+  color: var(--color-base-content);
+  --input-color: color-mix(in oklab, var(--color-base-content) 55%, transparent);
+}
+
+.select:focus,
+.select:focus-within,
+.input:focus,
+.input:focus-within {
+  --input-color: var(--color-base-content);
+}
+
+.label {
+  color: var(--color-base-content);
 }
 
 /* hide scrollbar (webkit, firefox, IE/Edge) */
