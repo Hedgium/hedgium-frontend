@@ -63,28 +63,50 @@ export default function HeroSection() {
         />
       </video>
 
-      {/* Play / Pause — solid dark control so icon meets 3:1 non-text contrast (1.4.11) */}
-      <button
-        type="button"
-        onClick={togglePlay}
-        className="absolute cursor-pointer top-4 right-4 md:top-6 md:right-6 z-20 touch-target inline-flex items-center justify-center rounded-full bg-black/75 backdrop-blur-sm hover:bg-black/85 transition-colors"
-        aria-label={isPlaying ? "Pause video" : "Play video"}
-      >
-        {isPlaying ? (
-          <Pause className="w-5 h-5 lg:w-6 lg:h-6 xl:w-6 xl:h-6 2xl:w-7 2xl:h-7 text-white" strokeWidth={2} aria-hidden="true" />
-        ) : (
-          <Play className="w-5 h-5 lg:w-6 lg:h-6 xl:w-6 xl:h-6 2xl:w-7 2xl:h-7 text-white" strokeWidth={2} aria-hidden="true" />
-        )}
-      </button>
+      {/* Top-right: play + transcript controls */}
+      <div className="absolute top-4 right-4 md:top-6 md:right-6 z-40 flex flex-col items-end gap-2">
+        {/* Play / Pause — solid dark control so icon meets 3:1 non-text contrast (1.4.11) */}
+        <button
+          type="button"
+          onClick={togglePlay}
+          className="cursor-pointer touch-target inline-flex items-center justify-center rounded-full bg-black/75 backdrop-blur-sm hover:bg-black/85 transition-colors"
+          aria-label={isPlaying ? "Pause video" : "Play video"}
+        >
+          {isPlaying ? (
+            <Pause className="w-5 h-5 lg:w-6 lg:h-6 xl:w-6 xl:h-6 2xl:w-7 2xl:h-7 text-white" strokeWidth={2} aria-hidden="true" />
+          ) : (
+            <Play className="w-5 h-5 lg:w-6 lg:h-6 xl:w-6 xl:h-6 2xl:w-7 2xl:h-7 text-white" strokeWidth={2} aria-hidden="true" />
+          )}
+        </button>
 
-      {/* Visible transcript link — pattern most WCAG scanners require next to <video> */}
-      <a
-        href="#hero-video-transcript"
-        onClick={openTranscript}
-        className="absolute top-4 left-4 md:top-6 md:left-6 z-40 rounded-md border-2 border-white/55 bg-black/75 px-3 py-2 text-xs font-medium uppercase tracking-wider text-white underline decoration-white underline-offset-2 outline-none transition hover:bg-black/85 focus-visible:ring-2 focus-visible:ring-white/50"
-      >
-        Video transcript
-      </a>
+        {/* Visible transcript link — pattern most WCAG scanners require next to <video> */}
+        <a
+          href="#hero-video-transcript"
+          onClick={openTranscript}
+          className="rounded-md border-2 border-white/55 bg-black/75 px-3 py-2 text-xs font-medium uppercase tracking-wider text-white underline decoration-white underline-offset-2 outline-none transition hover:bg-black/85 focus-visible:ring-2 focus-visible:ring-white/50"
+        >
+          Video transcript
+        </a>
+
+        {/* Sightable panel for sighted users */}
+        <details
+          id="hero-video-transcript-details"
+          className="w-full max-w-xs rounded-lg border-2 border-white/55 bg-black/35 text-right text-white shadow-lg backdrop-blur-md open:max-w-sm open:bg-black/50 open:text-left"
+        >
+          <summary className="flex cursor-pointer list-none items-center justify-end gap-1.5 px-3 py-2 text-xs font-medium uppercase tracking-wider text-white outline-none transition hover:bg-white/10 hover:text-white focus-visible:ring-2 focus-visible:ring-white/40 [&::-webkit-details-marker]:hidden">
+            Read video transcript
+            <ChevronDown className="size-3.5 shrink-0 opacity-80" aria-hidden />
+          </summary>
+          <div
+            className="max-h-36 overflow-y-auto border-t-2 border-white/45 px-3 py-2 text-left text-xs leading-relaxed text-white outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/50"
+            tabIndex={0}
+            role="region"
+            aria-label="Hero video transcript text"
+          >
+            {HERO_VIDEO_TRANSCRIPT}
+          </div>
+        </details>
+      </div>
 
       <div className="absolute top-36 right-4 left-4 lg:top-24 lg:right-8 lg:left-8 z-10 flex items-center justify-center">
         <div
@@ -114,25 +136,6 @@ export default function HeroSection() {
         <h2 id="hero-video-transcript-heading">Video transcript</h2>
         <p>{HERO_VIDEO_TRANSCRIPT}</p>
       </section>
-
-      {/* Sightable panel for sighted users */}
-      <details
-        id="hero-video-transcript-details"
-        className="absolute top-[4.75rem] left-4 z-40 max-w-xs rounded-lg border-2 border-white/55 bg-black/35 text-left text-white shadow-lg backdrop-blur-md open:max-w-sm open:bg-black/50 md:top-[5.25rem] md:left-6"
-      >
-        <summary className="flex cursor-pointer list-none items-center gap-1.5 px-3 py-2 text-xs font-medium uppercase tracking-wider text-white outline-none transition hover:bg-white/10 hover:text-white focus-visible:ring-2 focus-visible:ring-white/40 [&::-webkit-details-marker]:hidden">
-          Read video transcript
-          <ChevronDown className="size-3.5 shrink-0 opacity-80" aria-hidden />
-        </summary>
-        <div
-          className="max-h-36 overflow-y-auto border-t-2 border-white/45 px-3 py-2 text-xs leading-relaxed text-white outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/50"
-          tabIndex={0}
-          role="region"
-          aria-label="Hero video transcript text"
-        >
-          {HERO_VIDEO_TRANSCRIPT}
-        </div>
-      </details>
 
       <div className="trapezium-wrap absolute bottom-0 left-1/2 -translate-x-1/2 px-4 md:px-8 w-full max-w-8xl z-30">
         <div className="trapezium-reverse mx-auto">
