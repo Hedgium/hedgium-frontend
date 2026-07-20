@@ -15,6 +15,7 @@ export default function Footer() {
             <img
               src="/images/logos_darkmode/Hedgium stacked darkmode.png"
               alt=""
+              role="presentation"
               aria-hidden="true"
               className="w-24"
             />

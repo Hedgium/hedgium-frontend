@@ -78,6 +78,7 @@ export default function Navbar() {
           <img
             src="/images/logos/Hedgium Banner cropped.png"
             alt=""
+            role="presentation"
             aria-hidden="true"
             className="h-10 lg:h-12 w-auto "
           />

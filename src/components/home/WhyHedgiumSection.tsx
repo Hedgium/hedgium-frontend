@@ -245,6 +245,7 @@ export default function WhyHedgiumSection() {
           <Image
             src="/images/logos/Hedgium icon cropped.png"
             alt=""
+            role="presentation"
             width={48}
             height={48}
             aria-hidden

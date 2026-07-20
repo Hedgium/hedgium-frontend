@@ -39,6 +39,7 @@ export default function TwinEngineFrameworkSection() {
         <img
           src="/images/home/17.png"
           alt=""
+          role="presentation"
           aria-hidden="true"
           className="w-12 md:w-16 shrink-0"
         />
@@ -55,6 +56,7 @@ export default function TwinEngineFrameworkSection() {
     <img
       src="/images/home/17.png"
       alt=""
+      role="presentation"
       aria-hidden="true"
       className="hidden md:block w-12 md:w-24 lg:w-24 xl:w-24 2xl:w-36 shrink-0"
     />
@@ -86,6 +88,7 @@ export default function TwinEngineFrameworkSection() {
                   <img
                     src="/images/home/18.png"
                     alt=""
+                    role="presentation"
                     aria-hidden="true"
                     className="w-12 md:w-24 lg:w-24 xl:w-24 2xl:w-36 shrink-0"
                   />
@@ -102,6 +105,7 @@ export default function TwinEngineFrameworkSection() {
               <img
                 src="/images/home/18.png"
                 alt=""
+                role="presentation"
                 aria-hidden="true"
                 className="hidden md:block w-12 md:w-24 lg:w-24 xl:w-24 2xl:w-36 shrink-0"
               />
