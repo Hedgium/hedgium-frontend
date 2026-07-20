@@ -6,35 +6,23 @@ import Link from 'next/link';
 import Image from 'next/image';
 import TwinEngineFrameworkSection from '@/components/home/TwinEngineFrameworkSection';
 
-const WHAT_WE_DO_IMAGES = [
-  '/images/home/what we do _ slide 1.png',
-  '/images/home/what we do _ slide 2.png',
-].map((path) => path.replace(/ /g, '%20'));
-
 const WHAT_WE_DO_SLIDES = [
   {
     id: 'slide-1',
-    image: WHAT_WE_DO_IMAGES[0],
-    bottomText: "Superior Risk-Adjusted Returns"
-    
+    image: '/images/home/slide1.png',
+    bottomText: 'Superior Risk-Adjusted Returns',
+    alt: 'Stacked area chart of Hedgium Twin Engine Framework returns over time',
+    longDescription:
+      'Stacked area chart with two layers rising over time. Engine-1 (lower layer) shows Hedgium Model Portfolio Returns, reviewed at regular intervals with a risk, return, and tax evaluation matrix. Engine-2 (upper layer) shows incremental income from options by leveraging margin from Engine-1 using Hedgium algorithms, using non-directional hedged strategies targeting stable, consistent returns.',
   },
   {
     id: 'slide-2',
-    image: WHAT_WE_DO_IMAGES[1],
-    bottomText: "Over 20 years of investing & trading experience"
-
-  }
-  // {
-  //   id: 'slide-3',
-  //   image: WHAT_WE_DO_IMAGES[2],
-  //   bottomText: (
-  //     <>
-  //       <span className="font-light text-2xl">{`{ `}</span>
-  //       2 decades of investing & trading experience
-  //       <span className="font-light text-2xl">{` }`}</span>
-  //     </>
-  //   ),
-  // },
+    image: '/images/home/slide2.png',
+    bottomText: 'Over 20 years of investing & trading experience',
+    alt: 'Three Hedgium capabilities listed with icons',
+    longDescription:
+      'List of three capabilities: AI powered intelligence to keep tabs on market events; Algo-Driven real-time opportunity scanning and risk management; Superior risk-adjusted returns using statistical arbitrage.',
+  },
 ];
 
 export default function WhatWeDoSection() {
@@ -109,12 +97,19 @@ export default function WhatWeDoSection() {
                 >
                   <Image
                     src={WHAT_WE_DO_SLIDES[current].image}
-                    alt={`What we do: ${WHAT_WE_DO_SLIDES[current].bottomText}`}
+                    alt={WHAT_WE_DO_SLIDES[current].alt}
+                    aria-describedby={`what-we-do-desc-${WHAT_WE_DO_SLIDES[current].id}`}
                     fill
                     className="object-contain w-full h-full"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
+                {/* Long text alternatives for complex slide images (WCAG 1.1.1 / missing-long-alt) */}
+                {WHAT_WE_DO_SLIDES.map((slide) => (
+                  <p key={slide.id} id={`what-we-do-desc-${slide.id}`} className="sr-only">
+                    {slide.longDescription}
+                  </p>
+                ))}
                 <div className="flex items-center text-center justify-center gap-2 mt-auto shrink-0">
                   <p className="sr-only" aria-live="polite" aria-atomic="true">
                     Slide {current + 1} of {total}: {WHAT_WE_DO_SLIDES[current].bottomText}
