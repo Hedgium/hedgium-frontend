@@ -110,6 +110,13 @@ export default function Footer() {
               Investor Charter
             </Link>
 
+            <Link
+              href="/legal-complaints-investor-charter#ai-usage-disclosure"
+              className="text-sm text-white transition hover:underline"
+            >
+              AI Usage Disclosure
+            </Link>
+
           </div>
 
           {/* Contact */}
