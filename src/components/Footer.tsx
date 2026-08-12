@@ -117,6 +117,13 @@ export default function Footer() {
               AI Usage Disclosure
             </Link>
 
+            <Link
+              href="/legal-complaints-investor-charter#code-of-conduct"
+              className="text-sm text-white transition hover:underline"
+            >
+              Code of Conduct
+            </Link>
+
           </div>
 
           {/* Contact */}

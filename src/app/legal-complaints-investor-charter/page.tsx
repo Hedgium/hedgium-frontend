@@ -10,6 +10,7 @@ import GrievanceRedressalPage from "@/components/legal/GrievanceRedressalContent
 import MitcRaPage from "@/components/legal/MitcRaContent";
 import InvestorCharterPage from "@/components/legal/InvestorCharterContent";
 import AiUsageDisclosurePage from "@/components/legal/AiUsageDisclosureContent";
+import CodeOfConductPage from "@/components/legal/CodeOfConductContent";
 
 export default function LegalComplaintsInvestorCharterPage() {
   return (
@@ -39,6 +40,7 @@ export default function LegalComplaintsInvestorCharterPage() {
               <a href="#mitc-ra" className="btn btn-sm btn-outline">MITC-RA</a>
               <a href="#investor-charter" className="btn btn-sm btn-outline">Investor Charter</a>
               <a href="#ai-usage-disclosure" className="btn btn-sm btn-outline">AI Usage Disclosure</a>
+              <a href="#code-of-conduct" className="btn btn-sm btn-outline">Code of Conduct</a>
             </nav>
 
             <article className="space-y-6">
@@ -87,6 +89,12 @@ export default function LegalComplaintsInvestorCharterPage() {
               <section id="ai-usage-disclosure" className="scroll-mt-24 border border-base-300 rounded-xl">
                 <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
                   <AiUsageDisclosurePage variant="embedded" idPrefix="ai-" />
+                </div>
+              </section>
+
+              <section id="code-of-conduct" className="scroll-mt-24 border border-base-300 rounded-xl">
+                <div className="mt-3 [&>nav]:hidden [&>footer]:hidden">
+                  <CodeOfConductPage variant="embedded" idPrefix="coc-" />
                 </div>
               </section>
             </article>
